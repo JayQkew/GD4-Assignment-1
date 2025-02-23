@@ -82,7 +82,7 @@ public class SoftBody : MonoBehaviour
         {
             float x = Mathf.Cos(startAngle * Mathf.Deg2Rad) * radius;
             float y = Mathf.Sin(startAngle * Mathf.Deg2Rad) * radius;
-            n.transform.position = new Vector3(x, y, 0);
+            n.transform.localPosition = new Vector3(x, y, 0);
             
             startAngle += equalAngles;
         }
