@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SoftBody : MonoBehaviour
@@ -19,6 +20,7 @@ public class SoftBody : MonoBehaviour
     public List<GameObject> nodes = new List<GameObject>();
     private readonly List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
 
+    private PolygonCollider2D _polygonCollider;
     private Mesh _mesh;
     private MeshRenderer _meshRenderer;
     private MeshFilter _meshFilter;
@@ -37,7 +39,7 @@ public class SoftBody : MonoBehaviour
 
     private void Update()
     {
-        ApplySoftBodyQualityes();
+        ApplySoftBodyQualities();
         UpdateMesh();
         UpdatePosition();
     }
@@ -65,6 +67,7 @@ public class SoftBody : MonoBehaviour
             cc.radius = nodeRadius;
             
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
+            node.layer = LayerMask.NameToLayer("SoftBodyNodes");
             
             nodes.Add(node);
         }
@@ -100,7 +103,7 @@ public class SoftBody : MonoBehaviour
         }
     }
 
-    private void ApplySoftBodyQualityes()
+    private void ApplySoftBodyQualities()
     {
         foreach (var springJoint in _springJoints)
         {
@@ -113,6 +116,8 @@ public class SoftBody : MonoBehaviour
     {
         _mesh = new Mesh();
         _mesh.name = "SoftBodyMesh";
+        
+        _polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
 
         if (nodeParent == null)
         {
@@ -128,12 +133,15 @@ public class SoftBody : MonoBehaviour
         _verts = new Vector3[numberOfNodes];
         _uvs = new Vector2[numberOfNodes];
         _tris = new int[(numberOfNodes - 2) * 3];
+        _polygonCollider.points = new Vector2[_verts.Length];
+        Vector2[] colliderPoints = new Vector2[_verts.Length];
 
         // Set vertices and UVs
         for (int n = 0; n < numberOfNodes; n++)
         {
             _verts[n] = nodes[n].transform.localPosition;
             _uvs[n] = new Vector2(_verts[n].x / radius, _verts[n].y / radius);
+            colliderPoints[n] = nodes[n].transform.position;
         }
 
         // Set triangles
@@ -151,16 +159,21 @@ public class SoftBody : MonoBehaviour
 
         _meshRenderer.material = meshMaterial;
         _meshFilter.mesh = _mesh;
+        _polygonCollider.excludeLayers = LayerMask.GetMask("SoftBodyNodes");
+        _polygonCollider.SetPath(0, colliderPoints);
     }
     
     private void UpdateMesh()
     {
+        Vector2[] colliderPoints = new Vector2[_verts.Length];
         // Update vertices
         for (int n = 0; n < numberOfNodes; n++)
         {
             _verts[n] = nodes[n].transform.localPosition;
+            colliderPoints[n] = transform.InverseTransformPoint(nodes[n].transform.position);
         }
 
+        _polygonCollider.SetPath(0, colliderPoints);
         _mesh.vertices = _verts;
         _mesh.RecalculateNormals();
     }
