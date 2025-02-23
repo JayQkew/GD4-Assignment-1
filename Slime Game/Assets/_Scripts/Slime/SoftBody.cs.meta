@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 7c4cc2bbb5c6efc44aa25d442339cf2c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - nodeSprite: {instanceID: 0}
+  - meshMaterial: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
