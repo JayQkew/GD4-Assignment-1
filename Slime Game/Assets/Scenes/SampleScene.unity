@@ -129,6 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 24136392}
   - component: {fileID: 24136391}
+  - component: {fileID: 24136394}
+  - component: {fileID: 24136393}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -172,6 +174,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 957826208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24136393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24136390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba346fd4b027f724b858abad9b5269ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 0, y: 0}
+  sprintAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9fddf0f8-6137-43ed-a14f-5b2643eb2dbc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!114 &24136394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24136390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff791b694f5245040ae11aa82e721cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 5
 --- !u!1 &149008897
 GameObject:
   m_ObjectHideFlags: 0
