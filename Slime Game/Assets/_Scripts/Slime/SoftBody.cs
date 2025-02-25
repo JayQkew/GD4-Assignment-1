@@ -7,7 +7,7 @@ using UnityEngine;
 public class SoftBody : MonoBehaviour
 {
     [Range(3, 40)]public int numberOfNodes = 10;
-    public int radius = 3;
+    public float radius = 3;
     public float nodeRadius = 0.001f;
     [SerializeField] private Transform nodeParent;
     

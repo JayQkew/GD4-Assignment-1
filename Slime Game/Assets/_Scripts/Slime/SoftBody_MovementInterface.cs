@@ -16,20 +16,42 @@ public class SoftBody_MovementInterface : MonoBehaviour
 
     public void Move(Vector2 dir)
     {
-        if (dir == Vector2.up)
+        foreach (GameObject node in _softBody.nodes)
         {
-            foreach (GameObject node in _softBody.nodes)
+            if (dir.y > 0)
             {
-                Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                rb.AddForce(dir * _movementSpeed/2, ForceMode2D.Force);
+                if (node.transform.position.y >= transform.position.y)
+                {
+                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
+                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
+                }
             }
-        }
-        else
-        {
-            foreach (GameObject node in _softBody.nodes)
+
+            if (dir.y < 0)
             {
-                Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
+                if (node.transform.position.y <= transform.position.y)
+                {
+                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
+                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
+                }
+            }
+
+            if (dir.x < 0)
+            {
+                if (node.transform.position.x >= transform.position.x)
+                {
+                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
+                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
+                }
+            }
+
+            if (dir.x > 0)
+            {
+                if (node.transform.position.x >= transform.position.x)
+                {
+                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
+                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
+                }
             }
         }
     }
