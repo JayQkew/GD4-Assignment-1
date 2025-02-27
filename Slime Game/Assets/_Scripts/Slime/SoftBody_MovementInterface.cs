@@ -66,6 +66,7 @@ public class SoftBody_MovementInterface : MonoBehaviour
                 rb.gravityScale = 0.5f;
                 rb.mass = 0.5f;
             }
+            _softBody.frequency = 5f;
         }
         else
         {
@@ -75,6 +76,8 @@ public class SoftBody_MovementInterface : MonoBehaviour
                 rb.gravityScale = 1f;
                 rb.mass = 1f;
             }
+
+            _softBody.frequency = 1f;
         }
     }
 }

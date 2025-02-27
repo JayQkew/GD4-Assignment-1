@@ -15,7 +15,7 @@ public class Player_Input : MonoBehaviour
         _softBodyMovementInterface = GetComponent<SoftBody_MovementInterface>();
         
         moveAction = InputSystem.actions.FindAction("Move");
-        sprintAction = InputSystem.actions.FindAction("Sprint");
+        sprintAction = InputSystem.actions.FindAction("Jump");
     }
 
     private void Update()

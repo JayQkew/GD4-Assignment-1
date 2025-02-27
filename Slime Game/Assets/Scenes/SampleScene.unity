@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 24136391}
   - component: {fileID: 24136394}
   - component: {fileID: 24136393}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   nodeRadius: 0.01
   nodeParent: {fileID: 149008898}
   dampingRatio: 0.049
-  frequency: 0.5
+  frequency: 1.75
   nodeSprite: {fileID: 0}
   nodes: []
   meshMaterial: {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
@@ -770,7 +770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 475340871}
   - component: {fileID: 475340872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
