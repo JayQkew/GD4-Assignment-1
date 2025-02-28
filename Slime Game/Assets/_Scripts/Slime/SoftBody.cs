@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class SoftBody : MonoBehaviour
@@ -14,6 +15,8 @@ public class SoftBody : MonoBehaviour
     [Header("Soft Body Qualities")] 
     [Range(0,1)] public float dampingRatio;
     [Range(0.1f,10)]public float frequency;
+    [Range(0.1f,10)]public float minFrequency;
+    [Range(0.1f,10)]public float maxFrequency;
     
     
     public Sprite nodeSprite;
@@ -35,6 +38,7 @@ public class SoftBody : MonoBehaviour
         ArrangeNodes();
         ConnectNodes();
         CreateMesh();
+        
     }
 
     private void Update()
@@ -65,7 +69,7 @@ public class SoftBody : MonoBehaviour
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();
             cc.radius = nodeRadius;
-            cc.excludeLayers = LayerMask.GetMask("SoftBody");
+            cc.excludeLayers = LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer));
             
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
             node.layer = LayerMask.NameToLayer("SoftBodyNodes");
@@ -98,6 +102,7 @@ public class SoftBody : MonoBehaviour
                 SpringJoint2D sprintJoint = nodes[i].AddComponent<SpringJoint2D>();
                 sprintJoint.enableCollision = true;
                 sprintJoint.connectedBody = nodes[j].GetComponent<Rigidbody2D>();
+                sprintJoint.frequency = minFrequency;
                 
                 _springJoints.Add(sprintJoint);
             }
@@ -160,7 +165,6 @@ public class SoftBody : MonoBehaviour
 
         _meshRenderer.material = meshMaterial;
         _meshFilter.mesh = _mesh;
-        // _polygonCollider.excludeLayers = LayerMask.GetMask("SoftBodyNodes");
         _polygonCollider.SetPath(0, colliderPoints);
     }
     
@@ -177,5 +181,10 @@ public class SoftBody : MonoBehaviour
         _polygonCollider.SetPath(0, colliderPoints);
         _mesh.vertices = _verts;
         _mesh.RecalculateNormals();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

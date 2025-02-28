@@ -1,9 +1,7 @@
-using System;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(SoftBody))]
-public class SoftBody_MovementInterface : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     private SoftBody _softBody;
     
@@ -66,7 +64,7 @@ public class SoftBody_MovementInterface : MonoBehaviour
                 rb.gravityScale = 0.5f;
                 rb.mass = 0.5f;
             }
-            _softBody.frequency = 5f;
+            _softBody.frequency = _softBody.maxFrequency;
         }
         else
         {
@@ -77,7 +75,7 @@ public class SoftBody_MovementInterface : MonoBehaviour
                 rb.mass = 1f;
             }
 
-            _softBody.frequency = 1f;
+            _softBody.frequency = _softBody.minFrequency;
         }
     }
 }

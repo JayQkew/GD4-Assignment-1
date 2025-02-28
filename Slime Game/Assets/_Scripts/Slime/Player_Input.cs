@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player_Input : MonoBehaviour
 {
-    private SoftBody_MovementInterface _softBodyMovementInterface;
+    private Movement _movement;
     
     private InputAction moveAction;
     public Vector2 moveDirection;
@@ -12,7 +11,7 @@ public class Player_Input : MonoBehaviour
 
     private void Awake()
     {
-        _softBodyMovementInterface = GetComponent<SoftBody_MovementInterface>();
+        _movement = GetComponent<Movement>();
         
         moveAction = InputSystem.actions.FindAction("Move");
         sprintAction = InputSystem.actions.FindAction("Jump");
@@ -21,11 +20,11 @@ public class Player_Input : MonoBehaviour
     private void Update()
     {
         moveDirection = moveAction.ReadValue<Vector2>();
-        _softBodyMovementInterface.AdjustGravity(sprintAction.IsPressed());
+        _movement.AdjustGravity(sprintAction.IsPressed());
     }
 
     private void FixedUpdate()
     {
-        _softBodyMovementInterface.Move(moveDirection);
+        _movement.Move(moveDirection);
     }
 }
