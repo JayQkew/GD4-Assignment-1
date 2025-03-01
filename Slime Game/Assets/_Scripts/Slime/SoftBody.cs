@@ -76,10 +76,11 @@ public class SoftBody : MonoBehaviour
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();
             cc.radius = nodeRadius;
-            cc.excludeLayers = LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer));
+            var excludeLayer = LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer));
+            cc.excludeLayers = excludeLayer;
             
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
-            node.layer = LayerMask.NameToLayer("SoftBodyNodes");
+            node.layer = LayerMask.LayerToName(excludeLayer) == "SoftBody1" ? LayerMask.NameToLayer("SoftBody2") : LayerMask.NameToLayer("SoftBody1");
             
             nodes.Add(node);
         }
