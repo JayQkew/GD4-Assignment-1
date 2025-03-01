@@ -99,7 +99,7 @@ public class SoftBody : MonoBehaviour
     {
         for (int i = 0; i < nodes.Count - 1; i++)
         {
-            for (int j = i; j < nodes.Count; j++)
+            for (int j = i + 1; j < nodes.Count; j++)
             {
                 SpringJoint2D sprintJoint = nodes[i].AddComponent<SpringJoint2D>();
                 sprintJoint.enableCollision = true;
@@ -135,7 +135,7 @@ public class SoftBody : MonoBehaviour
         else
         {
             _meshFilter = nodeParent.gameObject.AddComponent<MeshFilter>();
-            _meshRenderer = nodeParent.gameObject.AddComponent<MeshRenderer>();
+            _meshRenderer = nodeParent.GetComponent<MeshRenderer>();
         }
         
         _verts = new Vector3[numberOfNodes];

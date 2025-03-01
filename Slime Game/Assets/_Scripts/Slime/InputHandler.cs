@@ -21,12 +21,8 @@ public class InputHandler : MonoBehaviour
         movmentMap_1 = inputAsset.FindActionMap("Movement_1");
         
         moveAction = movmentMap_1.FindAction("Move");
-        moveAction.performed += Move;
-        moveAction.canceled += Move;
         
         stiffnessAction = movmentMap_1.FindAction("Stiffness");
-        stiffnessAction.performed += Stiffness;
-        stiffnessAction.canceled += Stiffness;
         
         // movmentMap_2 = inputAsset.FindActionMap("Movement_2");
     }
@@ -54,12 +50,12 @@ public class InputHandler : MonoBehaviour
         }
     }
     
-    private void Stiffness(InputAction.CallbackContext ctx)
+    public void Stiffness(InputAction.CallbackContext ctx)
     {
         stiffnessInput = (int)ctx.ReadValue<float>();
     }
 
-    private void Move(InputAction.CallbackContext ctx)
+    public void Move(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
     }

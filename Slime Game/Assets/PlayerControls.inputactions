@@ -255,6 +255,39 @@
                     "action": "Stiffness",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "PlayStation Triggers",
+                    "id": "21cd612a-64e1-4160-bd25-8a65f4433579",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stiffness",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e9736692-82f4-4855-ac9a-26548cd85fef",
+                    "path": "<DualShockGamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "77bf280e-7f1b-45db-9f58-ab2733fdd52a",
+                    "path": "<DualShockGamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
