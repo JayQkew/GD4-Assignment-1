@@ -15,7 +15,7 @@ public class InputHandler : MonoBehaviour
     private InputAction stiffnessAction;
 
     public Vector2 moveInput;
-    public double stiffnessInput;
+    public int stiffnessInput;
     private void Awake()
     {
         movmentMap_1 = inputAsset.FindActionMap("Movement_1");
@@ -56,7 +56,7 @@ public class InputHandler : MonoBehaviour
     
     private void Stiffness(InputAction.CallbackContext ctx)
     {
-        stiffnessInput = ctx.ReadValue<float>();
+        stiffnessInput = (int)ctx.ReadValue<float>();
     }
 
     private void Move(InputAction.CallbackContext ctx)

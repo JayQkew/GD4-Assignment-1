@@ -1,59 +1,52 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(SoftBody))]
 public class Movement : MonoBehaviour
 {
     private SoftBody _softBody;
+    private InputHandler _inputHandler;
     
     [Header("Movement Settings")]
     [SerializeField] private float _movementSpeed;
+    
+    [Header("Spring Settings")]
+    [SerializeField] private float _maxFrequency;
+    [SerializeField] private float _midFrequency;
+    [SerializeField] private float _minFrequency;
     private void Awake()
     {
         _softBody = GetComponent<SoftBody>();
+        _inputHandler = GetComponent<InputHandler>();
+    }
+
+    private void Update()
+    {
+        AdjustStiffness(_inputHandler.stiffnessInput);
+    }
+
+    private void FixedUpdate()
+    {
+        Move(_inputHandler.moveInput);
     }
 
     public void Move(Vector2 dir)
     {
-        foreach (GameObject node in _softBody.nodes)
+        foreach (Rigidbody2D rb in _softBody.nodes_rb)
         {
-            if (dir.y > 0)
+            if (rb.transform.position.y >= _softBody.transform.position.y)
             {
-                if (node.transform.position.y >= transform.position.y)
-                {
-                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
-                }
-            }
-
-            if (dir.y < 0)
-            {
-                if (node.transform.position.y <= transform.position.y)
-                {
-                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
-                }
-            }
-
-            if (dir.x < 0)
-            {
-                if (node.transform.position.x >= transform.position.x)
-                {
-                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
-                }
-            }
-
-            if (dir.x > 0)
-            {
-                if (node.transform.position.x >= transform.position.x)
-                {
-                    Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                    rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
-                }
+                rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
             }
         }
     }
 
+    public void AdjustStiffness(int stiffness)
+    {
+        if (stiffness > 0) _softBody.SetFrequency(_maxFrequency);
+        else if (stiffness < 0) _softBody.SetFrequency(_minFrequency);
+        else _softBody.SetFrequency(_midFrequency);
+    }
     public void AdjustGravity(bool adjust)
     {
         if (adjust)

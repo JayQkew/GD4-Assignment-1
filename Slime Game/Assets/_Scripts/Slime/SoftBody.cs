@@ -21,6 +21,7 @@ public class SoftBody : MonoBehaviour
     
     public Sprite nodeSprite;
     public List<GameObject> nodes = new List<GameObject>();
+    public List<Rigidbody2D> nodes_rb = new List<Rigidbody2D>();
     private readonly List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
 
     private PolygonCollider2D _polygonCollider;
@@ -66,6 +67,7 @@ public class SoftBody : MonoBehaviour
 
             Rigidbody2D rb = node.AddComponent<Rigidbody2D>();
             rb.freezeRotation = true;
+            nodes_rb.Add(rb);
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();
             cc.radius = nodeRadius;
@@ -186,5 +188,14 @@ public class SoftBody : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    public void SetFrequency(float frequency)
+    {
+        foreach (SpringJoint2D spring in _springJoints)
+        {
+            this.frequency = frequency;
+            spring.frequency = frequency;
+        }
     }
 }

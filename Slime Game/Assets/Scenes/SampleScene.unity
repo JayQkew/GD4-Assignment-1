@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 24136392}
   - component: {fileID: 24136391}
   - component: {fileID: 24136394}
-  - component: {fileID: 24136393}
   - component: {fileID: 24136395}
   m_Layer: 7
   m_Name: Slime
@@ -161,6 +160,7 @@ MonoBehaviour:
   maxFrequency: 5
   nodeSprite: {fileID: 0}
   nodes: []
+  nodes_rb: []
   meshMaterial: {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
 --- !u!4 &24136392
 Transform:
@@ -177,28 +177,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 957826208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &24136393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24136390}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba346fd4b027f724b858abad9b5269ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDirection: {x: 0, y: 0}
-  sprintAction:
-    m_Name: Sprint
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 9fddf0f8-6137-43ed-a14f-5b2643eb2dbc
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &24136394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 10
+  _maxFrequency: 7
+  _midFrequency: 1.7
+  _minFrequency: 1.15
 --- !u!114 &24136395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +816,7 @@ MonoBehaviour:
   maxFrequency: 5
   nodeSprite: {fileID: 0}
   nodes: []
+  nodes_rb: []
   meshMaterial: {fileID: 2100000, guid: c09c37e9dbb6b9e4386bd04704d4d77b, type: 2}
 --- !u!50 &475340873
 Rigidbody2D:
