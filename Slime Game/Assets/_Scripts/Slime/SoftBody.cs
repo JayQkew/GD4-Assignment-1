@@ -49,6 +49,11 @@ public class SoftBody : MonoBehaviour
         UpdatePosition();
     }
 
+    private void FixedUpdate()
+    {
+        UpdateCollider();
+    }
+
     private void UpdatePosition()
     {
         Vector3 centerPos = Vector3.zero;
@@ -177,12 +182,21 @@ public class SoftBody : MonoBehaviour
         for (int n = 0; n < numberOfNodes; n++)
         {
             _verts[n] = nodes[n].transform.localPosition;
-            colliderPoints[n] = transform.InverseTransformPoint(nodes[n].transform.position);
         }
 
-        _polygonCollider.SetPath(0, colliderPoints);
         _mesh.vertices = _verts;
         _mesh.RecalculateNormals();
+    }
+
+    private void UpdateCollider()
+    {
+        Vector2[] colliderPoints = new Vector2[_verts.Length];
+        for (int n = 0; n < numberOfNodes; n++)
+        {
+            colliderPoints[n] = transform.InverseTransformPoint(nodes[n].transform.position);
+        }
+        _polygonCollider.SetPath(0, colliderPoints);
+
     }
 
     private void OnDrawGizmos()
