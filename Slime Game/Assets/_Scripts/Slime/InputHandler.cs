@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class InputHandler : MonoBehaviour
 {
@@ -15,16 +16,21 @@ public class InputHandler : MonoBehaviour
 
     public Vector2 moveInput;
     public double stiffnessInput;
-
     private void Awake()
     {
         movmentMap_1 = inputAsset.FindActionMap("Movement_1");
+        
         moveAction = movmentMap_1.FindAction("Move");
+        moveAction.performed += Move;
+        moveAction.canceled += Move;
+        
         stiffnessAction = movmentMap_1.FindAction("Stiffness");
+        stiffnessAction.performed += Stiffness;
+        stiffnessAction.canceled += Stiffness;
         
-        
-        movmentMap_2 = inputAsset.FindActionMap("Movement_2");
+        // movmentMap_2 = inputAsset.FindActionMap("Movement_2");
     }
+    
     private void OnEnable()
     {
         inputAsset.Enable();
@@ -33,40 +39,29 @@ public class InputHandler : MonoBehaviour
         {
             case MovementType.Movement1:
                 movmentMap_1.Enable();
-                movmentMap_2.Disable();
+                // movmentMap_2.Disable();
 
                 moveAction.Enable();
-                moveAction.performed += Move;
-                moveAction.canceled += MoveCancel;
-                
                 stiffnessAction.Enable();
-                stiffnessAction.performed += Stiffness;
                 break;
             case MovementType.Movement2:
                 movmentMap_1.Disable();
-                movmentMap_2.Enable();
+                // movmentMap_2.Enable();
                 
                 moveAction.Disable();
                 stiffnessAction.Disable();
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
     
     private void Stiffness(InputAction.CallbackContext ctx)
     {
-        stiffnessInput = ctx.ReadValue<int>();
+        stiffnessInput = ctx.ReadValue<float>();
     }
 
     private void Move(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
-    }
-    
-    private void MoveCancel(InputAction.CallbackContext obj)
-    {
-        moveInput = Vector2.zero;
     }
 
     private enum MovementType

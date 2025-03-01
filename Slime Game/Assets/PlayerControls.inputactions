@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Stiffness",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "80fc022d-6c20-49ec-8032-1e2ff9a459aa",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -108,7 +108,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad;Joystick",
+                    "groups": ";Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -119,14 +119,47 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad;Joystick",
+                    "groups": ";Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "X-Box Left Stick",
+                    "id": "434f13a7-c989-4c16-81b8-c71bdc108be1",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "853a20e9-39ee-4fee-adb2-2b11b384ad75",
+                    "path": "<XInputController>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "e3f93da7-9ba5-4e6e-9c71-8221a26c8553",
+                    "path": "<XInputController>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "Mouse",
-                    "id": "7ecf1d5d-bba5-45f1-9610-53c45cd95b94",
+                    "id": "5b6587fb-04b0-41dd-bee6-d790318941ed",
                     "path": "1DAxis(whichSideWins=1)",
                     "interactions": "",
                     "processors": "",
@@ -136,8 +169,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Negative",
-                    "id": "37de95c6-3c7b-4c29-adde-dc90515c6803",
+                    "name": "negative",
+                    "id": "6365ff9a-1694-4299-a489-3b87ca444602",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
@@ -147,8 +180,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Positive",
-                    "id": "59a06cb6-8810-488c-94b1-ce492228cb94",
+                    "name": "positive",
+                    "id": "b627ffdf-0d46-4297-aa6d-86b457b92f3a",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
@@ -159,7 +192,7 @@
                 },
                 {
                     "name": "Triggers",
-                    "id": "c0bff81e-e146-40be-b447-bd4816b326e9",
+                    "id": "2dc15a01-ab62-4b26-a8c8-40b28de750ea",
                     "path": "1DAxis(whichSideWins=1)",
                     "interactions": "",
                     "processors": "",
@@ -169,23 +202,56 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Negative",
-                    "id": "4ac97aa0-b2bd-4288-a43e-d9a238c18bd4",
+                    "name": "negative",
+                    "id": "b8f68994-72a9-4783-a863-efa0508f775d",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad;Joystick",
+                    "groups": ";Gamepad",
                     "action": "Stiffness",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Positive",
-                    "id": "2a29fc83-2a4e-45c6-ab17-d02f99073ec6",
+                    "name": "positive",
+                    "id": "4a4a52e2-0303-4980-ba24-12d536d81259",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad;Joystick",
+                    "groups": ";Gamepad",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "X-Box Triggers",
+                    "id": "22245bcc-2616-42a0-aec2-a6f0645ddc31",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stiffness",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6ebb6660-4444-461b-b790-d9409f491c9e",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "6c9213ee-926b-4a6b-b8f3-5f7880d1d1d8",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Stiffness",
                     "isComposite": false,
                     "isPartOfComposite": true
