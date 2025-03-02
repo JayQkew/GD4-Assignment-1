@@ -1,19 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(SoftBody))]
 public class Movement : MonoBehaviour
 {
     private SoftBody _softBody;
     private InputHandler _inputHandler;
-    
-    [Header("Movement Settings")]
-    [SerializeField] private float _movementSpeed;
-    
-    [Header("Spring Settings")]
-    [SerializeField] private float _maxFrequency;
+
+    [Header("Movement Settings")] [SerializeField]
+    private float _movementMultiplier;
+
+    [Header("Spring Settings")] [SerializeField]
+    private float _maxFrequency;
+
     [SerializeField] private float _midFrequency;
     [SerializeField] private float _minFrequency;
+
     private void Awake()
     {
         _softBody = GetComponent<SoftBody>();
@@ -22,53 +25,79 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        AdjustStiffness(_inputHandler.stiffnessInput);
+        if (_inputHandler.movementType == InputHandler.MovementType.Movement1)
+        {
+            AdjustStiffness(_inputHandler.stiffnessInput);
+        }
+        else if (_inputHandler.movementType == InputHandler.MovementType.Movement2)
+        {
+            Jump(_inputHandler.jumpInput);
+        }
     }
 
     private void FixedUpdate()
     {
-        Move(_inputHandler.moveInput);
+        if (_inputHandler.movementType == InputHandler.MovementType.Movement1)
+        {
+            Move(_inputHandler.moveInput);
+        }
     }
 
-    public void Move(Vector2 dir)
+    #region Movement1
+
+    private void Move(Vector2 dir)
     {
         foreach (Rigidbody2D rb in _softBody.nodes_rb)
         {
             if (rb.transform.position.y >= _softBody.transform.position.y)
             {
-                rb.AddForce(dir * _movementSpeed, ForceMode2D.Force);
+                rb.AddForce(dir * _movementMultiplier, ForceMode2D.Force);
             }
         }
     }
 
-    public void AdjustStiffness(int stiffness)
+    private void AdjustStiffness(int stiffness)
     {
         if (stiffness > 0) _softBody.SetFrequency(_maxFrequency);
         else if (stiffness < 0) _softBody.SetFrequency(_minFrequency);
         else _softBody.SetFrequency(_midFrequency);
     }
-    public void AdjustGravity(bool adjust)
-    {
-        if (adjust)
-        {
-            foreach (GameObject node in _softBody.nodes)
-            {
-                Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                rb.gravityScale = 0.5f;
-                rb.mass = 0.5f;
-            }
-            _softBody.frequency = _softBody.maxFrequency;
-        }
-        else
-        {
-            foreach (GameObject node in _softBody.nodes)
-            {
-                Rigidbody2D rb = node.GetComponent<Rigidbody2D>();
-                rb.gravityScale = 1f;
-                rb.mass = 1f;
-            }
 
-            _softBody.frequency = _softBody.minFrequency;
+    #endregion
+
+    #region Movement2
+
+    private void Aim()
+    {
+    }
+
+    private void Inflate()
+    {
+    }
+
+    private void Jump(bool jumpInput)
+    {
+        if (jumpInput && Grounded())
+        {
+            foreach (Rigidbody2D rb in _softBody.nodes_rb)
+            {
+                if (rb.transform.position.y >= _softBody.transform.position.y)
+                {
+                    rb.AddForce(_inputHandler.aimInput * _movementMultiplier, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    rb.AddForce(_inputHandler.aimInput * (_movementMultiplier * 0.5f), ForceMode2D.Impulse);
+                }
+            }
         }
+    }
+
+    #endregion
+
+    private bool Grounded()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.down, _softBody.radius + 0.05f,
+            LayerMask.GetMask("Ground"));
     }
 }

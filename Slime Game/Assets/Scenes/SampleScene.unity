@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 2
-  m_MaxPlayerCount: 3
+  m_MaxPlayerCount: 2
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
@@ -607,11 +607,9 @@ MonoBehaviour:
   _layers:
   - SoftBody1
   - SoftBody2
-  - SoftBody3
   _materials:
   - {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
   - {fileID: 2100000, guid: c09c37e9dbb6b9e4386bd04704d4d77b, type: 2}
-  - {fileID: 2100000, guid: 7e69bc81b20779e4fa2a76f8f187287c, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

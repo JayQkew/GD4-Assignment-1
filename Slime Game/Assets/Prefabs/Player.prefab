@@ -93,7 +93,6 @@ MonoBehaviour:
   nodes: []
   nodes_rb: []
   meshMaterial: {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
-  physicsMaterial: {fileID: 6200000, guid: 7bd05f55df0bff349932536bcab4c117, type: 2}
 --- !u!114 &6662356125951656662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff791b694f5245040ae11aa82e721cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 10
+  _movementMultiplier: 1
   _maxFrequency: 7
   _midFrequency: 1.7
   _minFrequency: 1.15
@@ -123,9 +122,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputAsset: {fileID: -944628639613478452, guid: d26981faa228ced4fbc79e38fe0f16df, type: 3}
-  movementType: 0
+  playerInput: {fileID: 0}
+  movementType: 1
+  inputMode: 0
   moveInput: {x: 0, y: 0}
   stiffnessInput: 0
+  xAxisClamp: 0.5
+  aimInput: {x: 0, y: 0}
+  inflateInput: 0
+  jumpInput: 0
 --- !u!114 &8210265036551060951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,12 +189,56 @@ MonoBehaviour:
     m_ActionId: 80fc022d-6c20-49ec-8032-1e2ff9a459aa
     m_ActionName: 'Movement_1/Stiffness[/Mouse/leftButton,/Mouse/rightButton,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightTrigger]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7534759130053933170}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Aim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ee095f44-2381-4f8b-abb7-18d6a51d47fe
     m_ActionName: Movement_2/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7534759130053933170}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Inflate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b5badde8-3436-4f50-891c-6d7336e374e7
+    m_ActionName: 'Movement_2/Inflate[/Mouse/leftButton,/XInputControllerWindows/leftTrigger]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7534759130053933170}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b94c16f1-c933-4694-ad31-5a8398a6656e
+    m_ActionName: 'Movement_2/Jump[/Mouse/rightButton,/XInputControllerWindows/rightTrigger]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Movement_1
+  m_DefaultActionMap: Movement_2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!50 &4492303020482217538

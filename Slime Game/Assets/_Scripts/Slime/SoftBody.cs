@@ -76,11 +76,16 @@ public class SoftBody : MonoBehaviour
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();
             cc.radius = nodeRadius;
+            
+            //exclude this polygon collider (flip the colliders between the two slimes)
             var excludeLayer = LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer));
             cc.excludeLayers = excludeLayer;
+            node.layer = LayerMask.LayerToName(excludeLayer) == "SoftBody1" ? 
+                LayerMask.NameToLayer("SoftBody2") : 
+                LayerMask.NameToLayer("SoftBody1");
             
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
-            node.layer = LayerMask.LayerToName(excludeLayer) == "SoftBody1" ? LayerMask.NameToLayer("SoftBody2") : LayerMask.NameToLayer("SoftBody1");
+            
             
             nodes.Add(node);
         }
