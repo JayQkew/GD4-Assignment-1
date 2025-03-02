@@ -305,13 +305,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Inflate",
-                    "type": "Button",
-                    "id": "b5badde8-3436-4f50-891c-6d7336e374e7",
+                    "name": "Stiffness",
+                    "type": "Value",
+                    "id": "048b526e-242e-4d85-a32f-f3af271242db",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -358,42 +358,141 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "1af292f0-1882-4dde-a0da-2d71cfb0e9e7",
+                    "name": "Mouse",
+                    "id": "f7145fca-b574-4a13-b7bd-59d2685ff4c0",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stiffness",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "576cbdb3-c99c-45d1-9ea9-6b669acab2c5",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Inflate",
+                    "action": "Stiffness",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b58063e1-e174-48c7-8158-54589850ed42",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Triggers",
+                    "id": "5bf15af6-8ac7-4dc4-8964-47f60882fd19",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stiffness",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "0b8f6dcb-5def-42cb-baf9-32d4b533e2e4",
+                    "name": "negative",
+                    "id": "21ef3907-25fb-4162-a908-1639c856897f",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Inflate",
+                    "action": "Stiffness",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "600349a9-75ce-4ec4-800c-6ebdd32425f7",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "X-Box Triggers",
+                    "id": "314686b8-4d0f-48f4-8b9e-0e42c1ecb02e",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stiffness",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "9576c3b9-6522-4c07-a421-5b0202885cf0",
-                    "path": "<Joystick>/trigger",
+                    "name": "negative",
+                    "id": "45fd3a40-bbec-4a36-8a60-1f10ed5e0d9d",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "2ecbc7ab-30aa-4c81-aa3e-5cc40029fb86",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "PlayStation Triggers",
+                    "id": "d85244c4-0469-443d-a72b-1ab299f68a5f",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stiffness",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "c8367220-79b3-421a-ac9e-763ef9d1bb2f",
+                    "path": "<DualShockGamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Joystick",
-                    "action": "Inflate",
+                    "action": "Stiffness",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "0b6e6e0b-21f8-41fa-a33c-7ec9425192de",
+                    "path": "<DualShockGamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "Stiffness",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "a9ab0757-171b-48ba-a402-88a299c74fbc",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",

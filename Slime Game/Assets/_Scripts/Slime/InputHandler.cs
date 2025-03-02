@@ -94,11 +94,6 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    public void Inflate(InputAction.CallbackContext ctx)
-    {
-        inflateInput = (int)ctx.ReadValue<float>();
-    }
-
     public void Jump(InputAction.CallbackContext ctx)
     {
         jumpInput = ctx.performed;

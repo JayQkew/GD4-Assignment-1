@@ -8,8 +8,16 @@ public class Movement : MonoBehaviour
     private SoftBody _softBody;
     private InputHandler _inputHandler;
 
+    private Vector2 _lastPos;
+
     [Header("Movement Settings")] [SerializeField]
     private float _movementMultiplier;
+
+    [SerializeField] private bool _canJump;
+    [SerializeField] private float displacementThreshold;
+    [SerializeField] private float checkTime = 0.5f;
+    private float currTime;
+
 
     [Header("Spring Settings")] [SerializeField]
     private float _maxFrequency;
@@ -23,6 +31,11 @@ public class Movement : MonoBehaviour
         _inputHandler = GetComponent<InputHandler>();
     }
 
+    private void Start()
+    {
+        _lastPos = transform.position;
+    }
+
     private void Update()
     {
         if (_inputHandler.movementType == InputHandler.MovementType.Movement1)
@@ -31,7 +44,15 @@ public class Movement : MonoBehaviour
         }
         else if (_inputHandler.movementType == InputHandler.MovementType.Movement2)
         {
+            currTime += Time.deltaTime;
+            if (currTime >= checkTime)
+            {
+                CanJump();
+                currTime = 0;
+            }
+
             Jump(_inputHandler.jumpInput);
+            AdjustStiffness(_inputHandler.stiffnessInput);
         }
     }
 
@@ -67,17 +88,9 @@ public class Movement : MonoBehaviour
 
     #region Movement2
 
-    private void Aim()
-    {
-    }
-
-    private void Inflate()
-    {
-    }
-
     private void Jump(bool jumpInput)
     {
-        if (jumpInput && Grounded())
+        if (jumpInput && _canJump && Grounded())
         {
             foreach (Rigidbody2D rb in _softBody.nodes_rb)
             {
@@ -90,6 +103,8 @@ public class Movement : MonoBehaviour
                     rb.AddForce(_inputHandler.aimInput * (_movementMultiplier * 0.5f), ForceMode2D.Impulse);
                 }
             }
+            
+            _canJump = false;
         }
     }
 
@@ -99,5 +114,19 @@ public class Movement : MonoBehaviour
     {
         return Physics2D.Raycast(transform.position, Vector2.down, _softBody.radius + 0.05f,
             LayerMask.GetMask("Ground"));
+    }
+
+    private bool CanJump()
+    {
+        Vector2 displacement = (Vector2)transform.position - _lastPos;
+
+        if (Mathf.Abs(displacement.x) < displacementThreshold && Mathf.Abs(displacement.y) < displacementThreshold)
+            _canJump = true;
+        else _canJump = false;
+
+        _lastPos = transform.position;
+        Debug.Log($"Displacement: {displacement}, CanJump: {_canJump}");
+
+        return _canJump;
     }
 }
