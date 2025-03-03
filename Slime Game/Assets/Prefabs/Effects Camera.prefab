@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4850896392185769214}
   - component: {fileID: 3002185161852350832}
   - component: {fileID: 6336749343098188520}
-  - component: {fileID: 6699729833846399447}
   m_Layer: 0
   m_Name: Effects Camera
   m_TagString: Untagged
@@ -141,21 +140,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &6699729833846399447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216178901585012869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e120f787424e3b408a3d083417f1b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iterations: 13
-  blurSpread: 3.16
-  blurShader: {fileID: 4800000, guid: ddf2f925c2454f545be10a82cffd0156, type: 3}
 --- !u!1 &2508841783368548373
 GameObject:
   m_ObjectHideFlags: 0
