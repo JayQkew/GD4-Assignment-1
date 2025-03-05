@@ -75,6 +75,7 @@ public class SoftBody : MonoBehaviour
 
             Rigidbody2D rb = node.AddComponent<Rigidbody2D>();
             rb.freezeRotation = true;
+            nodeScript.rb = rb;
             nodes_rb.Add(rb);
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();

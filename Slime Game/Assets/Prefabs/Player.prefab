@@ -126,14 +126,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAsset: {fileID: -944628639613478452, guid: d26981faa228ced4fbc79e38fe0f16df, type: 3}
   playerInput: {fileID: 0}
-  movementType: 1
   inputMode: 0
-  moveInput: {x: 0, y: 0}
-  stiffnessInput: 0
   xAxisClamp: 0.5
   aimInput: {x: 0, y: 0}
-  inflateInput: 0
   jumpInput: 0
+  grabInput: 0
 --- !u!114 &8210265036551060951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,9 +236,57 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 048b526e-242e-4d85-a32f-f3af271242db
     m_ActionName: 'Movement_2/Stiffness[/Mouse/leftButton,/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7534759130053933170}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Aim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 57d484e1-0805-4f97-a34d-10805a461bcc
+    m_ActionName: 'Small Slime/Aim[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7534759130053933170}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2eb3425a-a3ae-4537-9c9b-a9c402a4ae4b
+    m_ActionName: 'Small Slime/Jump[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7534759130053933170}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Grab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 61b05fba-bfe7-476f-8a74-e4027610e3cc
+    m_ActionName: 'Small Slime/Grab[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Movement_2
+  m_DefaultActionMap: Small Slime
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5053450647664229506

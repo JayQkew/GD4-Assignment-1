@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour
 
     [Header("Movement Settings")] 
     [SerializeField] private float _movementMultiplier;
-
     [SerializeField] private bool _canJump;
     [SerializeField] private float displacementThreshold;
     [SerializeField] private float checkTime = 0.5f;
@@ -37,6 +36,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         Jump(_inputHandler.jumpInput);
+        Grab(_inputHandler.grabInput);
     }
     
     private void Jump(bool jumpInput)
@@ -60,11 +60,25 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void Grab(bool grabInput)
+    {
+        foreach (SoftBodyNode node in _softBody.node_scripts)
+        {
+            node.Grab(grabInput);
+        }
+    }
 
     private bool Grounded()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, _softBody.radius + 0.05f,
-            LayerMask.GetMask("Ground"));
+        foreach (SoftBodyNode node in _softBody.node_scripts)
+        {
+            if (node.touchingGrabbable && node.grabbableObject.CompareTag("Ground"))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private bool CanJump()

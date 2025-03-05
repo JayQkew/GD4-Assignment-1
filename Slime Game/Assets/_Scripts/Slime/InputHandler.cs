@@ -9,10 +9,6 @@ public class InputHandler : MonoBehaviour
     public PlayerInput playerInput;
     public InputMode inputMode;
     
-    [Header("Movement 1")]
-    public Vector2 moveInput;
-    public int stiffnessInput;
-    
     [Header("Small Slime Movement")]
     public float xAxisClamp;
     public Vector2 aimInput;
@@ -25,19 +21,6 @@ public class InputHandler : MonoBehaviour
         inputMode = GetInputMode();
     }
     
-    #region Movement1
-    public void Stiffness(InputAction.CallbackContext ctx)
-    {
-        stiffnessInput = (int)ctx.ReadValue<float>();
-    }
-
-    public void Move(InputAction.CallbackContext ctx)
-    {
-        moveInput = ctx.ReadValue<Vector2>();
-    }
-    #endregion
-
-    #region Movement2
     public void Aim(InputAction.CallbackContext ctx)
     {
         if (inputMode == InputMode.KeyboardMouse)
@@ -64,7 +47,6 @@ public class InputHandler : MonoBehaviour
         if (ctx.performed) grabInput = true;
         else if (ctx.canceled) grabInput = false;
     }
-    #endregion
     private InputMode GetInputMode()
     {
         if (playerInput.currentControlScheme == "Gamepad") return InputMode.Gamepad;
