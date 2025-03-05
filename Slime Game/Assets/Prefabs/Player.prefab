@@ -46,10 +46,11 @@ GameObject:
   - component: {fileID: 6662356125951656662}
   - component: {fileID: 7534759130053933170}
   - component: {fileID: 8210265036551060951}
+  - component: {fileID: 5053450647664229506}
   - component: {fileID: 4492303020482217538}
   m_Layer: 7
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,11 +88,10 @@ MonoBehaviour:
   nodeParent: {fileID: 7827600306226356359}
   dampingRatio: 0.2
   frequency: 1.47
-  minFrequency: 1.7
-  maxFrequency: 5
   nodeSprite: {fileID: 0}
   nodes: []
   nodes_rb: []
+  node_scripts: []
   meshMaterial: {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
 --- !u!114 &6662356125951656662
 MonoBehaviour:
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAsset: {fileID: -944628639613478452, guid: d26981faa228ced4fbc79e38fe0f16df, type: 3}
   playerInput: {fileID: 0}
-  movementType: 0
+  movementType: 1
   inputMode: 0
   moveInput: {x: 0, y: 0}
   stiffnessInput: 0
@@ -241,9 +241,21 @@ MonoBehaviour:
     m_ActionName: 'Movement_2/Stiffness[/Mouse/leftButton,/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Movement_1
+  m_DefaultActionMap: Movement_2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5053450647664229506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125267497290260237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016d51467612cb34493c044953ed2344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &4492303020482217538
 Rigidbody2D:
   serializedVersion: 5

@@ -15,13 +15,12 @@ public class SoftBody : MonoBehaviour
     [Header("Soft Body Qualities")] 
     [Range(0,1)] public float dampingRatio;
     [Range(0.1f,10)]public float frequency;
-    [Range(0.1f,10)]public float minFrequency;
-    [Range(0.1f,10)]public float maxFrequency;
     
     
     public Sprite nodeSprite;
     public List<GameObject> nodes = new List<GameObject>();
     public List<Rigidbody2D> nodes_rb = new List<Rigidbody2D>();
+    public List<SoftBodyNode> node_scripts = new List<SoftBodyNode>();
     private readonly List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
 
     private PolygonCollider2D _polygonCollider;
@@ -69,6 +68,10 @@ public class SoftBody : MonoBehaviour
         for (int i = 0; i < numberOfNodes; i++)
         {
             GameObject node = new GameObject("SoftBodyNode");
+            node.tag = "SoftBodyNode";
+            
+            SoftBodyNode nodeScript = node.AddComponent<SoftBodyNode>();
+            node_scripts.Add(nodeScript);
 
             Rigidbody2D rb = node.AddComponent<Rigidbody2D>();
             rb.freezeRotation = true;
@@ -115,8 +118,7 @@ public class SoftBody : MonoBehaviour
                 SpringJoint2D sprintJoint = nodes[i].AddComponent<SpringJoint2D>();
                 sprintJoint.enableCollision = true;
                 sprintJoint.connectedBody = nodes[j].GetComponent<Rigidbody2D>();
-                sprintJoint.frequency = minFrequency;
-                
+                sprintJoint.frequency = frequency;
                 _springJoints.Add(sprintJoint);
             }
         }

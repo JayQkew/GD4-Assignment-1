@@ -7,64 +7,24 @@ public class InputHandler : MonoBehaviour
 {
     public InputActionAsset inputAsset;
     public PlayerInput playerInput;
-    public MovementType movementType;
     public InputMode inputMode;
-
-    private InputActionMap movmentMap_1;
-    private InputActionMap movmentMap_2;
-
-    private InputAction moveAction;
-    private InputAction stiffnessAction;
-    private InputAction jumpAction;
-
+    
     [Header("Movement 1")]
     public Vector2 moveInput;
     public int stiffnessInput;
-
-    [Header("Movement 2")] 
+    
+    [Header("Small Slime Movement")]
     public float xAxisClamp;
     public Vector2 aimInput;
-    public int inflateInput;
     public bool jumpInput;
+    public bool grabInput;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         inputMode = GetInputMode();
-        
-        movmentMap_1 = inputAsset.FindActionMap("Movement_1");
-        movmentMap_2 = inputAsset.FindActionMap("Movement_2");
-        
-        moveAction = movmentMap_1.FindAction("Move");
-        stiffnessAction = movmentMap_1.FindAction("Stiffness");
-        jumpAction = movmentMap_2.FindAction("Jump");
-
-        // movmentMap_2 = inputAsset.FindActionMap("Movement_2");
     }
-
-    private void OnEnable()
-    {
-        inputAsset.Enable();
-
-        switch (movementType)
-        {
-            case MovementType.Movement1:
-                movmentMap_1.Enable();
-                // movmentMap_2.Disable();
-
-                moveAction.Enable();
-                stiffnessAction.Enable();
-                break;
-            case MovementType.Movement2:
-                movmentMap_1.Disable();
-                // movmentMap_2.Enable();
-
-                moveAction.Disable();
-                stiffnessAction.Disable();
-                break;
-        }
-    }
-
+    
     #region Movement1
     public void Stiffness(InputAction.CallbackContext ctx)
     {
@@ -98,6 +58,12 @@ public class InputHandler : MonoBehaviour
     {
         jumpInput = ctx.performed;
     }
+
+    public void Grab(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) grabInput = true;
+        else if (ctx.canceled) grabInput = false;
+    }
     #endregion
     private InputMode GetInputMode()
     {
@@ -106,12 +72,6 @@ public class InputHandler : MonoBehaviour
         if (playerInput.currentControlScheme == "Joystick") return InputMode.Joystick;
 
         return InputMode.KeyboardMouse;
-    }
-
-    public enum MovementType
-    {
-        Movement1,
-        Movement2
     }
 
     public enum InputMode
