@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAsset: {fileID: -944628639613478452, guid: d26981faa228ced4fbc79e38fe0f16df, type: 3}
   playerInput: {fileID: 0}
-  movementType: 1
+  movementType: 0
   inputMode: 0
   moveInput: {x: 0, y: 0}
   stiffnessInput: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
     m_ActionName: 'Movement_2/Stiffness[/Mouse/leftButton,/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Movement_2
+  m_DefaultActionMap: Movement_1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!50 &4492303020482217538

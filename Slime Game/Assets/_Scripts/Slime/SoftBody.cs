@@ -78,9 +78,9 @@ public class SoftBody : MonoBehaviour
             cc.radius = nodeRadius;
             
             //exclude this polygon collider (flip the colliders between the two slimes)
-            var excludeLayer = LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer));
+            int excludeLayer = LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer));
             cc.excludeLayers = excludeLayer;
-            node.layer = LayerMask.LayerToName(excludeLayer) == "SoftBody1" ? 
+            node.layer = LayerMask.LayerToName(gameObject.layer) == "SoftBody1" ? 
                 LayerMask.NameToLayer("SoftBody2") : 
                 LayerMask.NameToLayer("SoftBody1");
             
