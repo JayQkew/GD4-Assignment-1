@@ -54,6 +54,14 @@ public class Movement : MonoBehaviour
             {
                 if (rb.transform.position.y >= _softBody.transform.position.y) rb.AddForce(_inputHandler.aimInput * _movementMultiplier, ForceMode2D.Impulse);
                 else rb.AddForce(_inputHandler.aimInput * (_movementMultiplier * 0.5f), ForceMode2D.Impulse);
+                
+                rb.bodyType = RigidbodyType2D.Dynamic;
+            }
+
+            foreach (SoftBodyNode node in _softBody.node_scripts)
+            {
+                node.touchingGrabbable = false;
+                node.grabbableObject = null;
             }
 
             _canJump = false;
@@ -72,12 +80,8 @@ public class Movement : MonoBehaviour
     {
         foreach (SoftBodyNode node in _softBody.node_scripts)
         {
-            if (node.touchingGrabbable && node.grabbableObject.CompareTag("Ground"))
-            {
-                return true;
-            }
+            if (node.touchingGrabbable) return true;
         }
-
         return false;
     }
 

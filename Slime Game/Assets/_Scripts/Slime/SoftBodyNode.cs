@@ -6,29 +6,19 @@ public class SoftBodyNode : MonoBehaviour
     public bool touchingGrabbable;
     public GameObject grabbableObject;
     public Rigidbody2D rb;
+    private bool grabbing;
 
     public void Grab(bool grab)
     {
-        // if (touchingGrabbable && grab)
-        // {
-        //     rb.bodyType = RigidbodyType2D.Static;
-        //     // This morphs the player into the shape of the sureface
-        //     // Vector3 dif = transform.position - grabbableObject.transform.position;
-        //     // transform.position = grabbableObject.transform.position + dif;
-        //     
-        //     
-        // }
-        // else if (!grab)
-        // {
-        //     rb.bodyType = RigidbodyType2D.Dynamic;
-        // }
+        // Vector3 dif = transform.position - grabbableObject.transform.position;
+        // transform.position = grabbableObject.transform.position + dif;
 
         if (grab) rb.bodyType = touchingGrabbable ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
         else rb.bodyType = RigidbodyType2D.Dynamic;
-        
+        grabbing = grab;
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<IGrabbable>() != null)
         {
@@ -37,12 +27,23 @@ public class SoftBodyNode : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<IGrabbable>() != null)
+        {
+            
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<IGrabbable>() != null && rb.bodyType != RigidbodyType2D.Static)
+        if (other.gameObject.GetComponent<IGrabbable>() != null)
         {
-            touchingGrabbable = false;
-            grabbableObject = null;
+            if (rb.bodyType == RigidbodyType2D.Dynamic)
+            {
+                touchingGrabbable = false;
+                grabbableObject = null;
+            }
         }
     }
 }
