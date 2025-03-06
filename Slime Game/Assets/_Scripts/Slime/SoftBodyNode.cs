@@ -9,14 +9,23 @@ public class SoftBodyNode : MonoBehaviour
 
     public void Grab(bool grab)
     {
-        if (touchingGrabbable && grab)
-        {
-            rb.bodyType = RigidbodyType2D.Static;
-        }
-        else if (!grab)
-        {
-            rb.bodyType = RigidbodyType2D.Dynamic;
-        }
+        // if (touchingGrabbable && grab)
+        // {
+        //     rb.bodyType = RigidbodyType2D.Static;
+        //     // This morphs the player into the shape of the sureface
+        //     // Vector3 dif = transform.position - grabbableObject.transform.position;
+        //     // transform.position = grabbableObject.transform.position + dif;
+        //     
+        //     
+        // }
+        // else if (!grab)
+        // {
+        //     rb.bodyType = RigidbodyType2D.Dynamic;
+        // }
+
+        if (grab) rb.bodyType = touchingGrabbable ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
+        else rb.bodyType = RigidbodyType2D.Dynamic;
+        
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -30,7 +39,7 @@ public class SoftBodyNode : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<IGrabbable>() != null)
+        if (other.gameObject.GetComponent<IGrabbable>() != null && rb.bodyType != RigidbodyType2D.Static)
         {
             touchingGrabbable = false;
             grabbableObject = null;
