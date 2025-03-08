@@ -10,15 +10,17 @@ public class Movement : MonoBehaviour
 
     private Vector2 _lastPos;
 
-    [Header("Movement Settings")] 
-    [SerializeField] private float _movementMultiplier;
+    [Header("Movement Settings")] [SerializeField]
+    private float _movementMultiplier;
+
     [SerializeField] private bool _canJump;
     [SerializeField] private float displacementThreshold;
     [SerializeField] private float checkTime = 0.5f;
     private float currTime;
-    
-    [Header("Spring Settings")] 
-    [SerializeField] private float _maxFrequency;
+
+    [Header("Spring Settings")] [SerializeField]
+    private float _maxFrequency;
+
     [SerializeField] private float _midFrequency;
     [SerializeField] private float _minFrequency;
 
@@ -38,7 +40,7 @@ public class Movement : MonoBehaviour
         Jump(_inputHandler.jumpInput);
         Grab(_inputHandler.grabInput);
     }
-    
+
     private void Jump(bool jumpInput)
     {
         currTime += Time.deltaTime;
@@ -47,14 +49,18 @@ public class Movement : MonoBehaviour
             CanJump();
             currTime = 0;
         }
-        
+
         if (jumpInput && _canJump && Grounded())
         {
             foreach (Rigidbody2D rb in _softBody.nodes_rb)
             {
-                if (rb.transform.position.y >= _softBody.transform.position.y) rb.AddForce(_inputHandler.aimInput * _movementMultiplier, ForceMode2D.Impulse);
-                else rb.AddForce(_inputHandler.aimInput * (_movementMultiplier * 0.5f), ForceMode2D.Impulse);
-                
+                if (rb.bodyType == RigidbodyType2D.Dynamic)
+                {
+                    if (rb.transform.position.y >= _softBody.transform.position.y)
+                        rb.AddForce(_inputHandler.aimInput * _movementMultiplier, ForceMode2D.Impulse);
+                    else rb.AddForce(_inputHandler.aimInput * (_movementMultiplier * 0.5f), ForceMode2D.Impulse);
+                }
+
                 rb.bodyType = RigidbodyType2D.Dynamic;
             }
 
@@ -72,7 +78,7 @@ public class Movement : MonoBehaviour
     {
         foreach (SoftBodyNode node in _softBody.node_scripts)
         {
-            node.Grab(grabInput);
+            node.Grab(grabInput && !_inputHandler.jumpInput);
         }
     }
 
@@ -82,6 +88,7 @@ public class Movement : MonoBehaviour
         {
             if (node.touchingGrabbable) return true;
         }
+
         return false;
     }
 

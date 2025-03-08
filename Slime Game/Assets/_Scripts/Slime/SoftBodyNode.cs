@@ -6,16 +6,18 @@ public class SoftBodyNode : MonoBehaviour
     public bool touchingGrabbable;
     public GameObject grabbableObject;
     public Rigidbody2D rb;
-    private bool grabbing;
 
     public void Grab(bool grab)
     {
         // Vector3 dif = transform.position - grabbableObject.transform.position;
         // transform.position = grabbableObject.transform.position + dif;
 
-        if (grab) rb.bodyType = touchingGrabbable ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
+        if (grab)
+        {
+            rb.bodyType = touchingGrabbable ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
+            if(rb.bodyType == RigidbodyType2D.Kinematic) rb.linearVelocity = Vector2.zero;
+        }
         else rb.bodyType = RigidbodyType2D.Dynamic;
-        grabbing = grab;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
