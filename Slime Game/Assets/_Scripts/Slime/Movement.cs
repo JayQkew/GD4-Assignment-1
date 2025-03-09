@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _softBody = GetComponent<SoftBody>();
-        _inputHandler = GetComponent<InputHandler>();
+        _inputHandler = transform.parent.GetComponent<InputHandler>();
     }
 
     private void Start()

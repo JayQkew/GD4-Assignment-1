@@ -5,9 +5,9 @@ using UnityEngine.Serialization;
 
 public class InputHandler : MonoBehaviour
 {
-    public InputActionAsset inputAsset;
     public PlayerInput playerInput;
     public InputMode inputMode;
+    private GameObject softBody;
     
     [Header("Small Slime Movement")]
     public float xAxisClamp;
@@ -19,6 +19,7 @@ public class InputHandler : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         inputMode = GetInputMode();
+        softBody = transform.GetChild(0).gameObject;
     }
     
     public void Aim(InputAction.CallbackContext ctx)
@@ -26,7 +27,7 @@ public class InputHandler : MonoBehaviour
         if (inputMode == InputMode.KeyboardMouse)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
-            Vector2 dir = mousePos - (Vector2)transform.position;
+            Vector2 dir = mousePos - (Vector2)softBody.transform.position;
             Vector2 clamped = Vector2.ClampMagnitude(dir, 1);
             aimInput = new Vector2(clamped.x * xAxisClamp, clamped.y);
         }
