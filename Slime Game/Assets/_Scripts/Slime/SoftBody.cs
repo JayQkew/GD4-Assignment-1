@@ -7,16 +7,18 @@ using UnityEngine;
 
 public class SoftBody : MonoBehaviour
 {
-    [Range(3, 40)]public int numberOfNodes = 10;
+    [Range(3, 40)] public int numberOfNodes = 10;
+    private float oldRadius = 3;
     public float radius = 3;
     public float nodeRadius = 0.001f;
     [SerializeField] private Transform nodeParent;
-    
-    [Header("Soft Body Qualities")] 
-    [Range(0,1)] public float dampingRatio;
-    [Range(0.1f,10)]public float frequency;
-    
-    
+
+    [Header("Soft Body Qualities")] [Range(0, 1)]
+    public float dampingRatio;
+
+    [Range(0.1f, 10)] public float frequency;
+
+
     public Sprite nodeSprite;
     public List<GameObject> nodes = new List<GameObject>();
     public List<Rigidbody2D> nodes_rb = new List<Rigidbody2D>();
@@ -34,11 +36,11 @@ public class SoftBody : MonoBehaviour
 
     private void Start()
     {
+        oldRadius = radius;
         CreateNodes();
         ArrangeNodes();
         ConnectNodes();
         CreateMesh();
-        
     }
 
     private void Update()
@@ -46,6 +48,7 @@ public class SoftBody : MonoBehaviour
         ApplySoftBodyQualities();
         UpdateMesh();
         UpdatePosition();
+        UpdateRadius(radius);
     }
 
     private void FixedUpdate()
@@ -60,7 +63,25 @@ public class SoftBody : MonoBehaviour
         {
             centerPos += n.transform.position;
         }
-        transform.position = centerPos/nodes.Count;
+
+        transform.position = centerPos / nodes.Count;
+    }
+
+    private void UpdateRadius(float newRadius)
+    {
+        if (newRadius != oldRadius)
+        {
+            foreach (GameObject n in nodes)
+            {
+                SpringJoint2D[] springs = n.GetComponents<SpringJoint2D>();
+                foreach (SpringJoint2D spring in springs)
+                {
+                    spring.distance *= 1 + (newRadius - oldRadius);
+                }
+            }
+            
+            oldRadius = newRadius;
+        }
     }
 
     private void CreateNodes()
@@ -69,7 +90,7 @@ public class SoftBody : MonoBehaviour
         {
             GameObject node = new GameObject("SoftBodyNode");
             node.tag = "SoftBodyNode";
-            
+
             SoftBodyNode nodeScript = node.AddComponent<SoftBodyNode>();
             node_scripts.Add(nodeScript);
 
@@ -80,24 +101,24 @@ public class SoftBody : MonoBehaviour
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();
             cc.radius = nodeRadius;
-            
+
             //exclude this polygon collider (flip the colliders between the two slimes)
             int excludeLayer = LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer));
             cc.excludeLayers = excludeLayer;
-            node.layer = LayerMask.LayerToName(gameObject.layer) == "SoftBody1" ? 
-                LayerMask.NameToLayer("SoftBody2") : 
-                LayerMask.NameToLayer("SoftBody1");
-            
+            node.layer = LayerMask.LayerToName(gameObject.layer) == "SoftBody1"
+                ? LayerMask.NameToLayer("SoftBody2")
+                : LayerMask.NameToLayer("SoftBody1");
+
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
-            
-            
+
+
             nodes.Add(node);
         }
     }
 
     private void ArrangeNodes()
     {
-        float equalAngles = 360/numberOfNodes;
+        float equalAngles = 360 / numberOfNodes;
         float startAngle = 90;
 
         foreach (var n in nodes)
@@ -105,7 +126,7 @@ public class SoftBody : MonoBehaviour
             float x = Mathf.Cos(startAngle * Mathf.Deg2Rad) * radius;
             float y = Mathf.Sin(startAngle * Mathf.Deg2Rad) * radius;
             n.transform.localPosition = new Vector3(x, y, 0);
-            
+
             startAngle += equalAngles;
         }
     }
@@ -138,7 +159,7 @@ public class SoftBody : MonoBehaviour
     {
         _mesh = new Mesh();
         _mesh.name = "SoftBodyMesh";
-        
+
         _polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
 
         if (nodeParent == null)
@@ -151,7 +172,7 @@ public class SoftBody : MonoBehaviour
             _meshFilter = nodeParent.gameObject.AddComponent<MeshFilter>();
             _meshRenderer = nodeParent.GetComponent<MeshRenderer>();
         }
-        
+
         _verts = new Vector3[numberOfNodes];
         _uvs = new Vector2[numberOfNodes];
         _tris = new int[(numberOfNodes - 2) * 3];
@@ -183,7 +204,7 @@ public class SoftBody : MonoBehaviour
         _meshFilter.mesh = _mesh;
         _polygonCollider.SetPath(0, colliderPoints);
     }
-    
+
     private void UpdateMesh()
     {
         Vector2[] colliderPoints = new Vector2[_verts.Length];
@@ -204,8 +225,8 @@ public class SoftBody : MonoBehaviour
         {
             colliderPoints[n] = transform.InverseTransformPoint(nodes[n].transform.position);
         }
-        _polygonCollider.SetPath(0, colliderPoints);
 
+        _polygonCollider.SetPath(0, colliderPoints);
     }
 
     private void OnDrawGizmos()
