@@ -10,6 +10,8 @@ public class MultiplayerManager : MonoBehaviour
 
     [SerializeField] private String[] _layers;
     [SerializeField] private Material[] _materials;
+    
+    [SerializeField] private Movement[] _playerMovements = new Movement[2];
 
     private void Awake()
     {
@@ -20,7 +22,9 @@ public class MultiplayerManager : MonoBehaviour
     {
         GameObject softbody = playerInput.transform.GetChild(0).gameObject;
         
+        _playerMovements[playerCount] = playerInput.GetComponentInChildren<Movement>();
         playerInput.gameObject.name = "Player" + (playerCount + 1);
+        playerInput.transform.SetParent(transform);
         softbody.layer = LayerMask.NameToLayer(_layers[playerCount]);
         softbody.transform.position = Vector3.zero;
         softbody.GetComponent<SoftBody>().meshMaterial = _materials[playerCount];

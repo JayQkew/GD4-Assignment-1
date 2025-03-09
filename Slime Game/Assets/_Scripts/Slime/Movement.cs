@@ -24,6 +24,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _midFrequency;
     [SerializeField] private float _minFrequency;
 
+    [Header("Jump Settings")] 
+    public bool isBigSlime;
+
     private void Awake()
     {
         _softBody = GetComponent<SoftBody>();
@@ -78,7 +81,7 @@ public class Movement : MonoBehaviour
     {
         foreach (SoftBodyNode node in _softBody.node_scripts)
         {
-            node.Grab(grabInput && !_inputHandler.jumpInput);
+            node.Grab(grabInput && !_inputHandler.jumpInput, this);
         }
     }
 
