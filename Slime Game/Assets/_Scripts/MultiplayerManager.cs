@@ -18,6 +18,14 @@ public class MultiplayerManager : MonoBehaviour
         _playerInputManager = GetComponent<PlayerInputManager>();
     }
 
+    private void Update()
+    {
+        if (_playerMovements[0]&& _playerMovements[1])
+        {
+            if(_playerMovements[0].isBigSlime && _playerMovements[1].isBigSlime) Debug.Log("Both Players Grabbing");
+        }
+    }
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         GameObject softbody = playerInput.transform.GetChild(0).gameObject;
