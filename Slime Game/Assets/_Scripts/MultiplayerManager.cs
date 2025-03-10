@@ -7,6 +7,7 @@ public class MultiplayerManager : MonoBehaviour
 {
     private PlayerInputManager _playerInputManager;
     public int playerCount = 0;
+    public GameObject bigSlime;
 
     [SerializeField] private String[] _layers;
     [SerializeField] private Material[] _materials;
@@ -24,6 +25,22 @@ public class MultiplayerManager : MonoBehaviour
         {
             if(_playerMovements[0].isBigSlime && _playerMovements[1].isBigSlime) Debug.Log("Both Players Grabbing");
         }
+    }
+
+    private void BigSlimeMerge()
+    {
+        //find the middle between the slimes
+        Vector2 midPoint = (_playerMovements[0].transform.position - _playerMovements[1].transform.position)/2;
+        bigSlime.transform.position = midPoint;
+        bigSlime.SetActive(true);
+        
+        _playerMovements[0].gameObject.SetActive(false);
+        _playerMovements[1].gameObject.SetActive(false);
+    }
+
+    private void BigSlimeSplit()
+    {
+        
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)

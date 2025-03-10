@@ -24,6 +24,8 @@ public class SoftBody : MonoBehaviour
     public List<Rigidbody2D> nodes_rb = new List<Rigidbody2D>();
     public List<SoftBodyNode> node_scripts = new List<SoftBodyNode>();
     private readonly List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
+    private bool collectedDistance = false;
+    public List<float> _springJointsStartDistance = new List<float>();
 
     private PolygonCollider2D _polygonCollider;
     private Mesh _mesh;
@@ -45,6 +47,11 @@ public class SoftBody : MonoBehaviour
 
     private void Update()
     {
+        if (!collectedDistance)
+        {
+            GetSpringDistances();
+            collectedDistance = true;
+        }
         ApplySoftBodyQualities();
         UpdateMesh();
         UpdatePosition();
@@ -54,6 +61,16 @@ public class SoftBody : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateCollider();
+    }
+
+    private void OnEnable()
+    {
+        nodeParent.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        nodeParent.gameObject.SetActive(false);
     }
 
     private void UpdatePosition()
@@ -71,19 +88,24 @@ public class SoftBody : MonoBehaviour
     {
         if (newRadius != oldRadius)
         {
-            foreach (GameObject n in nodes)
+            // foreach (GameObject n in nodes)
+            // {
+            //     SpringJoint2D[] springs = n.GetComponents<SpringJoint2D>();
+            //     foreach (SpringJoint2D spring in springs)
+            //     {
+            //         spring.distance *= 1 + (newRadius - oldRadius);
+            //     }
+            // }
+
+            for (int i = 0; i < _springJoints.Count; i++)
             {
-                SpringJoint2D[] springs = n.GetComponents<SpringJoint2D>();
-                foreach (SpringJoint2D spring in springs)
-                {
-                    spring.distance *= 1 + (newRadius - oldRadius);
-                }
+                _springJoints[i].distance = _springJointsStartDistance[i] * (1 + (newRadius - oldRadius));
             }
             
-            oldRadius = newRadius;
+            // oldRadius = newRadius;
         }
     }
-
+    
     private void CreateNodes()
     {
         for (int i = 0; i < numberOfNodes; i++)
@@ -141,8 +163,17 @@ public class SoftBody : MonoBehaviour
                 sprintJoint.enableCollision = true;
                 sprintJoint.connectedBody = nodes[j].GetComponent<Rigidbody2D>();
                 sprintJoint.frequency = frequency;
+                
                 _springJoints.Add(sprintJoint);
             }
+        }
+    }
+
+    private void GetSpringDistances()
+    {
+        for (int i = 0; i < _springJoints.Count; i++)
+        {
+            _springJointsStartDistance.Add(_springJoints[i].distance);
         }
     }
 

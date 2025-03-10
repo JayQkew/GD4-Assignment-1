@@ -386,7 +386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &444742989
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,6 +1029,7 @@ MonoBehaviour:
   nodes: []
   nodes_rb: []
   node_scripts: []
+  _springJointsStartDistance: []
   meshMaterial: {fileID: 2100000, guid: 7e69bc81b20779e4fa2a76f8f187287c, type: 2}
 --- !u!1 &1302460551
 GameObject:
@@ -1230,7 +1231,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671732660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
@@ -1308,12 +1309,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCount: 0
+  bigSlime: {fileID: 0}
   _layers:
   - SoftBody1
   - SoftBody2
   _materials:
   - {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
   - {fileID: 2100000, guid: c09c37e9dbb6b9e4386bd04704d4d77b, type: 2}
+  _playerMovements:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
