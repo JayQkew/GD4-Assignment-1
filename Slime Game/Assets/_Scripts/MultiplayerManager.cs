@@ -23,16 +23,21 @@ public class MultiplayerManager : MonoBehaviour
     {
         if (_playerMovements[0]&& _playerMovements[1])
         {
-            if(_playerMovements[0].isBigSlime && _playerMovements[1].isBigSlime) Debug.Log("Both Players Grabbing");
+            if(_playerMovements[0].isBigSlime && _playerMovements[1].isBigSlime) BigSlimeMerge();
+
+            if (!_playerMovements[0].isActiveAndEnabled && !_playerMovements[1].isActiveAndEnabled)
+            {
+                if(!_playerMovements[0].GetComponentInParent<InputHandler>().grabInput || !_playerMovements[1].GetComponentInParent<InputHandler>().grabInput) BigSlimeSplit();
+            }
         }
     }
 
     private void BigSlimeMerge()
     {
         //find the middle between the slimes
-        Vector2 midPoint = (_playerMovements[0].transform.position - _playerMovements[1].transform.position)/2;
-        bigSlime.transform.position = midPoint;
+        Vector2 midPoint = (_playerMovements[0].transform.position + _playerMovements[1].transform.position)/2;
         bigSlime.SetActive(true);
+        bigSlime.transform.position = midPoint;
         
         _playerMovements[0].gameObject.SetActive(false);
         _playerMovements[1].gameObject.SetActive(false);
@@ -40,7 +45,16 @@ public class MultiplayerManager : MonoBehaviour
 
     private void BigSlimeSplit()
     {
+        Vector2 left = bigSlime.transform.position - new Vector3(0, _playerMovements[0].GetComponent<SoftBody>().radius * 1.5f);
+        Vector2 right = bigSlime.transform.position + new Vector3(0, _playerMovements[0].GetComponent<SoftBody>().radius * 1.5f);
         
+        _playerMovements[0].gameObject.SetActive(true);
+        _playerMovements[1].gameObject.SetActive(true);
+        
+        _playerMovements[0].transform.position = left;
+        _playerMovements[1].transform.position = right;
+        
+        bigSlime.SetActive(false);
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
