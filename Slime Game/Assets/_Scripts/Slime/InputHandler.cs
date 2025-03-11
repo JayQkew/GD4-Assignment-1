@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
@@ -8,6 +9,8 @@ public class InputHandler : MonoBehaviour
     public PlayerInput playerInput;
     public InputMode inputMode;
     private GameObject softBody;
+
+    public UnityEvent OnGrabRelease;
     
     [Header("Small Slime Movement")]
     public float xAxisClamp;
@@ -45,8 +48,15 @@ public class InputHandler : MonoBehaviour
 
     public void Grab(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed) grabInput = true;
-        else if (ctx.canceled) grabInput = false;
+        if (ctx.performed)
+        {
+            grabInput = true;
+        }
+        else if (ctx.canceled)
+        {
+            grabInput = false;
+            OnGrabRelease?.Invoke();
+        }
     }
     private InputMode GetInputMode()
     {

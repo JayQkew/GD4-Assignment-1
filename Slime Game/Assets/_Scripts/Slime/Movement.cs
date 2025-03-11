@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 public class Movement : MonoBehaviour
 {
     private SoftBody _softBody;
-    private InputHandler _inputHandler;
+    public InputHandler inputHandler;
 
     private Vector2 _lastPos;
 
@@ -30,18 +30,21 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _softBody = GetComponent<SoftBody>();
-        _inputHandler = transform.parent.GetComponent<InputHandler>();
+        inputHandler = transform.parent.GetComponent<InputHandler>();
     }
 
     private void Start()
     {
         _lastPos = transform.position;
+        inputHandler.OnGrabRelease.AddListener(MultiplayerManager.Instance.playerCount <= 1 ? 
+            MultiplayerManager.Instance.BigSlimeSplitLeft : 
+            MultiplayerManager.Instance.BigSlimeSplitRight);
     }
 
     private void Update()
     {
-        Jump(_inputHandler.jumpInput);
-        Grab(_inputHandler.grabInput);
+        Jump(inputHandler.jumpInput);
+        Grab(inputHandler.grabInput);
     }
 
     private void Jump(bool jumpInput)
@@ -60,8 +63,8 @@ public class Movement : MonoBehaviour
                 if (rb.bodyType == RigidbodyType2D.Dynamic)
                 {
                     if (rb.transform.position.y >= _softBody.transform.position.y)
-                        rb.AddForce(_inputHandler.aimInput * _movementMultiplier, ForceMode2D.Impulse);
-                    else rb.AddForce(_inputHandler.aimInput * (_movementMultiplier * 0.5f), ForceMode2D.Impulse);
+                        rb.AddForce(inputHandler.aimInput * _movementMultiplier, ForceMode2D.Impulse);
+                    else rb.AddForce(inputHandler.aimInput * (_movementMultiplier * 0.5f), ForceMode2D.Impulse);
                 }
 
                 rb.bodyType = RigidbodyType2D.Dynamic;
@@ -81,7 +84,7 @@ public class Movement : MonoBehaviour
     {
         foreach (SoftBodyNode node in _softBody.node_scripts)
         {
-            node.Grab(grabInput && !_inputHandler.jumpInput, this);
+            node.Grab(grabInput && !inputHandler.jumpInput, this);
         }
     }
 
