@@ -41,11 +41,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        Move(inputHandler.aimInput);
-    }
-
-    private void FixedUpdate()
-    {
+        Move(inputHandler.moveInput);
     }
 
     private void Move(Vector2 dir)
