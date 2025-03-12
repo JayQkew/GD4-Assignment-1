@@ -9,10 +9,13 @@ public class InputHandler : MonoBehaviour
     public PlayerInput playerInput;
     public InputMode inputMode;
     private GameObject softBody;
+
+    public UnityEvent OnJumpPressed;
+    public UnityEvent OnGrab;
+    public UnityEvent OnRelease;
     
     [Header("Small Slime Movement")]
     public Vector2 aimInput;
-    public bool jumpInput;
     public bool grabInput;
 
     private void Awake()
@@ -39,18 +42,21 @@ public class InputHandler : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext ctx)
     {
-        jumpInput = ctx.performed;
+        if (ctx.started)
+        {
+            OnJumpPressed?.Invoke();
+        }
     }
 
     public void Grab(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
         {
-            grabInput = true;
+            OnGrab?.Invoke();
         }
         else if (ctx.canceled)
         {
-            grabInput = false;
+            OnRelease?.Invoke();
         }
     }
     
