@@ -18,13 +18,12 @@ public class SoftBody : MonoBehaviour
 
     [Range(0.1f, 10)] public float frequency;
 
-
-    public Sprite nodeSprite;
     public List<GameObject> nodes = new List<GameObject>();
     public List<Rigidbody2D> nodes_rb = new List<Rigidbody2D>();
     public List<SoftBodyNode> node_scripts = new List<SoftBodyNode>();
     private readonly List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
-    private bool collectedDistance = false;
+    public bool collectedDistance = false;
+    private int frameCount = 0;
     public List<float> _springJointsStartDistance = new List<float>();
 
     private PolygonCollider2D _polygonCollider;
@@ -47,15 +46,17 @@ public class SoftBody : MonoBehaviour
 
     private void Update()
     {
-        if (!collectedDistance)
-        {
-            GetSpringDistances();
-            collectedDistance = true;
-        }
         ApplySoftBodyQualities();
         UpdateMesh();
         UpdatePosition();
         UpdateRadius(radius);
+        
+        if (!collectedDistance && frameCount == 2)
+        {
+            GetSpringDistances();
+            collectedDistance = true;
+        }
+        if(frameCount < 2) frameCount++;
     }
 
     private void FixedUpdate()

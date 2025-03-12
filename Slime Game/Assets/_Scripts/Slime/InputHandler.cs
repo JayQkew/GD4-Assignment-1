@@ -9,11 +9,8 @@ public class InputHandler : MonoBehaviour
     public PlayerInput playerInput;
     public InputMode inputMode;
     private GameObject softBody;
-
-    public UnityEvent OnGrabRelease;
     
     [Header("Small Slime Movement")]
-    public float xAxisClamp;
     public Vector2 aimInput;
     public bool jumpInput;
     public bool grabInput;
@@ -31,13 +28,12 @@ public class InputHandler : MonoBehaviour
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
             Vector2 dir = mousePos - (Vector2)softBody.transform.position;
-            Vector2 clamped = Vector2.ClampMagnitude(dir, 1);
-            aimInput = new Vector2(clamped.x * xAxisClamp, clamped.y);
+            aimInput = new Vector2(dir.x, dir.y);
         }
         else
         {
-            Vector2 clamped = Vector2.ClampMagnitude(ctx.ReadValue<Vector2>(), 1);
-            aimInput = new Vector2(clamped.x * xAxisClamp, clamped.y);
+            Vector2 dir = ctx.ReadValue<Vector2>();
+            aimInput = new Vector2(dir.x, dir.y);
         }
     }
 
@@ -55,9 +51,9 @@ public class InputHandler : MonoBehaviour
         else if (ctx.canceled)
         {
             grabInput = false;
-            OnGrabRelease?.Invoke();
         }
     }
+    
     private InputMode GetInputMode()
     {
         if (playerInput.currentControlScheme == "Gamepad") return InputMode.Gamepad;

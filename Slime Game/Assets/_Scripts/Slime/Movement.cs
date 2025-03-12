@@ -24,9 +24,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _midFrequency;
     [SerializeField] private float _minFrequency;
 
-    [Header("Jump Settings")] 
-    public bool isBigSlime;
-
     private void Awake()
     {
         _softBody = GetComponent<SoftBody>();
@@ -36,9 +33,6 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         _lastPos = transform.position;
-        inputHandler.OnGrabRelease.AddListener(MultiplayerManager.Instance.playerCount <= 1 ? 
-            MultiplayerManager.Instance.BigSlimeSplitLeft : 
-            MultiplayerManager.Instance.BigSlimeSplitRight);
     }
 
     private void Update()

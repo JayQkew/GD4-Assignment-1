@@ -10,16 +10,9 @@ public class SoftBodyNode : MonoBehaviour
 
     public void Grab(bool grab, Movement movement)
     {
-        // Vector3 dif = transform.position - grabbableObject.transform.position;
-        // transform.position = grabbableObject.transform.position + dif;
-
         if (grab)
         {
-            if (touchingGrabbable)
-            {
-                movement.isBigSlime = grabbableObject.CompareTag("Player");
-                rb.bodyType = RigidbodyType2D.Kinematic;
-            }
+            if (touchingGrabbable) rb.bodyType = RigidbodyType2D.Kinematic;
             else  rb.bodyType = RigidbodyType2D.Dynamic;
             
             if(rb.bodyType == RigidbodyType2D.Kinematic) rb.linearVelocity = Vector2.zero;
@@ -27,7 +20,6 @@ public class SoftBodyNode : MonoBehaviour
         else
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
-            movement.isBigSlime = false;
         }
     }
 
