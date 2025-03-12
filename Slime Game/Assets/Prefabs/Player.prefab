@@ -144,7 +144,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6845972017399609270}
         m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: Aim
+        m_MethodName: Move
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
