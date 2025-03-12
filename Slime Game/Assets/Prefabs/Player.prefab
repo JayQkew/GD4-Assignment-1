@@ -205,10 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bf3dc3aa4565144acdc2ae502bbe15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputAsset: {fileID: -944628639613478452, guid: d26981faa228ced4fbc79e38fe0f16df, type: 3}
   playerInput: {fileID: 4974373070765619878}
   inputMode: 0
-  xAxisClamp: 0.5
   aimInput: {x: 0, y: 0}
   jumpInput: 0
   grabInput: 0
@@ -265,10 +263,11 @@ MonoBehaviour:
   nodeParent: {fileID: 7827600306226356359}
   dampingRatio: 0.2
   frequency: 1.47
-  nodeSprite: {fileID: 0}
   nodes: []
   nodes_rb: []
   node_scripts: []
+  collectedDistance: 0
+  _springJointsStartDistance: []
   meshMaterial: {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
 --- !u!114 &6662356125951656662
 MonoBehaviour:
@@ -282,7 +281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff791b694f5245040ae11aa82e721cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementMultiplier: 10
+  inputHandler: {fileID: 0}
+  _movementMultiplier: 6
+  _jumpMultiplier: 10
   _canJump: 0
   displacementThreshold: 0.1
   checkTime: 0.1
