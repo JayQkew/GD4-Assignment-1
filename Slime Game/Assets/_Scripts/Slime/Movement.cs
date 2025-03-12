@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,22 +10,24 @@ public class Movement : MonoBehaviour
     private SoftBody _softBody;
     public InputHandler inputHandler;
 
-    private Vector2 _lastPos;
 
     [Header("Movement Settings")] [SerializeField]
     private float _movementMultiplier;
 
     [Header("Jump Settings")]
     [SerializeField] private float _jumpMultiplier;
-    [SerializeField] private bool _canJump;
-    [SerializeField] private float displacementThreshold;
-    [SerializeField] private float checkTime = 0.5f;
-    private float currTime;
 
-    [Header("Spring Settings")] 
+    [Header("Dash Settings")] 
+    [SerializeField] private float _dashMultiplier;
+
+    [Header("Inflate Settings")]
+    [SerializeField] private float _inflateTime;
+    
+    [SerializeField] private float _maxRadius;
+    [SerializeField] private float _startRadius;
+    
+    [SerializeField] private float _startFrequency;
     [SerializeField] private float _maxFrequency;
-    [SerializeField] private float _midFrequency;
-    [SerializeField] private float _minFrequency;
 
     private void Awake()
     {
@@ -33,10 +37,16 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        _lastPos = transform.position;
-        inputHandler.OnJumpPressed.AddListener(Jump);
+        _startRadius = _softBody.radius;
+        _startFrequency = _softBody.frequency;
+        
+        inputHandler.OnJump.AddListener(Jump);
+        
         inputHandler.OnGrab.AddListener(Grab);
         inputHandler.OnRelease.AddListener(Release);
+        
+        inputHandler.OnInflate.AddListener(Inflate);
+        inputHandler.OnDeflate.AddListener(Deflate);
     }
 
     private void Update()
@@ -64,13 +74,6 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        // currTime += Time.deltaTime;
-        // if (currTime >= checkTime)
-        // {
-        //     CanJump();
-        //     currTime = 0;
-        // }
-
         if (Grounded())
         {
             foreach (Rigidbody2D rb in _softBody.nodes_rb)
@@ -89,8 +92,6 @@ public class Movement : MonoBehaviour
             {
                 node.touchingGrabbable = false;
             }
-
-            _canJump = false;
         }
     }
 
@@ -110,6 +111,33 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void Inflate()
+    {
+        _softBody.radius = _maxRadius;
+        _softBody.frequency = _maxFrequency;
+    }
+
+    private void Deflate()
+    {
+        StartCoroutine(deflate());
+        _softBody.frequency = _startFrequency;
+    }
+
+    private IEnumerator deflate()
+    {
+        float elapsedTime = 0f;
+        float startRadius = _softBody.radius; // Store the current radius
+
+        while (elapsedTime < _inflateTime)
+        {
+            _softBody.radius = Mathf.Lerp(startRadius, _startRadius, elapsedTime / _inflateTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _softBody.radius = _startRadius; // Ensure it reaches the exact final value
+    }
+    
     private bool Grounded()
     {
         foreach (SoftBodyNode node in _softBody.node_scripts)
@@ -118,18 +146,5 @@ public class Movement : MonoBehaviour
         }
 
         return false;
-    }
-
-    private bool CanJump()
-    {
-        Vector2 displacement = (Vector2)transform.position - _lastPos;
-
-        if (Mathf.Abs(displacement.x) < displacementThreshold && Mathf.Abs(displacement.y) < displacementThreshold)
-            _canJump = true;
-        else _canJump = false;
-
-        _lastPos = transform.position;
-
-        return _canJump;
     }
 }

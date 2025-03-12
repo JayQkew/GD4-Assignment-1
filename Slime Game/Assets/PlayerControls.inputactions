@@ -174,7 +174,7 @@
                 {
                     "name": "",
                     "id": "04818f58-fe6e-4ec1-a03c-a3e84a1bb047",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",

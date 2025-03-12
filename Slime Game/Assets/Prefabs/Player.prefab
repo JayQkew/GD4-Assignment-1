@@ -111,12 +111,12 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6845972017399609270}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -127,12 +127,12 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6845972017399609270}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Inflate
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -174,13 +174,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 4974373070765619878}
-  OnJumpPressed:
+  inputMode: 0
+  OnJump:
     m_PersistentCalls:
       m_Calls: []
   OnGrab:
     m_PersistentCalls:
       m_Calls: []
   OnRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDash:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInflate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeflate:
     m_PersistentCalls:
       m_Calls: []
   moveInput: {x: 0, y: 0}
@@ -233,6 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfNodes: 11
+  oldRadius: 3
   radius: 0.5
   nodeRadius: 0.01
   nodeParent: {fileID: 7827600306226356359}
@@ -259,12 +270,12 @@ MonoBehaviour:
   inputHandler: {fileID: 0}
   _movementMultiplier: 6
   _jumpMultiplier: 10
-  _canJump: 0
-  displacementThreshold: 0.1
-  checkTime: 0.1
-  _maxFrequency: 7
-  _midFrequency: 1.7
-  _minFrequency: 1.15
+  _dashMultiplier: 1
+  _inflateTime: 0.01
+  _maxRadius: 1
+  _startRadius: 0
+  _startFrequency: 0
+  _maxFrequency: 5
 --- !u!114 &5053450647664229506
 MonoBehaviour:
   m_ObjectHideFlags: 0

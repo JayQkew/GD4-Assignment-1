@@ -8,14 +8,13 @@ using UnityEngine;
 public class SoftBody : MonoBehaviour
 {
     [Range(3, 40)] public int numberOfNodes = 10;
-    private float oldRadius = 3;
+    public float oldRadius = 3;
     public float radius = 3;
     public float nodeRadius = 0.001f;
     [SerializeField] private Transform nodeParent;
 
     [Header("Soft Body Qualities")] [Range(0, 1)]
     public float dampingRatio;
-
     [Range(0.1f, 10)] public float frequency;
 
     public List<GameObject> nodes = new List<GameObject>();
@@ -89,21 +88,10 @@ public class SoftBody : MonoBehaviour
     {
         if (newRadius != oldRadius)
         {
-            // foreach (GameObject n in nodes)
-            // {
-            //     SpringJoint2D[] springs = n.GetComponents<SpringJoint2D>();
-            //     foreach (SpringJoint2D spring in springs)
-            //     {
-            //         spring.distance *= 1 + (newRadius - oldRadius);
-            //     }
-            // }
-
             for (int i = 0; i < _springJoints.Count; i++)
             {
                 _springJoints[i].distance = _springJointsStartDistance[i] * (1 + (newRadius - oldRadius));
             }
-            
-            // oldRadius = newRadius;
         }
     }
     
