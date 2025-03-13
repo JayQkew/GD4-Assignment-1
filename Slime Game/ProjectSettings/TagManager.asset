@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoftBodyNode
   - Ground
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - SoftBodyNodes
   - SoftBody1
   - SoftBody2
-  - SoftBody3
+  - Ball
   - 
   - 
   - 

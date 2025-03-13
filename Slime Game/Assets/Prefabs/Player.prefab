@@ -273,9 +273,11 @@ MonoBehaviour:
   _dashMultiplier: 1
   _inflateTime: 0.01
   _maxRadius: 1
-  _startRadius: 0
-  _startFrequency: 0
+  _inflateShake: {x: 0.5, y: 0.7}
   _maxFrequency: 5
+  _canDash: 0
+  _dashCooldown: 0.5
+  _dashForceMultiplier: 10
 --- !u!114 &5053450647664229506
 MonoBehaviour:
   m_ObjectHideFlags: 0
