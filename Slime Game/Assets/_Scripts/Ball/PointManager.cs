@@ -1,6 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class PointManager : MonoBehaviour
 {
@@ -16,6 +18,14 @@ public class PointManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
     public void UpdateScore(int player)
     {
         if (player == 0)
@@ -29,4 +39,6 @@ public class PointManager : MonoBehaviour
             text_player1Score.text = player1Score.ToString();
         }
     }
+    
+    
 }

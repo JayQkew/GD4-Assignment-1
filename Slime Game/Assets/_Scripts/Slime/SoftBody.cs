@@ -16,6 +16,7 @@ public class SoftBody : MonoBehaviour
     [Header("Soft Body Qualities")] [Range(0, 1)]
     public float dampingRatio;
     [Range(0.1f, 10)] public float frequency;
+    [SerializeField] private float radiusChangeSpeed;
 
     public List<GameObject> nodes = new List<GameObject>();
     public List<Rigidbody2D> nodes_rb = new List<Rigidbody2D>();
@@ -88,10 +89,14 @@ public class SoftBody : MonoBehaviour
     {
         if (newRadius != oldRadius)
         {
+            float radiusFactor = Mathf.Lerp(oldRadius, newRadius, Time.deltaTime * radiusChangeSpeed);
+
             for (int i = 0; i < _springJoints.Count; i++)
             {
-                _springJoints[i].distance = _springJointsStartDistance[i] * (1 + (newRadius - oldRadius));
+                _springJoints[i].distance = _springJointsStartDistance[i] * (1 + radiusFactor);
             }
+
+            oldRadius = radiusFactor; // Update oldRadius for consistency
         }
     }
     
