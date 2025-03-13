@@ -9,14 +9,20 @@ using UnityEngine.Serialization;
 public class Movement : MonoBehaviour
 {
     private SoftBody _softBody;
-    public InputHandler inputHandler;
+    [HideInInspector] public InputHandler inputHandler;
     private Gamepad _gamepad;
+
+    [Header("Resource")]
+    [SerializeReference] private float currAir;
+    [SerializeReference] private float maxAir;
     
     [Header("Movement Settings")] [SerializeField]
     private float _movementMultiplier;
-    
+    [SerializeField] private float _moveCostMultiplier = 1;
+
     [Header("Inflate Settings")] [SerializeField]
-    private float _inflateTime;
+    private bool isInflated;
+    [SerializeField] private float _inflateTime;
     [SerializeField] private float _maxRadius;
     private float _startRadius;
     [SerializeReference] private Vector2 _inflateShake;
@@ -57,21 +63,38 @@ public class Movement : MonoBehaviour
     {
         Move(inputHandler.moveInput);
         DashCoolDown();
+        if(Grounded()) currAir = maxAir;
+        
+        if(currAir < 0) Deflate();
     }
 
     private void Move(Vector2 dir)
     {
-        int xInput = 0;
-        if (dir.x > 0) xInput = 1;
-        else if (dir.x < 0) xInput = -1;
-        Vector2 inputDir = new Vector2(xInput, 0);
+        Vector2 constrainedDir = new Vector2(dir.x, 0);
 
+        if (isInflated)
+        {
+            if(currAir > 0 &&
+               dir != Vector2.zero)
+            {
+                MoveForce(dir);
+                currAir -= _moveCostMultiplier * Time.deltaTime;
+            }
+            else MoveForce(constrainedDir);
+        }
+        else
+        {
+            MoveForce(constrainedDir);
+        }
+    }
+
+    private void MoveForce(Vector2 dir)
+    {
         foreach (Rigidbody2D rb in _softBody.nodes_rb)
         {
-            if (rb.transform.position.y >= _softBody.transform.position.y)
-            {
+            if (rb.transform.position.y >= _softBody.transform.position.y)  
                 rb.AddForce(dir * (_movementMultiplier * 100 * Time.deltaTime), ForceMode2D.Force);
-            }
+            else rb.AddForce(dir * (_movementMultiplier * 50 * Time.deltaTime), ForceMode2D.Force);
         }
     }
     
@@ -93,15 +116,18 @@ public class Movement : MonoBehaviour
 
     private void Inflate()
     {
-        _gamepad.SetMotorSpeeds(_inflateShake.x, _inflateShake.y);
-        
-        foreach (Rigidbody2D rb in _softBody.nodes_rb)
+        if (currAir > 0)
         {
-            rb.gravityScale = 0;
-        }  
+            _gamepad.SetMotorSpeeds(_inflateShake.x, _inflateShake.y);
         
-        _softBody.radius = _maxRadius;
-        _softBody.frequency = _maxFrequency;
+            foreach (Rigidbody2D rb in _softBody.nodes_rb)
+            {
+                rb.gravityScale = 0;
+            }  
+            isInflated = true;
+            _softBody.radius = _maxRadius;
+            _softBody.frequency = _maxFrequency;
+        }
     }
 
     private void Deflate()
@@ -111,6 +137,7 @@ public class Movement : MonoBehaviour
             rb.gravityScale = 1;
         }  
         
+        isInflated = false;
         _softBody.radius = _startRadius;
         _softBody.frequency = _startFrequency;
         _gamepad.PauseHaptics();

@@ -270,8 +270,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 0}
+  currAir: 100
+  maxAir: 100
   _movementMultiplier: 6
-  _jumpMultiplier: 10
+  _moveCostMultiplier: 10
+  isInflated: 0
   _inflateTime: 0.01
   _maxRadius: 2
   _inflateShake: {x: 0.5, y: 0.7}
