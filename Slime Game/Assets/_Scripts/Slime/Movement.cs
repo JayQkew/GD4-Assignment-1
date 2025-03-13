@@ -30,10 +30,9 @@ public class Movement : MonoBehaviour
     private float _startFrequency;
 
     [Header("Dash Settings")] 
-    [SerializeField] private bool _canDash;
     [SerializeField] private float _dashCooldown;
     [SerializeField] private float _dashForceMultiplier;
-    private float _currDashCooldown;
+    [SerializeField] private float _dashCost;
     
     private void Awake()
     {
@@ -48,8 +47,6 @@ public class Movement : MonoBehaviour
         _startRadius = _softBody.radius;
         _startFrequency = _softBody.frequency;
 
-        _currDashCooldown = 0;
-
         inputHandler.OnGrab.AddListener(Grab);
         inputHandler.OnRelease.AddListener(Release);
 
@@ -62,7 +59,6 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         Move(inputHandler.moveInput);
-        DashCoolDown();
         if(Grounded()) currAir = maxAir;
         
         if(currAir < 0) Deflate();
@@ -145,7 +141,7 @@ public class Movement : MonoBehaviour
 
     private void Dash()
     {
-        if (_canDash)
+        if (currAir > 0)
         {
             foreach (Rigidbody2D rb in _softBody.nodes_rb)
             {
@@ -156,17 +152,7 @@ public class Movement : MonoBehaviour
                 rb.AddForce(inputHandler.aimInput * _dashForceMultiplier, ForceMode2D.Impulse);
             }
 
-            _canDash = false;
-        }
-    }
-
-    private void DashCoolDown()
-    {
-        _currDashCooldown += Time.deltaTime;
-        if (_currDashCooldown >= _dashCooldown)
-        {
-            _canDash = true;
-            _currDashCooldown = 0;
+            currAir -= _dashCost;
         }
     }
 
