@@ -3,18 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - SoftBodyNode
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - SoftBodyNodes
-  - Metaball Effect
-  - 
-  - 
+  - SoftBody1
+  - SoftBody2
+  - SoftBody3
   - 
   - 
   - 
