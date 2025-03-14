@@ -62,6 +62,8 @@ public class Movement : MonoBehaviour
         if(Grounded()) currAir = maxAir;
         
         if(currAir < 0) Deflate();
+
+        if (isInflated) _softBody.radius = SetSlimeRadius();
     }
 
     private void Move(Vector2 dir)
@@ -121,7 +123,7 @@ public class Movement : MonoBehaviour
                 rb.gravityScale = 0;
             }  
             isInflated = true;
-            _softBody.radius = _maxRadius;
+            _softBody.radius = SetSlimeRadius();
             _softBody.frequency = _maxFrequency;
         }
     }
@@ -164,5 +166,13 @@ public class Movement : MonoBehaviour
         }
 
         return false;
+    }
+
+    private float SetSlimeRadius()
+    {
+        float airRatio = currAir / maxAir;
+        float radiusDiff = _maxRadius - _startRadius;
+
+        return (airRatio * radiusDiff) + _startRadius;
     }
 }
