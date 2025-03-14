@@ -3,19 +3,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class PointManager : MonoBehaviour
 {
     public static PointManager Instance {get; private set;}
-    [SerializeField] private TextMeshProUGUI text_player1Score;
-    [SerializeField] private TextMeshProUGUI text_player2Score;
+
+    [Header("Ball")]
+    public Transform ballSpawn;
+    public GameObject ball;
     
-    public int player1Score;
-    public int player2Score;
+    [Header("Points")]
+    [SerializeField] private TextMeshProUGUI text_team1Score;
+    [SerializeField] private TextMeshProUGUI text_team2Score;
+    [Space(10)]
+    public int team1Score;
+    public int team2Score;
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null) Instance = this;
+        else if (Instance != this) Destroy(gameObject);
     }
 
     private void Update()
@@ -26,19 +34,28 @@ public class PointManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int player)
+    public void UpdateScore(Teams scoredAgainst)
     {
-        if (player == 0)
+        if (scoredAgainst == Teams.TeamOne)
         {
-            player2Score++;
-            text_player2Score.text = player2Score.ToString();
+            team2Score++;
+            text_team2Score.text = team2Score.ToString();
         }
         else
         {
-            player1Score++;
-            text_player1Score.text = player1Score.ToString();
+            team1Score++;
+            text_team1Score.text = team1Score.ToString();
         }
     }
-    
-    
+
+    public void RespawnBall()
+    {
+        ball.transform.position = ballSpawn.position;
+        ball.GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
+    }
+}
+public enum Teams
+{
+    TeamOne = 0,
+    TeamTwo = 1
 }
