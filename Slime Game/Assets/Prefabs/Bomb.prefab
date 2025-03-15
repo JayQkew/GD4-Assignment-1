@@ -113,17 +113,17 @@ MonoBehaviour:
   explosiveType: 1
   explosives:
   - triggered: 0
-    explosionRadius: 1.75
+    explosionRadius: 3
     explosionForce: 50
     countDown: 3
     physicsMaterial: {fileID: 6200000, guid: 564698dc1fe9be941b0e2dd1193a7474, type: 2}
   - triggered: 0
-    explosionRadius: 1.75
+    explosionRadius: 3
     explosionForce: 50
     countDown: 1.5
     physicsMaterial: {fileID: 6200000, guid: c4c3817b121b6d848919124c0c8653e2, type: 2}
   - triggered: 0
-    explosionRadius: 1.5
+    explosionRadius: 3
     explosionForce: 35
     countDown: 2
     physicsMaterial: {fileID: 6200000, guid: 715877c7df1582543a2f7dc83202e86a, type: 2}
