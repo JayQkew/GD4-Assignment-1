@@ -175,4 +175,10 @@ public class Movement : MonoBehaviour
 
         return (airRatio * radiusDiff) + _startRadius;
     }
+
+    public void AirRefill(float amount)
+    {
+        currAir += amount;
+        if (currAir > maxAir) currAir = maxAir;
+    }
 }
