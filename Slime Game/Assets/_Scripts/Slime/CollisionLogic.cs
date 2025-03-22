@@ -7,7 +7,6 @@ public class CollisionLogic : MonoBehaviour, IGrabbable
     {
         if (other.gameObject.CompareTag("SoftBodyNode"))
         {
-            Debug.Log("Player collided with " + other.gameObject.name);
         }
     }
 

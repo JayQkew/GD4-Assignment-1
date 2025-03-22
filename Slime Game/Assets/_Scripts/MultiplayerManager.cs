@@ -15,9 +15,13 @@ public class MultiplayerManager : MonoBehaviour
     [SerializeField] private Material[] _materials;
 
     [SerializeField] private Movement[] _playerMovements = new Movement[2];
+    [SerializeField] private PolygonCollider2D[] _playerColliders = new PolygonCollider2D[2];
     [SerializeField] private Transform[] _playerSpawns = new Transform[2];
     public List<PlayerInput> players = new List<PlayerInput>();
     public bool[] readyStates = new bool[2];
+    private Collider2D[] results = new Collider2D[10];
+    
+    private ContactFilter2D _contactFilter;
     
     private void Awake()
     {
@@ -32,6 +36,11 @@ public class MultiplayerManager : MonoBehaviour
             Destroy(this);
         }
         _playerInputManager = GetComponent<PlayerInputManager>();
+        _contactFilter = new ContactFilter2D();
+        _contactFilter.useTriggers = false;
+        _contactFilter.maxDepth = -20f;
+        _contactFilter.minDepth = -22f;
+        _contactFilter.useOutsideDepth = false;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -57,6 +66,11 @@ public class MultiplayerManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(playerCount == 2) CheckOverlap();
+    }
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         GameObject softbody = playerInput.transform.GetChild(0).gameObject;
@@ -70,9 +84,34 @@ public class MultiplayerManager : MonoBehaviour
         softbody.GetComponent<SoftBody>().meshMaterial = _materials[playerCount];
         players.Add(playerInput);
         
+        
         playerInput.actions["Ready"].performed += ctx => SetReady(playerInput.playerIndex);
         Debug.Log("Joined");
         playerCount++;
+    }
+
+    private void CheckOverlap()
+    {
+        _playerColliders[0] = _playerMovements[0].GetComponent<PolygonCollider2D>();
+        _playerColliders[1] = _playerMovements[1].GetComponent<PolygonCollider2D>();
+
+        Collider2D[] test = results;
+        
+        Vector2 direction;
+        float distance;
+        
+        ColliderDistance2D colDistance = Physics2D.Distance(_playerColliders[0], _playerColliders[1]);
+        if (colDistance.isOverlapped)
+        {
+            Debug.Log("Overlap");
+            //WORKS
+        }
+
+        // int count = _playerColliders[0].Overlap(_contactFilter, results);
+        // if (count > 0 && test[0] == _playerColliders[1])
+        // {
+        //     
+        // }
     }
     
     private void SetReady(int playerIndex)
