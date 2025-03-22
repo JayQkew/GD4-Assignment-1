@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] private ExplosiveTypes explosiveType;
-    private Explosive currentExplosive;
+    [SerializeField] private bool triggered = false;
+    [SerializeField] private float explosionRadius;
+    [SerializeField] private float explosionForce;
+    [SerializeField] private float countDown;
+    [SerializeField] private Material _flashMaterial;
+    private Material personal_flashMaterial;
+    private float currentTime;
+    private float initialCountDown;
     private Rigidbody2D rb;
     
-    [SerializeField] private Explosive[] explosives = new Explosive[3];
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,21 +20,28 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-        currentExplosive = explosives[(int)explosiveType];
-        Debug.Log((int)explosiveType);
-        SetupBomb();
-    }
-
-    private void SetupBomb()
-    {
-        rb.sharedMaterial = currentExplosive.physicsMaterial;
-        if (explosiveType == ExplosiveTypes.Mine) rb.gravityScale = 0;
+        initialCountDown = countDown;
+        personal_flashMaterial = new Material(_flashMaterial);
+        personal_flashMaterial.name = "personal_flash";
+        personal_flashMaterial.SetFloat("_GlowRadius", 0);
+        GetComponentInChildren<SpriteRenderer>().material = personal_flashMaterial;
     }
 
     private void Update()
     {
-        if (currentExplosive.triggered) currentExplosive.CountDown();
-        if (currentExplosive.countDown <= 0)
+        if (triggered)
+        {
+            countDown -= Time.deltaTime;
+            
+            // flash speed increases as countdown decreases
+            float flashSpeed = Mathf.Lerp(0.5f, 10f, 1 - (countDown / initialCountDown));
+
+            float glowStrength = Mathf.Abs(Mathf.Sin((initialCountDown - countDown) * flashSpeed));
+
+            // Apply glow effect
+            personal_flashMaterial.SetFloat("_GlowRadius", glowStrength * 1.5f);
+        }
+        if (countDown <= 0)
         {
             Explode();
             Destroy(gameObject);
@@ -39,14 +50,14 @@ public class Bomb : MonoBehaviour
     
     public void Explode()
     {
-        RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, currentExplosive.explosionRadius, Vector2.zero, 0);
+        RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.zero, 0);
         foreach (RaycastHit2D h in hit)
         {
             Rigidbody2D rb = h.collider.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 Vector2 dir = rb.position - (Vector2)transform.position;
-                rb.AddForce(currentExplosive.explosionForce * dir, ForceMode2D.Impulse);
+                rb.AddForce(explosionForce * dir, ForceMode2D.Impulse);
                 Debug.Log(rb.gameObject.name);
             }
         }
@@ -59,18 +70,10 @@ public class Bomb : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Ground") && !other.gameObject.CompareTag("Platform"))
         {
-            if (!currentExplosive.triggered)
+            if (!triggered)
             {
-                Debug.Log("Bomb ticking");
-                currentExplosive.triggered = true;
+                triggered = true;
             }
         }
-    }
-
-    private enum ExplosiveTypes
-    {
-        Normal = 0,
-        Mine = 1,
-        Bouncy = 2
     }
 }

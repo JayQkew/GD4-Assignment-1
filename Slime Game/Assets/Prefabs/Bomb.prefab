@@ -48,9 +48,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -110,23 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c949a84fa4d296548973440ea6926c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosiveType: 1
-  explosives:
-  - triggered: 0
-    explosionRadius: 3
-    explosionForce: 50
-    countDown: 3
-    physicsMaterial: {fileID: 6200000, guid: 564698dc1fe9be941b0e2dd1193a7474, type: 2}
-  - triggered: 0
-    explosionRadius: 3
-    explosionForce: 50
-    countDown: 1.5
-    physicsMaterial: {fileID: 6200000, guid: c4c3817b121b6d848919124c0c8653e2, type: 2}
-  - triggered: 0
-    explosionRadius: 3
-    explosionForce: 35
-    countDown: 2
-    physicsMaterial: {fileID: 6200000, guid: 715877c7df1582543a2f7dc83202e86a, type: 2}
+  triggered: 0
+  explosionRadius: 5
+  explosionForce: 5
+  countDown: 3
+  _flashMaterial: {fileID: 2100000, guid: d43046c7827c0c04e8af002be05a1a99, type: 2}
 --- !u!1 &6859341000018605915
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +171,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d43046c7827c0c04e8af002be05a1a99, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,7 +193,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4566037, g: 0.4566037, b: 0.4566037, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -268,7 +256,7 @@ MonoBehaviour:
     m_TrimEdge: 0.05
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.05
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0.05
   m_PreviousEdgeProcessing: 1
