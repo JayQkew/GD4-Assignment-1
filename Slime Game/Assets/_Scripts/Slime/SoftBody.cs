@@ -267,4 +267,16 @@ public class SoftBody : MonoBehaviour
             spring.frequency = frequency;
         }
     }
+    
+    public void MoveSlime(Vector2 newPosition)
+    {
+        Vector2[] dif = new Vector2[nodes.Count];
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            dif[i] = nodes[i].transform.position - transform.position;
+            
+            nodes[i].transform.position = newPosition + dif[i];
+        }
+        
+    }
 }
