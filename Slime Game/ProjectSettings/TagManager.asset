@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Ball
   - Platform
+  - PlayerSpawns
   layers:
   - Default
   - TransparentFX

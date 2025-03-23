@@ -143,7 +143,7 @@ public class Movement : MonoBehaviour
 
     private void Dash()
     {
-        if (currAir > 0)
+        if (currAir > 0 && inputHandler.aimInput != Vector2.zero)
         {
             foreach (Rigidbody2D rb in _softBody.nodes_rb)
             {

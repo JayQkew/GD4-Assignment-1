@@ -58,7 +58,7 @@ public class InputHandler : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext ctx)
     {
-        if (ctx.started) OnDash?.Invoke();
+        if (ctx.performed) OnDash?.Invoke();
     }
 
     public void Inflate(InputAction.CallbackContext ctx)
