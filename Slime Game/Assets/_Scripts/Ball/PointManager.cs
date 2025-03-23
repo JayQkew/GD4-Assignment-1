@@ -7,18 +7,16 @@ using UnityEngine.Serialization;
 
 public class PointManager : MonoBehaviour
 {
-    public static PointManager Instance {get; private set;}
+    public static PointManager Instance { get; private set; }
 
-    [Header("Ball")]
-    public Transform ballSpawn;
+    [Header("Ball")] public Transform ballSpawn;
     public GameObject ball;
-    
-    [Header("Points")]
-    [SerializeField] private TextMeshProUGUI text_team1Score;
+
+    [Header("Points")] [SerializeField] private TextMeshProUGUI text_team1Score;
     [SerializeField] private TextMeshProUGUI text_team2Score;
-    [Space(10)]
-    public int team1Score;
+    [Space(10)] public int team1Score;
     public int team2Score;
+    [Space(5)] [SerializeField] private int maximumScore; //Maximum score allowed before a team wins the round
 
     private void Awake()
     {
@@ -53,7 +51,26 @@ public class PointManager : MonoBehaviour
         ball.transform.position = ballSpawn.position;
         ball.GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
     }
+
+    public void CheckScores(Teams scoredAgainst)
+    {
+        if (scoredAgainst == Teams.TeamOne)
+        {
+            if (team2Score == maximumScore)
+            {
+                SceneChangeManager.Instance.ChangeScene();
+            }
+        }
+        else
+        {
+            if (team1Score == maximumScore)
+            {
+                SceneChangeManager.Instance.ChangeScene();
+            }
+        }
+    }
 }
+
 public enum Teams
 {
     TeamOne = 0,

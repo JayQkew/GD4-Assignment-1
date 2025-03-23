@@ -12,6 +12,7 @@ public class Goals : MonoBehaviour
         {
             PointManager.Instance.UpdateScore(team);
             PointManager.Instance.RespawnBall();
+            PointManager.Instance.CheckScores(team);
         }
     }
 }
