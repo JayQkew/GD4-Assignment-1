@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -97,21 +98,14 @@ public class MultiplayerManager : MonoBehaviour
 
         Collider2D[] test = results;
         
-        Vector2 direction;
-        float distance;
-        
-        ColliderDistance2D colDistance = Physics2D.Distance(_playerColliders[0], _playerColliders[1]);
-        if (colDistance.isOverlapped)
+        ColliderDistance2D distance = Physics2D.Distance(_playerColliders[0], _playerColliders[1]);
+        if (distance.isOverlapped)
         {
             Debug.Log("Overlap");
+            _playerColliders[0].GetComponent<SoftBody>().AddForce(-distance.normal * Mathf.Abs(distance.distance));
+            _playerColliders[1].GetComponent<SoftBody>().AddForce(distance.normal * Mathf.Abs(distance.distance));
             //WORKS
         }
-
-        // int count = _playerColliders[0].Overlap(_contactFilter, results);
-        // if (count > 0 && test[0] == _playerColliders[1])
-        // {
-        //     
-        // }
     }
     
     private void SetReady(int playerIndex)

@@ -280,4 +280,12 @@ public class SoftBody : MonoBehaviour
         }
         
     }
+
+    public void AddForce(Vector2 force, ForceMode2D forceMode = ForceMode2D.Impulse)
+    {
+        foreach (Rigidbody2D rb in nodes_rb)
+        {
+            rb.AddForce(force, forceMode);
+        }
+    }
 }
