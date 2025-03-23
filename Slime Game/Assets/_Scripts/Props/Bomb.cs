@@ -6,21 +6,15 @@ public class Bomb : MonoBehaviour
     [SerializeField] private bool triggered = false;
     [SerializeField] private float explosionRadius;
     [SerializeField] private float explosionForce;
-    [SerializeField] private float countDown;
     [SerializeField] private Material _flashMaterial;
+    [SerializeField] private float countDownTime;
     private Material personal_flashMaterial;
+    private float countDown;
     private float currentTime;
-    private float initialCountDown;
-    private Rigidbody2D rb;
-    
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     private void Start()
     {
-        initialCountDown = countDown;
+        countDown = countDownTime;
         personal_flashMaterial = new Material(_flashMaterial);
         personal_flashMaterial.name = "personal_flash";
         personal_flashMaterial.SetFloat("_GlowRadius", 0);
@@ -32,23 +26,24 @@ public class Bomb : MonoBehaviour
         if (triggered)
         {
             countDown -= Time.deltaTime;
-            
-            // flash speed increases as countdown decreases
-            float flashSpeed = Mathf.Lerp(0.5f, 10f, 1 - (countDown / initialCountDown));
-
-            float glowStrength = Mathf.Abs(Mathf.Sin((initialCountDown - countDown) * flashSpeed));
-
-            // Apply glow effect
-            personal_flashMaterial.SetFloat("_GlowRadius", glowStrength * 1.5f);
+            Flash();
         }
         if (countDown <= 0)
         {
             Explode();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
+
+    private void Flash()
+    {
+        // flash speed increases as countdown decreases
+        float flashSpeed = Mathf.Lerp(0.5f, 10f, 1 - (countDown / countDownTime));
+        float glowStrength = Mathf.Abs(Mathf.Sin((countDownTime - countDown) * flashSpeed));
+        personal_flashMaterial.SetFloat("_GlowRadius", glowStrength * 1.5f);
+    }
     
-    public void Explode()
+    private void Explode()
     {
         RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.zero, 0);
         foreach (RaycastHit2D h in hit)
@@ -58,13 +53,17 @@ public class Bomb : MonoBehaviour
             {
                 Vector2 dir = rb.position - (Vector2)transform.position;
                 rb.AddForce(explosionForce * dir, ForceMode2D.Impulse);
-                Debug.Log(rb.gameObject.name);
             }
         }
-        
-        Debug.Log("Exploded");
     }
-    
+
+    private void OnDisable()
+    {
+        triggered = false;
+        countDown = countDownTime;
+        personal_flashMaterial.SetFloat("_GlowRadius", 0);
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
