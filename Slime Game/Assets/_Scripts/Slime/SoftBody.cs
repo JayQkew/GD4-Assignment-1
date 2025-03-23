@@ -5,6 +5,11 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+//Title: How I Wont the GMTK Game Jam
+//Author: JimmyGameDev
+//Date: Jan 18, 2025
+//Availablity: https://www.youtube.com/watch?v=y1D4DiZhSIo
+//This video describes how he made the soft body, I inferred from this video to create this portable softbody script. 
 public class SoftBody : MonoBehaviour
 {
     [Range(3, 40)] public int numberOfNodes = 10;
@@ -181,6 +186,11 @@ public class SoftBody : MonoBehaviour
         }
     }
 
+    //Title: Creating a Mesh
+    //Author: Jasper Flick
+    //Date: 2021-10-30
+    //Availability: https://catlikecoding.com/unity/tutorials/procedural-meshes/creating-a-mesh/
+    //Learnt the concepts here, managed to modify it to suit the slimes constant changing shape
     private void CreateMesh()
     {
         _mesh = new Mesh();
@@ -205,7 +215,6 @@ public class SoftBody : MonoBehaviour
         _polygonCollider.points = new Vector2[_verts.Length];
         Vector2[] colliderPoints = new Vector2[_verts.Length];
 
-        // Set vertices and UVs
         for (int n = 0; n < numberOfNodes; n++)
         {
             _verts[n] = nodes[n].transform.localPosition;
@@ -213,7 +222,6 @@ public class SoftBody : MonoBehaviour
             colliderPoints[n] = nodes[n].transform.position;
         }
 
-        // Set triangles
         for (int i = 0; i < numberOfNodes - 2; i++)
         {
             _tris[i * 3] = 0;
