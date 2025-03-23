@@ -3,74 +3,76 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] private ExplosiveTypes explosiveType;
-    private Explosive currentExplosive;
-    private Rigidbody2D rb;
-    
-    [SerializeField] private Explosive[] explosives = new Explosive[3];
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    [SerializeField] private bool triggered = false;
+    [SerializeField] private float explosionRadius;
+    [SerializeField] private float explosionForce;
+    [SerializeField] private Material _flashMaterial;
+    [SerializeField] private float countDownTime;
+    private Material personal_flashMaterial;
+    private float countDown;
+    private float currentTime;
 
     private void Start()
     {
-        currentExplosive = explosives[(int)explosiveType];
-        Debug.Log((int)explosiveType);
-        SetupBomb();
-    }
-
-    private void SetupBomb()
-    {
-        rb.sharedMaterial = currentExplosive.physicsMaterial;
-        if (explosiveType == ExplosiveTypes.Mine) rb.gravityScale = 0;
+        countDown = countDownTime;
+        personal_flashMaterial = new Material(_flashMaterial);
+        personal_flashMaterial.name = "personal_flash";
+        personal_flashMaterial.SetFloat("_GlowRadius", 0);
+        GetComponentInChildren<SpriteRenderer>().material = personal_flashMaterial;
     }
 
     private void Update()
     {
-        if (currentExplosive.triggered) currentExplosive.CountDown();
-        if (currentExplosive.countDown <= 0)
+        if (triggered)
+        {
+            countDown -= Time.deltaTime;
+            Flash();
+        }
+        if (countDown <= 0)
         {
             Explode();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
-    
-    public void Explode()
+
+    private void Flash()
     {
-        RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, currentExplosive.explosionRadius, Vector2.zero, 0);
+        // flash speed increases as countdown decreases
+        float flashSpeed = Mathf.Lerp(0.5f, 10f, 1 - (countDown / countDownTime));
+        float glowStrength = Mathf.Abs(Mathf.Sin((countDownTime - countDown) * flashSpeed));
+        personal_flashMaterial.SetFloat("_GlowRadius", glowStrength * 1.5f);
+    }
+    
+    private void Explode()
+    {
+        RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.zero, 0);
         foreach (RaycastHit2D h in hit)
         {
             Rigidbody2D rb = h.collider.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 Vector2 dir = rb.position - (Vector2)transform.position;
-                rb.AddForce(currentExplosive.explosionForce * dir, ForceMode2D.Impulse);
-                Debug.Log(rb.gameObject.name);
+                rb.AddForce(explosionForce * dir, ForceMode2D.Impulse);
             }
         }
-        
-        Debug.Log("Exploded");
     }
-    
+
+    private void OnDisable()
+    {
+        triggered = false;
+        countDown = countDownTime;
+        personal_flashMaterial.SetFloat("_GlowRadius", 0);
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!other.gameObject.CompareTag("Ground") && !other.gameObject.CompareTag("Platform"))
         {
-            if (!currentExplosive.triggered)
+            if (!triggered)
             {
-                Debug.Log("Bomb ticking");
-                currentExplosive.triggered = true;
+                triggered = true;
             }
         }
-    }
-
-    private enum ExplosiveTypes
-    {
-        Normal = 0,
-        Mine = 1,
-        Bouncy = 2
     }
 }

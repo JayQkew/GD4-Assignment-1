@@ -76,13 +76,14 @@ public class SoftBody : MonoBehaviour
 
     private void UpdatePosition()
     {
-        Vector3 centerPos = Vector3.zero;
+        Vector3 centerPos = new Vector3(0, 0, -21f);
         foreach (GameObject n in nodes)
         {
-            centerPos += n.transform.position;
+            centerPos += new Vector3(n.transform.position.x, n.transform.position.y, 0);
         }
 
         transform.position = centerPos / nodes.Count;
+        
     }
 
     private void UpdateRadius(float newRadius)
@@ -141,7 +142,7 @@ public class SoftBody : MonoBehaviour
         {
             float x = Mathf.Cos(startAngle * Mathf.Deg2Rad) * radius;
             float y = Mathf.Sin(startAngle * Mathf.Deg2Rad) * radius;
-            n.transform.localPosition = new Vector3(x, y, 0);
+            n.transform.localPosition = new Vector3(x, y, 1);
 
             startAngle += equalAngles;
         }
@@ -265,6 +266,26 @@ public class SoftBody : MonoBehaviour
         {
             this.frequency = frequency;
             spring.frequency = frequency;
+        }
+    }
+    
+    public void MoveSlime(Vector2 newPosition)
+    {
+        Vector2[] dif = new Vector2[nodes.Count];
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            dif[i] = nodes[i].transform.position - transform.position;
+            
+            nodes[i].transform.position = newPosition + dif[i];
+        }
+        
+    }
+
+    public void AddForce(Vector2 force, ForceMode2D forceMode = ForceMode2D.Impulse)
+    {
+        foreach (Rigidbody2D rb in nodes_rb)
+        {
+            rb.AddForce(force, forceMode);
         }
     }
 }
