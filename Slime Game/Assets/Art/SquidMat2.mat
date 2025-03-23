@@ -43,16 +43,16 @@ Material:
     m_Ints: []
     m_Floats:
     - _CellRadius: 1
-    - _CellSize: 0.52
-    - _CellSoftness: -0.57
+    - _CellSize: 0.59
+    - _CellSoftness: 0.09
     - _MoveSpeed: 2.43
     - _QueueControl: 0
     - _QueueOffset: 0
     - _slime_move_sped: 1
     m_Colors:
     - _Color: {r: 0.7137255, g: 0.80392164, b: 1, a: 1}
-    - _Color1: {r: 0, g: 1, b: 0.0073468685, a: 1}
-    - _Color2: {r: 0.8095481, g: 1, b: 0.20784312, a: 1}
+    - _Color1: {r: 0.29411766, g: 0.9058824, b: 0.7137255, a: 1}
+    - _Color2: {r: 0.19607845, g: 0.5372549, b: 0.627451, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1277182642946737502

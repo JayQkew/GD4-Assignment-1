@@ -42,17 +42,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CellRadius: 1
-    - _CellSize: 0.52
-    - _CellSoftness: -0.57
+    - _CellRadius: -0.02
+    - _CellSize: -0.39
+    - _CellSoftness: 0.53
     - _MoveSpeed: 2.43
     - _QueueControl: 0
     - _QueueOffset: 0
     - _slime_move_sped: 1
     m_Colors:
     - _Color: {r: 0.7137255, g: 0.80392164, b: 1, a: 1}
-    - _Color1: {r: 0.36382812, g: 0.2999999, b: 1, a: 1}
-    - _Color2: {r: 0.7662492, g: 0.20943397, b: 1, a: 1}
+    - _Color1: {r: 0.8745099, g: 0.21960786, b: 0.87843144, a: 1}
+    - _Color2: {r: 0.5372549, g: 0.28627452, b: 0.73333335, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1277182642946737502

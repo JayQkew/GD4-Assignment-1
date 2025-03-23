@@ -7,7 +7,7 @@ public class irisMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _parent = transform.parent.parent.parent.parent.position;
+        _parent = transform.parent.parent.parent.position;
         inputHandler = transform.parent.parent.parent.parent.GetComponent<InputHandler>();
         
     }
@@ -25,4 +25,5 @@ public class irisMove : MonoBehaviour
         transform.localPosition = direction;
         
     }
+    
 }

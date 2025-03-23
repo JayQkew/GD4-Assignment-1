@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class tentacles : MonoBehaviour
 {
@@ -38,3 +41,4 @@ public class tentacles : MonoBehaviour
         
     }
 }
+
