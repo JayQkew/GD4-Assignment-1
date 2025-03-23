@@ -1,10 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelList : MonoBehaviour
 {
-    private int previousLevel;
     private void Awake()
     {
         if (instance == null)
@@ -16,33 +16,50 @@ public class LevelList : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicates
         }
-    }
-    public static LevelList instance { get; private set; }
 
-    [SerializeField]
-    public  List<int> list = new List<int>(3);
-
-    public void AddSceneToList(int scene)
-    {
-        // Add the build index of the active scene to the list.
-        list.Add(scene);
-        Debug.Log(list);
+        ArrangeList();
     }
 
-    public bool CheckLevel(int targetLevel)
+    private void ArrangeList()
     {
-        // Check if the target level (scene build index) exists in the list.
-        if (list != null)
+        list.Clear(); // Clear the list before populating it
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        if (sceneCount <= 1) return; // if there is only one scene, then there is nothing to add.
+
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        for (int i = 0; i < roundLimit; i++)
         {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i] == targetLevel)
-                {
-                    return false;
-                }
-            }
-        }
+            int newScene;
+            int safetyCounter = 0;
+            int maxSafety = sceneCount * 2;
 
-        return true;
+            do
+            {
+                newScene = UnityEngine.Random.Range(1, sceneCount);
+                safetyCounter++;
+            } while ((newScene == currentScene || list.Contains(newScene)) && safetyCounter < maxSafety);
+
+            if (safetyCounter >= maxSafety)
+            {
+                Debug.LogWarning("LevelList: Could not generate unique scene index.");
+                break; // Exit the loop to prevent infinite loop
+            }
+
+            list.Add(newScene);
+        }
+    }
+    
+    
+
+    public int roundLimit;
+
+    public static LevelList instance { get; private set; }
+    public  List<int> list = new List<int>(3);
+    public int listIndex = 0;
+
+    public int SelectLevel()
+    {
+        return list[listIndex];
     }
 }

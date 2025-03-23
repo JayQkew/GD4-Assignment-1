@@ -13,31 +13,9 @@ public class SceneChangeManager : MonoBehaviour
     public static SceneChangeManager Instance {get; private set;}
     public void ChangeScene()
     {
-        int sceneCount = SceneManager.sceneCountInBuildSettings;
-        if (sceneCount <= 1) return; // Prevent errors if there is only one scene.
+        int newScene = LevelList.instance.SelectLevel();
+        LevelList.instance.listIndex++;
 
-        int newScene;
-        do
-        {
-            newScene = UnityEngine.Random.Range(1, sceneCount);
-        } 
-        while (newScene == SceneManager.GetActiveScene().buildIndex || LevelList.instance.CheckLevel(newScene)); // Ensure a different scene
-
-        LevelList.instance.AddSceneToList(newScene);
         SceneManager.LoadScene(newScene);
-    }
-
-    private void LoadNewScene(int newScene)
-    {
-        if (newScene != SceneManager.GetActiveScene().buildIndex && !LevelList.instance.CheckLevel(newScene))
-        {
-            LevelList.instance.AddSceneToList(newScene);
-            SceneManager.LoadScene(newScene);
-        }
-        else
-        {
-            int nextNewScene = UnityEngine.Random.Range(SceneManager.sceneCount - 1, 0);
-            LoadNewScene(nextNewScene);
-        }    
     }
 }
