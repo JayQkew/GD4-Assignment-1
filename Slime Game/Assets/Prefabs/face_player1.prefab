@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8745761061649468079}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: eye1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8447409053816152061}
   - component: {fileID: 368501534778932205}
   - component: {fileID: 3167965532814554090}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: iris_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 4989521887635272278}
   - component: {fileID: 6648785582367450661}
   - component: {fileID: 2302508271165767032}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: iris_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1949038711461971977}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: eye1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8095666146232394655}
   - component: {fileID: 2493003178557987236}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: face_player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8745761061649468079}

@@ -48,8 +48,8 @@ public class MultiplayerManager : MonoBehaviour
         softbody.layer = LayerMask.NameToLayer(_layers[playerCount]);
         softbody.transform.position = Vector3.zero;
         softbody.GetComponent<SoftBody>().meshMaterial = _materials[playerCount];
-        Instantiate(_faces[playerCount], softbody.transform);
-
+        var face= Instantiate(_faces[playerCount], softbody.transform);
+        face.gameObject.transform.localPosition = Vector3.zero;
         Debug.Log("Joined");
         playerCount++;
     }
