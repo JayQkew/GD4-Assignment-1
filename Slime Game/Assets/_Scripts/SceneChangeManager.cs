@@ -19,16 +19,19 @@ public class SceneChangeManager : MonoBehaviour
         int newScene;
         do
         {
-            newScene = UnityEngine.Random.Range(0, sceneCount);
-        } while (newScene == SceneManager.GetActiveScene().buildIndex); // Ensure a different scene
+            newScene = UnityEngine.Random.Range(1, sceneCount);
+        } 
+        while (newScene == SceneManager.GetActiveScene().buildIndex || LevelList.instance.CheckLevel(newScene)); // Ensure a different scene
 
+        LevelList.instance.AddSceneToList(newScene);
         SceneManager.LoadScene(newScene);
     }
 
     private void LoadNewScene(int newScene)
     {
-        if (newScene != SceneManager.GetActiveScene().buildIndex)
+        if (newScene != SceneManager.GetActiveScene().buildIndex && !LevelList.instance.CheckLevel(newScene))
         {
+            LevelList.instance.AddSceneToList(newScene);
             SceneManager.LoadScene(newScene);
         }
         else
