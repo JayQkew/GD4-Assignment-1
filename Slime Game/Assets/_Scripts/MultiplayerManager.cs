@@ -13,6 +13,7 @@ public class MultiplayerManager : MonoBehaviour
 
     [SerializeField] private String[] _layers;
     [SerializeField] private Material[] _materials;
+    [SerializeField] private GameObject[] _faces;
 
     [SerializeField] private Movement[] _playerMovements = new Movement[2];
     public List<PlayerInput> players = new List<PlayerInput>();
@@ -47,6 +48,7 @@ public class MultiplayerManager : MonoBehaviour
         softbody.layer = LayerMask.NameToLayer(_layers[playerCount]);
         softbody.transform.position = Vector3.zero;
         softbody.GetComponent<SoftBody>().meshMaterial = _materials[playerCount];
+        Instantiate(_faces[playerCount], softbody.transform);
 
         Debug.Log("Joined");
         playerCount++;
