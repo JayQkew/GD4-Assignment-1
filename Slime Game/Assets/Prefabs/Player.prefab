@@ -584,7 +584,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 100.53
 --- !u!61 &5398183728179196095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -785,7 +785,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4478502245633958797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -974,7 +974,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 100.53
 --- !u!61 &1506742700480214969
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1163,7 +1163,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 100.53
 --- !u!61 &1955214628634907189
 BoxCollider2D:
   m_ObjectHideFlags: 0

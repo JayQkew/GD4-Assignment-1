@@ -148,3 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
+  pufferfishBurst: {fileID: 1544447466234482929, guid: a0f5faad6cd308942b430ac520ec4785, type: 3}

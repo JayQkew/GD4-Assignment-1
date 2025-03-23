@@ -5,6 +5,7 @@ using UnityEngine;
 public class Goals : MonoBehaviour
 {
     public Teams team;
+    public GameObject pufferfishBurst;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,6 +14,8 @@ public class Goals : MonoBehaviour
             PointManager.Instance.UpdateScore(team);
             PointManager.Instance.RespawnBall();
             PointManager.Instance.CheckScores(team);
+            GameObject burst=Instantiate(pufferfishBurst, transform, false);
+            burst.transform.localPosition = Vector3.zero;
         }
     }
 }
