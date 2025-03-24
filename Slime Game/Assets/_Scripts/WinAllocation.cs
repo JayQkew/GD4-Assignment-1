@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class WinAllocation : MonoBehaviour
 {   
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else if (Instance != this) Destroy(gameObject);
+    }
+    
+    public static WinAllocation Instance {get; private set;}
+    
     [SerializeField]
     private GameObject player1;
     [SerializeField]
     private GameObject player2;
-    void Start()
+    public void CalculateWinner()
     {
         Debug.Log(LevelList.instance.WhoWon());
         if (LevelList.instance.WhoWon() == 0)

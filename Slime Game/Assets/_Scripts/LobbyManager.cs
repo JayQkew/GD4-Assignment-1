@@ -19,6 +19,7 @@ public class LobbyManager : MonoBehaviour
     {
         currTime = maxTime;
         startText = timeText.text;
+        WinAllocation.Instance.CalculateWinner();
         LevelList.instance.listIndex = 0;
         LevelList.instance.team1Total = 0;
         LevelList.instance.team2Total = 0;
