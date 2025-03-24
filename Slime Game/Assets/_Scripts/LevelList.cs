@@ -20,7 +20,7 @@ public class LevelList : MonoBehaviour
         ArrangeList();
     }
 
-    private void ArrangeList()
+    public void ArrangeList()
     {
         list.Clear(); // Clear the list before populating it
         int sceneCount = SceneManager.sceneCountInBuildSettings;
@@ -61,5 +61,34 @@ public class LevelList : MonoBehaviour
     public int SelectLevel()
     {
         return list[listIndex];
+    }
+
+    [SerializeField] public int team1Total;
+    [SerializeField] public int team2Total;
+
+    public void UpdateTotalScores(Teams scoredAgainst)
+    {
+        if (scoredAgainst == Teams.TeamOne)
+        {
+            team2Total++;
+        }
+        else
+        {
+            team1Total++;
+        }
+    }
+
+    public int WhoWon()
+    {
+        if (team1Total > team2Total)
+        {
+            return 0;
+        }
+        else if (team1Total < team2Total)
+        {
+            return 1;
+        }
+
+        return 2;
     }
 }
