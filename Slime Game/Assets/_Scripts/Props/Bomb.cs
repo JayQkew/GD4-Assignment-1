@@ -11,6 +11,8 @@ public class Bomb : MonoBehaviour
     private Material personal_flashMaterial;
     private float countDown;
     private float currentTime;
+    public GameObject bombExplodeSound;
+    public GameObject bombParticles;
 
     private void Start()
     {
@@ -19,7 +21,7 @@ public class Bomb : MonoBehaviour
         personal_flashMaterial.name = "personal_flash";
         personal_flashMaterial.SetFloat("_GlowRadius", 0);
         GetComponentInChildren<SpriteRenderer>().material = personal_flashMaterial;
-        //GetComponent<AudioSource>().enabled = false;
+        
     }
 
     private void Update()
@@ -43,7 +45,7 @@ public class Bomb : MonoBehaviour
         float flashSpeed = Mathf.Lerp(0.5f, 10f, 1 - (countDown / countDownTime));
         float glowStrength = Mathf.Abs(Mathf.Sin((countDownTime - countDown) * flashSpeed));
         personal_flashMaterial.SetFloat("_GlowRadius", glowStrength * 1.5f);
-        GetComponent<AudioSource>().Play();
+        
     }
     
     private void Explode()
@@ -56,6 +58,7 @@ public class Bomb : MonoBehaviour
             {
                 Vector2 dir = rb.position - (Vector2)transform.position;
                 rb.AddForce(explosionForce * dir, ForceMode2D.Impulse);
+                
             }
         }
     }
@@ -66,6 +69,9 @@ public class Bomb : MonoBehaviour
         countDown = countDownTime;
         personal_flashMaterial.SetFloat("_GlowRadius", 0);
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        var b= Instantiate(bombParticles);
+        b.transform.position = transform.position;
+        Instantiate(bombExplodeSound);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -75,8 +81,8 @@ public class Bomb : MonoBehaviour
             if (!triggered)
             {
                 triggered = true;
-                //GetComponent<AudioSource>().enabled = true;
-                //GetComponent<AudioSource>().Play();
+                GetComponent<AudioSource>().Play();
+                
             }
         }
     }
