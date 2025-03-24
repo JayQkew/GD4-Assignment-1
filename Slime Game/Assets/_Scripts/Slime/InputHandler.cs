@@ -59,6 +59,7 @@ public class InputHandler : MonoBehaviour
     public void Dash(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) OnDash?.Invoke();
+        GetComponent<AudioSource>().Play();
     }
 
     public void Inflate(InputAction.CallbackContext ctx)
