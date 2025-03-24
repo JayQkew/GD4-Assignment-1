@@ -107,8 +107,8 @@ MonoBehaviour:
   - SoftBody1
   - SoftBody2
   _materials:
-  - {fileID: 2100000, guid: b27fd7c44128cd94a8c7a53f7d0fb28f, type: 2}
   - {fileID: 2100000, guid: ffed041588574ab48b8c3cf7d383d1a6, type: 2}
+  - {fileID: 2100000, guid: b27fd7c44128cd94a8c7a53f7d0fb28f, type: 2}
   _faces:
   - {fileID: 9020617897985738172, guid: 626380fd3ad341447ad7d7a6dd51b51e, type: 3}
   - {fileID: 2989195890708654521, guid: e504e32b1ad63d74aad2593013e9e470, type: 3}

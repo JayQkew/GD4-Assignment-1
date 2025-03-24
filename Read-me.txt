@@ -1,0 +1,7 @@
+Left Stick - Move
+Right Trigger - Dash
+South Button (X/A) - Inflate (You can hold this button)
+
+Energy is a resource that determines how big a player can inflate
+- moving white inflated consumes energy
+- dashing consumes energy
