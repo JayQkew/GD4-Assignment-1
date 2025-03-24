@@ -13,8 +13,16 @@ public class SceneChangeManager : MonoBehaviour
     public static SceneChangeManager Instance {get; private set;}
     public void ChangeScene()
     {
-        int newScene = LevelList.instance.SelectLevel();
-        LevelList.instance.listIndex++;
+        int newScene = 0;
+        if (LevelList.instance.listIndex < LevelList.instance.roundLimit)
+        {
+            newScene = LevelList.instance.SelectLevel();
+            LevelList.instance.listIndex++;
+        }
+        else
+        {
+            newScene = 0;
+        }
 
         SceneManager.LoadScene(newScene);
     }

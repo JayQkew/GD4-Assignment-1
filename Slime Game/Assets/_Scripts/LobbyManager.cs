@@ -19,6 +19,10 @@ public class LobbyManager : MonoBehaviour
     {
         currTime = maxTime;
         startText = timeText.text;
+        WinAllocation.Instance.CalculateWinner();
+        LevelList.instance.listIndex = 0;
+        LevelList.instance.team1Total = 0;
+        LevelList.instance.team2Total = 0;
     }
 
     private void Update()
@@ -39,7 +43,7 @@ public class LobbyManager : MonoBehaviour
     private void UpdateTimer()
     {
         currTime -= Time.deltaTime;
-        if (currTime <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (currTime <= 0) SceneChangeManager.Instance.ChangeScene();
         else if (currTime <= 1) timeText.text = "GO!";
         else if (currTime <= 2) timeText.text = "1";
         else if (currTime <= 3) timeText.text = "2";

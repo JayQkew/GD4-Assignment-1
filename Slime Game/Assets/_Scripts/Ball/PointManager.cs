@@ -58,6 +58,7 @@ public class PointManager : MonoBehaviour
         {
             if (team2Score == maximumScore)
             {
+                LevelList.instance.UpdateTotalScores(scoredAgainst);
                 SceneChangeManager.Instance.ChangeScene();
             }
         }
@@ -65,6 +66,7 @@ public class PointManager : MonoBehaviour
         {
             if (team1Score == maximumScore)
             {
+                LevelList.instance.UpdateTotalScores(scoredAgainst);
                 SceneChangeManager.Instance.ChangeScene();
             }
         }
