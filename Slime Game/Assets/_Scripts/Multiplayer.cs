@@ -8,6 +8,7 @@ public class Multiplayer : MonoBehaviour
     public static Multiplayer Instance { get; private set; }
     private PlayerInputManager _playerInputManager;
     public GameObject[] players = new GameObject[2];
+    public bool[] ready = new bool[2];
 
     [Header("Soft Body")]
     [SerializeField] private String[] layers;
@@ -32,7 +33,10 @@ public class Multiplayer : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput) {
         SetSoftBody(playerInput);
         SetPlayer(playerInput);
+        
         players[_playerInputManager.playerCount - 1] = playerInput.gameObject;
+
+        playerInput.actions["Ready"].performed += ctx => SetReady(playerInput.playerIndex);
     }
 
     private void SetSoftBody(PlayerInput playerInput) {
@@ -53,6 +57,13 @@ public class Multiplayer : MonoBehaviour
         Transform playerSpawnPoints = GameObject.FindGameObjectWithTag("PlayerSpawns").transform;
         for (int i = 0; i < spawnPoints.Length; i++) {
             spawnPoints[i] = playerSpawnPoints.transform;
+        }
+    }
+    
+    private void SetReady(int playerIndex) {
+        if (SceneManager.GetActiveScene().name == "Lobby") {
+            if (playerIndex >= ready.Length - 1) return;
+            ready[playerIndex] = !ready[playerIndex];
         }
     }
 }
