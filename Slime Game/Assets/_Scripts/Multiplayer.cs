@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Multiplayer : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class Multiplayer : MonoBehaviour
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(this);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else {
+            Destroy(this);
         }
         
         _playerInputManager = GetComponent<PlayerInputManager>();
@@ -41,5 +46,13 @@ public class Multiplayer : MonoBehaviour
         playerInput.gameObject.name = $"Player {_playerInputManager.playerCount}";
         playerInput.transform.SetParent(transform);
         playerInput.transform.position = spawnPoints[_playerInputManager.playerCount - 1].position;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        spawnPoints = new Transform[2];
+        Transform playerSpawnPoints = GameObject.FindGameObjectWithTag("PlayerSpawns").transform;
+        for (int i = 0; i < spawnPoints.Length; i++) {
+            spawnPoints[i] = playerSpawnPoints.transform;
+        }
     }
 }
