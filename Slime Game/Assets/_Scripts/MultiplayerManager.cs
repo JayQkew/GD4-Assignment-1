@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PlayerInputManager))]
 public class MultiplayerManager : MonoBehaviour
 {
-    public static MultiplayerManager Instance { get; private set; }
     private PlayerInputManager _playerInputManager;
     public int playerCount = 0;
 
@@ -22,27 +21,9 @@ public class MultiplayerManager : MonoBehaviour
     public List<PlayerInput> players = new List<PlayerInput>();
     public bool[] readyStates = new bool[2];
     private Collider2D[] results = new Collider2D[10];
-
-    private ContactFilter2D _contactFilter;
-
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-        else
-        {
-            Destroy(this);
-        }
         _playerInputManager = GetComponent<PlayerInputManager>();
-        _contactFilter = new ContactFilter2D();
-        _contactFilter.useTriggers = false;
-        _contactFilter.maxDepth = -20f;
-        _contactFilter.minDepth = -22f;
-        _contactFilter.useOutsideDepth = false;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)

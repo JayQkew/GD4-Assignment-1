@@ -24,8 +24,8 @@ public class MultiplayerCollider : MonoBehaviour
     private void PreventOverlap() {
         ColliderDistance2D distance = Physics2D.Distance(playerColliders[0], playerColliders[1]);
         if (distance.isOverlapped) {
-            playerColliders[0].GetComponent<SoftBody>().AddForce(-distance.normal * Mathf.Abs(distance.distance));
-            playerColliders[1].GetComponent<SoftBody>().AddForce(distance.normal * Mathf.Abs(distance.distance));
+            playerSoftBodies[0].AddForce(-distance.normal * Mathf.Abs(distance.distance));
+            playerSoftBodies[1].AddForce(distance.normal * Mathf.Abs(distance.distance));
         }
     }
 }

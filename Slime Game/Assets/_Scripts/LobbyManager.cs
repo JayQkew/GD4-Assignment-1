@@ -27,7 +27,7 @@ public class LobbyManager : MonoBehaviour
 
     private void Update()
     {
-        if (MultiplayerManager.Instance.readyStates[0] && MultiplayerManager.Instance.readyStates[1])
+        if (Multiplayer.Instance.ready[0] && Multiplayer.Instance.ready[1])
         {
             UpdateTimer();
         }
@@ -36,8 +36,8 @@ public class LobbyManager : MonoBehaviour
             ResetTimer();
         }
         
-        player1ReadyText.SetActive(MultiplayerManager.Instance.readyStates[0]);
-        player2ReadyText.SetActive(MultiplayerManager.Instance.readyStates[1]);
+        player1ReadyText.SetActive(Multiplayer.Instance.ready[0]);
+        player2ReadyText.SetActive(Multiplayer.Instance.ready[1]);
     }
 
     private void UpdateTimer()
