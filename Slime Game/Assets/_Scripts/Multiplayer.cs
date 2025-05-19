@@ -1,0 +1,45 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Multiplayer : MonoBehaviour
+{
+    public static Multiplayer Instance { get; private set; }
+    private PlayerInputManager _playerInputManager;
+    public GameObject[] players = new GameObject[2];
+
+    [Header("Soft Body")]
+    [SerializeField] private String[] layers;
+    [SerializeField] private Material[] materials;
+    
+    [Header("Player")]
+    [SerializeField] private Transform[] spawnPoints;
+    
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        
+        _playerInputManager = GetComponent<PlayerInputManager>();
+    }
+
+    public void OnPlayerJoined(PlayerInput playerInput) {
+        SetSoftBody(playerInput);
+        SetPlayer(playerInput);
+        players[_playerInputManager.playerCount - 1] = playerInput.gameObject;
+    }
+
+    private void SetSoftBody(PlayerInput playerInput) {
+        GameObject softBody = playerInput.transform.GetChild(0).gameObject;
+        softBody.transform.position = Vector3.zero;
+        softBody.layer = LayerMask.NameToLayer(layers[_playerInputManager.playerCount - 1]);
+        softBody.GetComponent<SoftBody>().meshMaterial = materials[_playerInputManager.playerCount - 1];
+    }
+
+    private void SetPlayer(PlayerInput playerInput) {
+        playerInput.gameObject.name = $"Player {_playerInputManager.playerCount}";
+        playerInput.transform.SetParent(transform);
+        playerInput.transform.position = spawnPoints[_playerInputManager.playerCount - 1].position;
+    }
+}
