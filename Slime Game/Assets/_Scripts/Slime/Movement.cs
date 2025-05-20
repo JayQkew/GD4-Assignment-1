@@ -47,13 +47,10 @@ public class Movement : MonoBehaviour
         _startRadius = _softBody.radius;
         _startFrequency = _softBody.frequency;
 
-        inputHandler.OnGrab.AddListener(Grab);
-        inputHandler.OnRelease.AddListener(Release);
-
-        inputHandler.OnInflate.AddListener(Inflate);
-        inputHandler.OnDeflate.AddListener(Deflate);
+        inputHandler.onInflate.AddListener(Inflate);
+        inputHandler.onDeflate.AddListener(Deflate);
         
-        inputHandler.OnDash.AddListener(Dash);
+        inputHandler.onDash.AddListener(Dash);
     }
 
     private void Update()
@@ -93,22 +90,6 @@ public class Movement : MonoBehaviour
             if (rb.transform.position.y >= _softBody.transform.position.y)  
                 rb.AddForce(dir * (_movementMultiplier * 100 * Time.deltaTime), ForceMode2D.Force);
             else rb.AddForce(dir * (_movementMultiplier * 50 * Time.deltaTime), ForceMode2D.Force);
-        }
-    }
-    
-    private void Grab()
-    {
-        foreach (SoftBodyNode node in _softBody.node_scripts)
-        {
-            node.Grab();
-        }
-    }
-
-    private void Release()
-    {
-        foreach (SoftBodyNode node in _softBody.node_scripts)
-        {
-            node.Release();
         }
     }
 

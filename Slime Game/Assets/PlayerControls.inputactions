@@ -24,15 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Grab",
-                    "type": "Button",
-                    "id": "61b05fba-bfe7-476f-8a74-e4027610e3cc",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Dash",
                     "type": "Button",
                     "id": "c90a5a52-6c91-4c2f-9a1e-33f9fddc7a7f",
@@ -69,28 +60,6 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "49036b4c-2092-45ee-99df-3622dfc5a9a2",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Grab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2598d0c4-1583-4865-8de4-7553bf6cc174",
-                    "path": "<Joystick>/stick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Joystick",
-                    "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
