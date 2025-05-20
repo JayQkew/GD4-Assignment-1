@@ -6,18 +6,16 @@ using UnityEngine.Serialization;
 
 public class InputHandler : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private InputMode inputMode;
-
+    public Vector2 moveInput;
+    public Vector2 aimInput;
+    
     [HideInInspector] public UnityEvent onDash;
     [HideInInspector] public UnityEvent onInflate;
     [HideInInspector] public UnityEvent onDeflate;
-
-    public Vector2 moveInput;
-    public Vector2 aimInput;
-
+    
     private GameObject _softBody;
-
+    private PlayerInput playerInput;
+    private InputMode inputMode;
 
     private void Awake() {
         playerInput = GetComponent<PlayerInput>();
