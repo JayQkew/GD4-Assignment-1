@@ -19,15 +19,15 @@ MonoBehaviour:
   - name: 1
     value: 6
     clamp: {x: 0, y: 30}
+  - name: 9
+    value: 10
+    clamp: {x: 0, y: 30}
   - name: 2
     value: 0.5
     clamp: {x: 0.25, y: 1}
   - name: 3
     value: 2
     clamp: {x: 1, y: 4}
-  - name: 4
-    value: 1.47
-    clamp: {x: 1, y: 3}
   - name: 5
     value: 5
     clamp: {x: 2.5, y: 10}
@@ -40,3 +40,9 @@ MonoBehaviour:
   - name: 8
     value: 30
     clamp: {x: 0, y: 100}
+  - name: 10
+    value: 50
+    clamp: {x: 10, y: 100}
+  - name: 4
+    value: 1.47
+    clamp: {x: 1, y: 3}

@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     private void Awake() {
         _softBody = GetComponent<SoftBody>();
         inputHandler = transform.parent.GetComponent<InputHandler>();
-        playerStats = transform.parent.GetComponent<PlayerStats>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Start() {
