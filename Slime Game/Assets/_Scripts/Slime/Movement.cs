@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     private InputHandler inputHandler;
     private PlayerStats playerStats;
 
-    [SerializeReference] private float currAir;
+    [SerializeReference] private float currFuel;
     [SerializeField] private bool isInflated;
 
     private void Awake() {
@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Start() {
+        currFuel = playerStats.GetStat(StatName.Fuel);
         inputHandler.onInflate.AddListener(Inflate);
         inputHandler.onDeflate.AddListener(Deflate);
 
@@ -30,10 +31,7 @@ public class Movement : MonoBehaviour
 
     private void Update() {
         Move(inputHandler.moveInput);
-        if (Grounded()) currAir = playerStats.GetStat(StatName.Fuel);
-
-        if (currAir < 0) Deflate();
-
+        if (Grounded()) currFuel = playerStats.GetStat(StatName.Fuel);
         if (isInflated) _softBody.currRadius = SetSlimeRadius();
     }
 
@@ -41,10 +39,9 @@ public class Movement : MonoBehaviour
         Vector2 constrainedDir = new Vector2(dir.x, 0);
 
         if (isInflated) {
-            if (currAir > 0 &&
-                dir != Vector2.zero) {
+            if (currFuel > 0 && dir != Vector2.zero) {
                 MoveForce(dir);
-                currAir -= playerStats.GetStat(StatName.MoveCost) * Time.deltaTime;
+                currFuel -= playerStats.GetStat(StatName.MoveCost) * Time.deltaTime;
             }
             else MoveForce(constrainedDir);
         }
@@ -63,15 +60,13 @@ public class Movement : MonoBehaviour
     }
 
     private void Inflate() {
-        if (currAir > 0) {
-            foreach (Rigidbody2D rb in _softBody.nodes_rb) {
-                rb.gravityScale = 0;
-            }
-
-            isInflated = true;
-            _softBody.currRadius = SetSlimeRadius();
-            _softBody.frequency = playerStats.GetStat(StatName.MaxFrequency);
+        foreach (Rigidbody2D rb in _softBody.nodes_rb) {
+            rb.gravityScale = 0;
         }
+
+        isInflated = true;
+        _softBody.currRadius = SetSlimeRadius();
+        _softBody.frequency = playerStats.GetStat(StatName.MaxFrequency);
     }
 
     private void Deflate() {
@@ -85,13 +80,12 @@ public class Movement : MonoBehaviour
     }
 
     private void Dash() {
-        if (currAir > 0 && inputHandler.aimInput != Vector2.zero) {
+        if (currFuel > 0 && inputHandler.aimInput != Vector2.zero) {
             foreach (Rigidbody2D rb in _softBody.nodes_rb) {
-                rb.linearVelocity *= 0.5f;
+                rb.linearVelocity *= 0.25f;
                 rb.AddForce(inputHandler.aimInput * playerStats.GetStat(StatName.DashForce), ForceMode2D.Impulse);
             }
-
-            currAir -= playerStats.GetStat(StatName.DashCost);
+            currFuel -= playerStats.GetStat(StatName.DashCost);
         }
     }
 
@@ -99,21 +93,18 @@ public class Movement : MonoBehaviour
         foreach (SoftBodyNode node in _softBody.node_scripts) {
             if (node.touchingGround) return true;
         }
-
         return false;
     }
 
     private float SetSlimeRadius() {
         float minRadius = playerStats.GetStat(StatName.MinRadius);
-        float airRatio = currAir / playerStats.GetStat(StatName.Fuel);
         float radiusDiff = playerStats.GetStat(StatName.MaxRadius) - minRadius;
-
-        return (airRatio * radiusDiff) + minRadius;
+        return radiusDiff + minRadius;
     }
 
     public void AirRefill(float amount) {
         float maxFuel = playerStats.GetStat(StatName.Fuel);
-        currAir += amount;
-        if (currAir > maxFuel) currAir = maxFuel;
+        currFuel += amount;
+        if (currFuel > maxFuel) currFuel = maxFuel;
     }
 }
