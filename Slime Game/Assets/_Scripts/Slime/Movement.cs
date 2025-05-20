@@ -26,7 +26,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _inflateTime;
     [SerializeField] private float _maxRadius;
     private float _startRadius;
-    [SerializeReference] private Vector2 _inflateShake;
     [SerializeField] private float _maxFrequency;
     private float _startFrequency;
 
