@@ -9,16 +9,14 @@ using UnityEngine.Serialization;
 public class Movement : MonoBehaviour
 {
     private SoftBody _softBody;
-    [HideInInspector] public InputHandler inputHandler;
-    private Gamepad _gamepad;
+    private InputHandler inputHandler;
 
     [Header("Resource")]
     [SerializeReference] private float currAir;
-
     [SerializeReference] private float maxAir;
 
-    [Header("Movement Settings")] [SerializeField]
-    private float _movementMultiplier;
+    [Header("Movement Settings")] 
+    [SerializeField] private float _movementMultiplier;
 
     [SerializeField] private float _moveCostMultiplier = 1;
 
@@ -44,8 +42,6 @@ public class Movement : MonoBehaviour
     }
 
     private void Start() {
-        _gamepad = Gamepad.current;
-
         _startRadius = _softBody.radius;
         _startFrequency = _softBody.frequency;
 
@@ -90,8 +86,6 @@ public class Movement : MonoBehaviour
 
     private void Inflate() {
         if (currAir > 0) {
-            _gamepad.SetMotorSpeeds(_inflateShake.x, _inflateShake.y);
-
             foreach (Rigidbody2D rb in _softBody.nodes_rb) {
                 rb.gravityScale = 0;
             }
@@ -110,7 +104,6 @@ public class Movement : MonoBehaviour
         isInflated = false;
         _softBody.radius = _startRadius;
         _softBody.frequency = _startFrequency;
-        _gamepad.PauseHaptics();
     }
 
     private void Dash() {
