@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 //Title: How I Wont the GMTK Game Jam
 //Author: JimmyGameDev
@@ -12,14 +13,17 @@ using UnityEngine;
 //This video describes how he made the soft body, I inferred from this video to create this portable softbody script. 
 public class SoftBody : MonoBehaviour
 {
+    private PlayerStats playerStats;
+
     [Range(3, 40)] public int numberOfNodes = 10;
-    public float oldRadius = 3;
-    public float radius = 3;
+    public float oldRadius;
+    public float currRadius;
     public float nodeRadius = 0.001f;
     [SerializeField] private Transform nodeParent;
 
     [Header("Soft Body Qualities")] [Range(0, 1)]
     public float dampingRatio;
+
     [Range(0.1f, 10)] public float frequency;
     [SerializeField] private float radiusChangeSpeed;
 
@@ -40,76 +44,68 @@ public class SoftBody : MonoBehaviour
     private Vector2[] _uvs;
     private int[] _tris;
 
-    private void Start()
-    {
-        oldRadius = radius;
+    private void Awake() {
+        playerStats = GetComponent<PlayerStats>();
+    }
+
+    private void Start() {
+        oldRadius = playerStats.GetStat(StatName.MinRadius);
+        currRadius = oldRadius;
         CreateNodes();
         ArrangeNodes();
         ConnectNodes();
         CreateMesh();
     }
 
-    private void Update()
-    {
+    private void Update() {
         ApplySoftBodyQualities();
         UpdateMesh();
         UpdatePosition();
-        UpdateRadius(radius);
-        
-        if (!collectedDistance && frameCount == 2)
-        {
+        UpdateRadius(currRadius);
+
+        if (!collectedDistance && frameCount == 2) {
             GetSpringDistances();
             collectedDistance = true;
         }
-        if(frameCount < 2) frameCount++;
+
+        if (frameCount < 2) frameCount++;
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         UpdateCollider();
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         nodeParent.gameObject.SetActive(true);
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         nodeParent.gameObject.SetActive(false);
     }
 
-    private void UpdatePosition()
-    {
+    private void UpdatePosition() {
         Vector3 centerPos = new Vector3(0, 0, -21f);
-        foreach (GameObject n in nodes)
-        {
+        foreach (GameObject n in nodes) {
             centerPos += new Vector3(n.transform.position.x, n.transform.position.y, 0);
         }
 
         transform.position = centerPos / nodes.Count;
-        
     }
 
-    private void UpdateRadius(float newRadius)
-    {
-        if (newRadius != oldRadius)
-        {
+    private void UpdateRadius(float newRadius) {
+        if (!Mathf.Approximately(newRadius, oldRadius)) {
             float radiusFactor = Mathf.Lerp(oldRadius, newRadius, Time.deltaTime * radiusChangeSpeed);
 
-            for (int i = 0; i < _springJoints.Count; i++)
-            {
+            for (int i = 0; i < _springJoints.Count; i++) {
                 _springJoints[i].distance = _springJointsStartDistance[i] * (1 + radiusFactor);
             }
 
             oldRadius = radiusFactor; // Update oldRadius for consistency
         }
     }
-    
-    private void CreateNodes()
-    {
-        for (int i = 0; i < numberOfNodes; i++)
-        {
+
+    private void CreateNodes() {
+        for (int i = 0; i < numberOfNodes; i++) {
             GameObject node = new GameObject("SoftBodyNode");
             node.tag = "SoftBodyNode";
 
@@ -138,49 +134,40 @@ public class SoftBody : MonoBehaviour
         }
     }
 
-    private void ArrangeNodes()
-    {
+    private void ArrangeNodes() {
         float equalAngles = 360 / numberOfNodes;
         float startAngle = 90;
 
-        foreach (var n in nodes)
-        {
-            float x = Mathf.Cos(startAngle * Mathf.Deg2Rad) * radius;
-            float y = Mathf.Sin(startAngle * Mathf.Deg2Rad) * radius;
+        foreach (var n in nodes) {
+            float x = Mathf.Cos(startAngle * Mathf.Deg2Rad) * currRadius;
+            float y = Mathf.Sin(startAngle * Mathf.Deg2Rad) * currRadius;
             n.transform.localPosition = new Vector3(x, y, 1);
 
             startAngle += equalAngles;
         }
     }
 
-    private void ConnectNodes()
-    {
-        for (int i = 0; i < nodes.Count - 1; i++)
-        {
-            for (int j = i + 1; j < nodes.Count; j++)
-            {
+    private void ConnectNodes() {
+        for (int i = 0; i < nodes.Count - 1; i++) {
+            for (int j = i + 1; j < nodes.Count; j++) {
                 SpringJoint2D sprintJoint = nodes[i].AddComponent<SpringJoint2D>();
                 sprintJoint.enableCollision = true;
                 sprintJoint.connectedBody = nodes[j].GetComponent<Rigidbody2D>();
                 sprintJoint.frequency = frequency;
-                
+
                 _springJoints.Add(sprintJoint);
             }
         }
     }
 
-    private void GetSpringDistances()
-    {
-        for (int i = 0; i < _springJoints.Count; i++)
-        {
+    private void GetSpringDistances() {
+        for (int i = 0; i < _springJoints.Count; i++) {
             _springJointsStartDistance.Add(_springJoints[i].distance);
         }
     }
 
-    private void ApplySoftBodyQualities()
-    {
-        foreach (var springJoint in _springJoints)
-        {
+    private void ApplySoftBodyQualities() {
+        foreach (var springJoint in _springJoints) {
             springJoint.dampingRatio = dampingRatio;
             springJoint.frequency = frequency;
         }
@@ -191,20 +178,17 @@ public class SoftBody : MonoBehaviour
     //Date: 2021-10-30
     //Availability: https://catlikecoding.com/unity/tutorials/procedural-meshes/creating-a-mesh/
     //Learnt the concepts here, managed to modify it to suit the slimes constant changing shape
-    private void CreateMesh()
-    {
+    private void CreateMesh() {
         _mesh = new Mesh();
         _mesh.name = "SoftBodyMesh";
 
         _polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
 
-        if (nodeParent == null)
-        {
+        if (nodeParent == null) {
             _meshFilter = gameObject.AddComponent<MeshFilter>();
             _meshRenderer = gameObject.AddComponent<MeshRenderer>();
         }
-        else
-        {
+        else {
             _meshFilter = nodeParent.gameObject.AddComponent<MeshFilter>();
             _meshRenderer = nodeParent.GetComponent<MeshRenderer>();
         }
@@ -215,15 +199,13 @@ public class SoftBody : MonoBehaviour
         _polygonCollider.points = new Vector2[_verts.Length];
         Vector2[] colliderPoints = new Vector2[_verts.Length];
 
-        for (int n = 0; n < numberOfNodes; n++)
-        {
+        for (int n = 0; n < numberOfNodes; n++) {
             _verts[n] = nodes[n].transform.localPosition;
-            _uvs[n] = new Vector2(_verts[n].x / radius, _verts[n].y / radius);
+            _uvs[n] = new Vector2(_verts[n].x / currRadius, _verts[n].y / currRadius);
             colliderPoints[n] = nodes[n].transform.position;
         }
 
-        for (int i = 0; i < numberOfNodes - 2; i++)
-        {
+        for (int i = 0; i < numberOfNodes - 2; i++) {
             _tris[i * 3] = 0;
             _tris[i * 3 + 1] = i + 1;
             _tris[i * 3 + 2] = i + 2;
@@ -239,12 +221,10 @@ public class SoftBody : MonoBehaviour
         _polygonCollider.SetPath(0, colliderPoints);
     }
 
-    private void UpdateMesh()
-    {
+    private void UpdateMesh() {
         Vector2[] colliderPoints = new Vector2[_verts.Length];
         // Update vertices
-        for (int n = 0; n < numberOfNodes; n++)
-        {
+        for (int n = 0; n < numberOfNodes; n++) {
             _verts[n] = nodes[n].transform.localPosition;
         }
 
@@ -252,47 +232,37 @@ public class SoftBody : MonoBehaviour
         _mesh.RecalculateNormals();
     }
 
-    private void UpdateCollider()
-    {
+    private void UpdateCollider() {
         Vector2[] colliderPoints = new Vector2[_verts.Length];
-        for (int n = 0; n < numberOfNodes; n++)
-        {
+        for (int n = 0; n < numberOfNodes; n++) {
             colliderPoints[n] = transform.InverseTransformPoint(nodes[n].transform.position);
         }
 
         _polygonCollider.SetPath(0, colliderPoints);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, radius);
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(transform.position, currRadius);
     }
 
-    public void SetFrequency(float frequency)
-    {
-        foreach (SpringJoint2D spring in _springJoints)
-        {
+    public void SetFrequency(float frequency) {
+        foreach (SpringJoint2D spring in _springJoints) {
             this.frequency = frequency;
             spring.frequency = frequency;
         }
     }
-    
-    public void MoveSlime(Vector2 newPosition)
-    {
+
+    public void MoveSlime(Vector2 newPosition) {
         Vector2[] dif = new Vector2[nodes.Count];
-        for (int i = 0; i < nodes.Count; i++)
-        {
+        for (int i = 0; i < nodes.Count; i++) {
             dif[i] = nodes[i].transform.position - transform.position;
-            
+
             nodes[i].transform.position = newPosition + dif[i];
         }
-        
     }
 
-    public void AddForce(Vector2 force, ForceMode2D forceMode = ForceMode2D.Impulse)
-    {
-        foreach (Rigidbody2D rb in nodes_rb)
-        {
+    public void AddForce(Vector2 force, ForceMode2D forceMode = ForceMode2D.Impulse) {
+        foreach (Rigidbody2D rb in nodes_rb) {
             rb.AddForce(force, forceMode);
         }
     }

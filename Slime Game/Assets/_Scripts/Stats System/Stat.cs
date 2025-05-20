@@ -18,5 +18,7 @@ public enum StatName
     MaxFrequency,
     DashCooldown,
     DashForce,
-    DashCost
+    DashCost,
+    MoveCost,
+    InflateTime
 }

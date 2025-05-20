@@ -81,38 +81,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6845972017399609270}
         m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2eb3425a-a3ae-4537-9c9b-a9c402a4ae4b
-    m_ActionName: 'Small Slime/Jump[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6845972017399609270}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 61b05fba-bfe7-476f-8a74-e4027610e3cc
-    m_ActionName: 'Small Slime/Grab[/Mouse/rightButton]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6845972017399609270}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
         m_MethodName: Dash
         m_Mode: 0
         m_Arguments:
@@ -163,7 +131,7 @@ MonoBehaviour:
     m_ActionName: 'Small Slime/Ready[/DualShock4GamepadHID/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Small Slime
+  m_DefaultActionMap: Slime
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &6845972017399609270
@@ -178,28 +146,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bf3dc3aa4565144acdc2ae502bbe15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 4974373070765619878}
-  inputMode: 0
-  OnJump:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDash:
-    m_PersistentCalls:
-      m_Calls: []
-  OnInflate:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeflate:
-    m_PersistentCalls:
-      m_Calls: []
   moveInput: {x: 0, y: 0}
   aimInput: {x: 0, y: 0}
+  onDash:
+    m_PersistentCalls:
+      m_Calls: []
+  onInflate:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeflate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &6231319501165492113
 AudioSource:
   m_ObjectHideFlags: 0
@@ -306,6 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848101850210052321}
+  - component: {fileID: 7744126868165267886}
   - component: {fileID: 8747095788319027792}
   - component: {fileID: 6662356125951656662}
   - component: {fileID: 5053450647664229506}
@@ -334,6 +292,20 @@ Transform:
   - {fileID: 2220367753469482459}
   m_Father: {fileID: 7841749650710563833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7744126868165267886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125267497290260237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f495a26d2ca990a42b416b1a26b586f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats: {fileID: 11400000, guid: d8e8d24f40364884383c78e6f931f21d, type: 2}
+  stats: []
 --- !u!114 &8747095788319027792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,8 +319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfNodes: 11
-  oldRadius: 0.5
-  radius: 0.5
+  oldRadius: 0
+  currRadius: 0
   nodeRadius: 0.01
   nodeParent: {fileID: 7827600306226356359}
   dampingRatio: 0.2
@@ -372,19 +344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff791b694f5245040ae11aa82e721cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 0}
   currAir: 100
-  maxAir: 100
-  _movementMultiplier: 6
-  _moveCostMultiplier: 10
   isInflated: 0
-  _inflateTime: 0.01
-  _maxRadius: 2
-  _inflateShake: {x: 0.5, y: 0.7}
-  _maxFrequency: 5
-  _dashCooldown: 0.5
-  _dashForceMultiplier: 10
-  _dashCost: 30
 --- !u!114 &5053450647664229506
 MonoBehaviour:
   m_ObjectHideFlags: 0
