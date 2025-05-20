@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Small Slime",
+            "name": "Slime",
             "id": "dc2e3a89-10f6-4f40-925e-542e81657ac9",
             "actions": [
                 {
@@ -19,15 +19,6 @@
                     "type": "Value",
                     "id": "57d484e1-0805-4f97-a34d-10805a461bcc",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "2eb3425a-a3ae-4537-9c9b-a9c402a4ae4b",
-                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -78,17 +69,6 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9ddcbbd8-3697-449f-bd22-193aa7312bb3",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

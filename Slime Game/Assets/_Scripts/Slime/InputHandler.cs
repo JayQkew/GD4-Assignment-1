@@ -2,14 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class InputHandler : MonoBehaviour
 {
     public PlayerInput playerInput;
     public InputMode inputMode;
 
-    [HideInInspector] public UnityEvent OnJump;
     [HideInInspector] public UnityEvent OnGrab;
     [HideInInspector] public UnityEvent OnRelease;
     [HideInInspector] public UnityEvent OnDash;
@@ -43,11 +41,6 @@ public class InputHandler : MonoBehaviour
             aimInput = Vector2.ClampMagnitude(dir, 1);
         }
         else aimInput = ctx.ReadValue<Vector2>();
-    }
-
-    public void Jump(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started) OnJump?.Invoke();
     }
 
     public void Grab(InputAction.CallbackContext ctx)
