@@ -44,7 +44,7 @@ public class MultiplayerManager : MonoBehaviour
             Debug.Log("Move slime");
             for (int i = 0; i < players.Count; i++)
             {
-                players[i].GetComponentInChildren<SoftBody>().MoveSlime(_playerSpawns[i].position);
+                players[i].GetComponentInChildren<SoftBody>().MoveSoftBody(_playerSpawns[i].position);
             }
         }
     }

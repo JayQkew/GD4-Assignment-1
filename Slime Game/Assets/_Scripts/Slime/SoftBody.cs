@@ -56,7 +56,7 @@ public class SoftBody : MonoBehaviour
         ApplySoftBodyQualities();
         UpdateMesh();
         UpdatePosition();
-        UpdateRadius(currRadius);
+        UpdateRadius();
 
         if (!collectedDistance && frameCount == 2) {
             GetSpringDistances();
@@ -78,6 +78,9 @@ public class SoftBody : MonoBehaviour
         nodeParent.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// updates the center position of all the nodes
+    /// </summary>
     private void UpdatePosition() {
         Vector3 centerPos = new Vector3(0, 0, -21f);
         foreach (GameObject n in nodes) {
@@ -87,9 +90,12 @@ public class SoftBody : MonoBehaviour
         transform.position = centerPos / nodes.Count;
     }
 
-    private void UpdateRadius(float newRadius) {
-        if (!Mathf.Approximately(newRadius, oldRadius)) {
-            float radiusFactor = Mathf.Lerp(oldRadius, newRadius, Time.deltaTime * radiusChangeSpeed);
+    /// <summary>
+    /// updates the radius to keep up with player controls
+    /// </summary>
+    private void UpdateRadius() {
+        if (!Mathf.Approximately(currRadius, oldRadius)) {
+            float radiusFactor = Mathf.Lerp(oldRadius, currRadius, Time.deltaTime * radiusChangeSpeed);
 
             for (int i = 0; i < _springJoints.Count; i++) {
                 _springJoints[i].distance = _springJointsStartDistance[i] * (1 + radiusFactor);
@@ -99,6 +105,10 @@ public class SoftBody : MonoBehaviour
         }
     }
 
+    #region Creating Soft Body 
+    /// <summary>
+    /// creates soft body nodes and adds all components and attributes
+    /// </summary>
     private void CreateNodes() {
         for (int i = 0; i < numberOfNodes; i++) {
             GameObject node = new GameObject("SoftBodyNode");
@@ -123,25 +133,29 @@ public class SoftBody : MonoBehaviour
                 : LayerMask.NameToLayer("SoftBody1");
 
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
-
-
+            
             nodes.Add(node);
         }
     }
 
+    /// <summary>
+    /// arranges the soft body nodes in a circular shape
+    /// </summary>
     private void ArrangeNodes() {
-        float equalAngles = 360 / numberOfNodes;
+        float equalAngles = 360f / numberOfNodes;
         float startAngle = 90;
 
         foreach (var n in nodes) {
             float x = Mathf.Cos(startAngle * Mathf.Deg2Rad) * currRadius;
             float y = Mathf.Sin(startAngle * Mathf.Deg2Rad) * currRadius;
             n.transform.localPosition = new Vector3(x, y, 1);
-
             startAngle += equalAngles;
         }
     }
 
+    /// <summary>
+    /// connects all the nodes with a spring joint
+    /// </summary>
     private void ConnectNodes() {
         for (int i = 0; i < nodes.Count - 1; i++) {
             for (int j = i + 1; j < nodes.Count; j++) {
@@ -155,19 +169,27 @@ public class SoftBody : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// get the current distances of the spring joints
+    /// </summary>
     private void GetSpringDistances() {
-        for (int i = 0; i < _springJoints.Count; i++) {
-            _springJointsStartDistance.Add(_springJoints[i].distance);
+        foreach (var spring in _springJoints) {
+            _springJointsStartDistance.Add(spring.distance);
         }
     }
 
+    /// <summary>
+    /// make all spring joints have the same dampingRatio and frequency
+    /// </summary>
     private void ApplySoftBodyQualities() {
         foreach (var springJoint in _springJoints) {
             springJoint.dampingRatio = dampingRatio;
             springJoint.frequency = frequency;
         }
     }
+    #endregion
 
+    #region Soft Body Mesh
     //Title: Creating a Mesh
     //Author: Jasper Flick
     //Date: 2021-10-30
@@ -235,27 +257,23 @@ public class SoftBody : MonoBehaviour
 
         _polygonCollider.SetPath(0, colliderPoints);
     }
+    #endregion
 
-    private void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(transform.position, currRadius);
-    }
-
-    public void SetFrequency(float frequency) {
-        foreach (SpringJoint2D spring in _springJoints) {
-            this.frequency = frequency;
-            spring.frequency = frequency;
-        }
-    }
-
-    public void MoveSlime(Vector2 newPosition) {
+    /// <summary>
+    /// moves the soft body to the given position
+    /// </summary>
+    /// <param name="newPosition"></param>
+    public void MoveSoftBody(Vector2 newPosition) {
         Vector2[] dif = new Vector2[nodes.Count];
         for (int i = 0; i < nodes.Count; i++) {
             dif[i] = nodes[i].transform.position - transform.position;
-
             nodes[i].transform.position = newPosition + dif[i];
         }
     }
 
+    /// <summary>
+    /// adds a force to the soft body, similar to rigidbody forces
+    /// </summary>
     public void AddForce(Vector2 force, ForceMode2D forceMode = ForceMode2D.Impulse) {
         foreach (Rigidbody2D rb in nodes_rb) {
             rb.AddForce(force, forceMode);
