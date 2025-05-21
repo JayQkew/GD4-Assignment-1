@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
                 MoveForce(dir);
                 currFuel -= playerStats.GetStatValue(StatName.MoveCost) * Time.deltaTime;
             }
-            else MoveForce(constrainedDir);
+            // else MoveForce(constrainedDir);
         }
         else {
             MoveForce(constrainedDir);
