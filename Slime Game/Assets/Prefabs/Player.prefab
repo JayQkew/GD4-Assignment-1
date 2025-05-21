@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848101850210052321}
   - component: {fileID: 7744126868165267886}
+  - component: {fileID: 7828041273076503282}
   - component: {fileID: 8747095788319027792}
   - component: {fileID: 6662356125951656662}
   - component: {fileID: 5053450647664229506}
@@ -306,6 +307,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: d8e8d24f40364884383c78e6f931f21d, type: 2}
   stats: []
+--- !u!114 &7828041273076503282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125267497290260237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92667a3675bf33a438fdf0eaab050ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
 --- !u!114 &8747095788319027792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff791b694f5245040ae11aa82e721cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currAir: 100
+  currFuel: 0
   isInflated: 0
 --- !u!114 &5053450647664229506
 MonoBehaviour:
