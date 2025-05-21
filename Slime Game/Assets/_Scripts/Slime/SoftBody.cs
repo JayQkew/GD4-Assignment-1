@@ -44,7 +44,7 @@ public class SoftBody : MonoBehaviour
     }
 
     private void Start() {
-        oldRadius = playerStats.GetStat(StatName.MinRadius);
+        oldRadius = playerStats.GetStatValue(StatName.MinRadius);
         currRadius = oldRadius;
         CreateNodes();
         ArrangeNodes();
