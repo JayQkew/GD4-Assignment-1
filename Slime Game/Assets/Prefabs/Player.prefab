@@ -333,18 +333,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfNodes: 11
-  oldRadius: 0
   currRadius: 0
-  nodeRadius: 0.01
   nodeParent: {fileID: 7827600306226356359}
   dampingRatio: 0.2
   frequency: 1.47
   radiusChangeSpeed: 50
-  nodes: []
-  nodes_rb: []
-  node_scripts: []
-  collectedDistance: 0
-  _springJointsStartDistance: []
+  nodesRb: []
+  nodeScripts: []
   meshMaterial: {fileID: 2100000, guid: ae933ab208f94394cb2f2562e16b1b73, type: 2}
 --- !u!114 &6662356125951656662
 MonoBehaviour:
@@ -799,7 +794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2220367753469482459
 Transform:
   m_ObjectHideFlags: 0

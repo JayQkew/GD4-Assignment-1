@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 //Title: How I Wont the GMTK Game Jam
 //Author: JimmyGameDev
@@ -10,26 +11,24 @@ public class SoftBody : MonoBehaviour
 {
     private PlayerStats playerStats;
 
-    [Range(3, 40)] public int numberOfNodes = 10;
-    public float oldRadius;
+    [Range(3, 40), SerializeField] private int numberOfNodes;
+    private float oldRadius;
     public float currRadius;
-    public float nodeRadius = 0.001f;
+    private readonly float nodeRadius = 0.01f;
     [SerializeField] private Transform nodeParent;
 
-    [Header("Soft Body Qualities")] [Range(0, 1)]
-    public float dampingRatio;
-
+    [Header("Soft Body Qualities")]
+    [Range(0, 1), SerializeField] private float dampingRatio;
     [Range(0.1f, 10)] public float frequency;
     [SerializeField] private float radiusChangeSpeed;
 
-    public List<GameObject> nodes = new List<GameObject>();
-    public List<Rigidbody2D> nodes_rb = new List<Rigidbody2D>();
-    public List<SoftBodyNode> node_scripts = new List<SoftBodyNode>();
-    private readonly List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
-    public bool collectedDistance = false;
-    private int frameCount = 0;
-    public List<float> _springJointsStartDistance = new List<float>();
-
+    private List<GameObject> nodes;
+    [HideInInspector] public List<Rigidbody2D> nodesRb;
+    [HideInInspector] public List<SoftBodyNode> nodeScripts;
+    private readonly List<SpringJoint2D> _springJoints;
+    private bool setSprintDistance;
+    private int frameCount;
+    private readonly List<float> springJointsStartDistance;
     private PolygonCollider2D _polygonCollider;
     private Mesh _mesh;
     private MeshRenderer _meshRenderer;
@@ -58,9 +57,9 @@ public class SoftBody : MonoBehaviour
         UpdatePosition();
         UpdateRadius();
 
-        if (!collectedDistance && frameCount == 2) {
+        if (!setSprintDistance && frameCount == 2) {
             GetSpringDistances();
-            collectedDistance = true;
+            setSprintDistance = true;
         }
 
         if (frameCount < 2) frameCount++;
@@ -98,14 +97,15 @@ public class SoftBody : MonoBehaviour
             float radiusFactor = Mathf.Lerp(oldRadius, currRadius, Time.deltaTime * radiusChangeSpeed);
 
             for (int i = 0; i < _springJoints.Count; i++) {
-                _springJoints[i].distance = _springJointsStartDistance[i] * (1 + radiusFactor);
+                _springJoints[i].distance = springJointsStartDistance[i] * (1 + radiusFactor);
             }
 
             oldRadius = radiusFactor; // Update oldRadius for consistency
         }
     }
 
-    #region Creating Soft Body 
+    #region Creating Soft Body
+
     /// <summary>
     /// creates soft body nodes and adds all components and attributes
     /// </summary>
@@ -115,12 +115,12 @@ public class SoftBody : MonoBehaviour
             node.tag = "SoftBodyNode";
 
             SoftBodyNode nodeScript = node.AddComponent<SoftBodyNode>();
-            node_scripts.Add(nodeScript);
+            nodeScripts.Add(nodeScript);
 
             Rigidbody2D rb = node.AddComponent<Rigidbody2D>();
             rb.freezeRotation = true;
             nodeScript.rb = rb;
-            nodes_rb.Add(rb);
+            nodesRb.Add(rb);
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();
             cc.radius = nodeRadius;
@@ -133,7 +133,7 @@ public class SoftBody : MonoBehaviour
                 : LayerMask.NameToLayer("SoftBody1");
 
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
-            
+
             nodes.Add(node);
         }
     }
@@ -174,7 +174,7 @@ public class SoftBody : MonoBehaviour
     /// </summary>
     private void GetSpringDistances() {
         foreach (var spring in _springJoints) {
-            _springJointsStartDistance.Add(spring.distance);
+            springJointsStartDistance.Add(spring.distance);
         }
     }
 
@@ -187,9 +187,11 @@ public class SoftBody : MonoBehaviour
             springJoint.frequency = frequency;
         }
     }
+
     #endregion
 
     #region Soft Body Mesh
+
     //Title: Creating a Mesh
     //Author: Jasper Flick
     //Date: 2021-10-30
@@ -257,6 +259,7 @@ public class SoftBody : MonoBehaviour
 
         _polygonCollider.SetPath(0, colliderPoints);
     }
+
     #endregion
 
     /// <summary>
@@ -275,7 +278,7 @@ public class SoftBody : MonoBehaviour
     /// adds a force to the soft body, similar to rigidbody forces
     /// </summary>
     public void AddForce(Vector2 force, ForceMode2D forceMode = ForceMode2D.Impulse) {
-        foreach (Rigidbody2D rb in nodes_rb) {
+        foreach (Rigidbody2D rb in nodesRb) {
             rb.AddForce(force, forceMode);
         }
     }

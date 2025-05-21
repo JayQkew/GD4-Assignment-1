@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour
 
     private void MoveForce(Vector2 dir) {
         float moveMult = playerStats.GetStatValue(StatName.MoveSpeed);
-        foreach (Rigidbody2D rb in _softBody.nodes_rb) {
+        foreach (Rigidbody2D rb in _softBody.nodesRb) {
             if (rb.transform.position.y >= _softBody.transform.position.y)
                 rb.AddForce(dir * (moveMult * 100 * Time.deltaTime), ForceMode2D.Force);
             else rb.AddForce(dir * (moveMult * 50 * Time.deltaTime), ForceMode2D.Force);
@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Inflate() {
-        foreach (Rigidbody2D rb in _softBody.nodes_rb) {
+        foreach (Rigidbody2D rb in _softBody.nodesRb) {
             rb.gravityScale = 0;
         }
 
@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Deflate() {
-        foreach (Rigidbody2D rb in _softBody.nodes_rb) {
+        foreach (Rigidbody2D rb in _softBody.nodesRb) {
             rb.gravityScale = 1;
         }
 
@@ -81,7 +81,7 @@ public class Movement : MonoBehaviour
 
     private void Dash() {
         if (currFuel > 0 && inputHandler.aimInput != Vector2.zero) {
-            foreach (Rigidbody2D rb in _softBody.nodes_rb) {
+            foreach (Rigidbody2D rb in _softBody.nodesRb) {
                 rb.linearVelocity *= 0.25f;
                 rb.AddForce(inputHandler.aimInput * playerStats.GetStatValue(StatName.DashForce), ForceMode2D.Impulse);
             }
@@ -90,7 +90,7 @@ public class Movement : MonoBehaviour
     }
 
     private bool Grounded() {
-        foreach (SoftBodyNode node in _softBody.node_scripts) {
+        foreach (SoftBodyNode node in _softBody.nodeScripts) {
             if (node.touchingGround) return true;
         }
         return false;
