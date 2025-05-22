@@ -38,7 +38,7 @@ public class Multiplayer : MonoBehaviour
         
         players[_playerInputManager.playerCount - 1] = playerInput.gameObject;
 
-        // playerInput.actions["Ready"].performed += ctx => SetReady(playerInput.playerIndex);
+        playerInput.actions["Ready"].performed += ctx => SetReady(playerInput.playerIndex);
         _multiplayerCollider.OnPlayerJoined(playerInput);
     }
 
@@ -64,7 +64,7 @@ public class Multiplayer : MonoBehaviour
     }
     
     private void SetReady(int playerIndex) {
-        if (SceneManager.GetActiveScene().name == "Lobby") {
+        if (SceneManager.GetActiveScene().name == "Lobby 2.0") {
             if (playerIndex >= ready.Length - 1) return;
             ready[playerIndex] = !ready[playerIndex];
         }
