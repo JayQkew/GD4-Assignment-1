@@ -17,6 +17,7 @@ public class Multiplayer : MonoBehaviour
     [Header("Player")]
     [SerializeField] private Transform[] spawnPoints;
     
+    private MultiplayerCollider _multiplayerCollider;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -28,6 +29,7 @@ public class Multiplayer : MonoBehaviour
         }
         
         _playerInputManager = GetComponent<PlayerInputManager>();
+        _multiplayerCollider = GetComponent<MultiplayerCollider>();
     }
 
     public void OnPlayerJoined(PlayerInput playerInput) {
@@ -36,7 +38,8 @@ public class Multiplayer : MonoBehaviour
         
         players[_playerInputManager.playerCount - 1] = playerInput.gameObject;
 
-        playerInput.actions["Ready"].performed += ctx => SetReady(playerInput.playerIndex);
+        // playerInput.actions["Ready"].performed += ctx => SetReady(playerInput.playerIndex);
+        _multiplayerCollider.OnPlayerJoined(playerInput);
     }
 
     private void SetSoftBody(PlayerInput playerInput) {

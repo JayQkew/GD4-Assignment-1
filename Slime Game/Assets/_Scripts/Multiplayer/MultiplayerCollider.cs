@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 public class MultiplayerCollider : MonoBehaviour
 {
     private PlayerInputManager playerInputManager;
-    private Movement[] playerMovements;
-    private PolygonCollider2D[] playerColliders;
-    private SoftBody[] playerSoftBodies;
+    private Movement[] playerMovements = new Movement[2];
+    private PolygonCollider2D[] playerColliders = new PolygonCollider2D[2];
+    private SoftBody[] playerSoftBodies = new SoftBody[2];
 
     private void Awake() => playerInputManager = GetComponent<PlayerInputManager>();
 
@@ -16,9 +16,9 @@ public class MultiplayerCollider : MonoBehaviour
     }
 
     public void OnPlayerJoined(PlayerInput playerInput) {
-        playerMovements[playerInputManager.playerCount] = playerInput.GetComponentInChildren<Movement>();
-        playerColliders[playerInputManager.playerCount] = playerInput.GetComponentInChildren<PolygonCollider2D>();
-        playerSoftBodies[playerInputManager.playerCount] = playerInput.GetComponentInChildren<SoftBody>();
+        playerMovements[playerInputManager.playerCount - 1] = playerInput.GetComponentInChildren<Movement>();
+        playerColliders[playerInputManager.playerCount - 1] = playerInput.GetComponentInChildren<PolygonCollider2D>();
+        playerSoftBodies[playerInputManager.playerCount - 1] = playerInput.GetComponentInChildren<SoftBody>();
     }
 
     private void PreventOverlap() {

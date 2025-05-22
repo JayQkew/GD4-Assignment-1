@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfNodes: 11
-  currRadius: 0
+  currRadius: 0.5
   nodeParent: {fileID: 7827600306226356359}
   dampingRatio: 0.2
   frequency: 1.47

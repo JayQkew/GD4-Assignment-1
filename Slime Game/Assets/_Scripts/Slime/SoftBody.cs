@@ -22,13 +22,13 @@ public class SoftBody : MonoBehaviour
     [Range(0.1f, 10)] public float frequency;
     [SerializeField] private float radiusChangeSpeed;
 
-    private List<GameObject> nodes;
-    [HideInInspector] public List<Rigidbody2D> nodesRb;
-    [HideInInspector] public List<SoftBodyNode> nodeScripts;
-    private readonly List<SpringJoint2D> _springJoints;
+    private List<GameObject> nodes = new List<GameObject>();
+    [HideInInspector] public List<Rigidbody2D> nodesRb = new List<Rigidbody2D>();
+    [HideInInspector] public List<SoftBodyNode> nodeScripts = new List<SoftBodyNode>();
+    private List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
     private bool setSprintDistance;
     private int frameCount;
-    private readonly List<float> springJointsStartDistance;
+    private readonly List<float> springJointsStartDistance = new List<float>();
     private PolygonCollider2D _polygonCollider;
     private Mesh _mesh;
     private MeshRenderer _meshRenderer;
@@ -105,7 +105,6 @@ public class SoftBody : MonoBehaviour
     }
 
     #region Creating Soft Body
-
     /// <summary>
     /// creates soft body nodes and adds all components and attributes
     /// </summary>
