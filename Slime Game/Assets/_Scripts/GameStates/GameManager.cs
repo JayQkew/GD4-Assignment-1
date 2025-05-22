@@ -5,13 +5,13 @@ public class GameManager : MonoBehaviour
 {
     public GameState state;
 
-    public GameBaseState currState;
-    
+    private GameBaseState currState;
     public MapSelectState mapSelectState = new MapSelectState();
     public LobbyState lobbyState = new LobbyState();
     public MatchState matchState = new MatchState();
     public DraftState draftState = new DraftState();
     public PodiumState podiumState = new PodiumState();
+    public LimboState limboState = new LimboState();
 
     private void Start() {
         currState = mapSelectState;
@@ -39,10 +39,14 @@ public class GameManager : MonoBehaviour
             case GameState.Winner:
                 currState = podiumState;
                 break;
+            case GameState.Limbo:
+                currState = limboState;
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
         currState.EnterState(this);
+        state = newState;
     }
 }
 
@@ -59,5 +63,6 @@ public enum GameState
     Lobby,
     Match,
     Draft,
-    Winner
+    Winner,
+    Limbo
 }
