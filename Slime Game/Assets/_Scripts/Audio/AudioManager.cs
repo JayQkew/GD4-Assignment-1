@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
+    
     [Header("Background Music")]
     [SerializeField] private List<AudioClip> backgroundAudioClips;
     private AudioClip backgroundMusic;
@@ -40,6 +44,18 @@ public class AudioManager : MonoBehaviour
     [Header("Underwater Explosion Music")] 
     [SerializeField] private AudioClip underwaterExplosionMusic;
     [SerializeField] private AudioSource underwaterExplosionAudioSource;
+    
+    private void Awake()
+    {
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else {
+            Destroy(this);
+        }
+
+    }
 
     public void ChangeBackgroundMusic()
     {

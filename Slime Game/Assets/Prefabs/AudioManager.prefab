@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8135908437748604327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4299740111818605123}
+  - component: {fileID: 7131013961159652175}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4299740111818605123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135908437748604327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 565.05817, y: 601.91473, z: -10.398295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7131013961159652175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135908437748604327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b5174e2b276ac41965aa5cf79eee73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundAudioClips:
+  - {fileID: 8300000, guid: b62cb45b3dc8e5846ac4718f6e74105c, type: 3}
+  - {fileID: 8300000, guid: 4cf87723ced16c342a1a4b96895b076f, type: 3}
+  - {fileID: 8300000, guid: b9134d9e3b3725a4ab568b7e182ce7bb, type: 3}
+  backgroundAudioSource: {fileID: 0}
+  lobbyAudioClips:
+  - {fileID: 8300000, guid: b293251d1b32a864e898c934947f7a63, type: 3}
+  lobbyAudioSource: {fileID: 0}
+  ballHitMusic: {fileID: 8300000, guid: a99902160d463ba4fa038e8747221162, type: 3}
+  ballHitAudioSource: {fileID: 0}
+  bombTickMusic: {fileID: 8300000, guid: 5285ba9b52f5a4f40b0404a3d9408666, type: 3}
+  bombTickAudioSource: {fileID: 0}
+  dashSplashMusic: {fileID: 8300000, guid: f2c33c9bf90418747b3b9a5f4a283879, type: 3}
+  dashSplashAudioSource: {fileID: 0}
+  eatMusic: {fileID: 8300000, guid: 9caa371adacf90043894ca15b37bd8f3, type: 3}
+  eatAudioSource: {fileID: 0}
+  goalMusic: {fileID: 8300000, guid: 65670a5f35d87a149a4467b9c2a6cb72, type: 3}
+  goalAudioSource: {fileID: 0}
+  inflateMusic: {fileID: 8300000, guid: 83e0d6fec036e2046b8ee44404befd02, type: 3}
+  inflateAudioSource: {fileID: 0}
+  underwaterExplosionMusic: {fileID: 8300000, guid: fdde30bb97f7bfd4eaf830552d92baee, type: 3}
+  underwaterExplosionAudioSource: {fileID: 0}
