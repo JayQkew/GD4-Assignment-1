@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public LimboState limboState = new LimboState();
 
     private void Start() {
-        currState = mapSelectState;
+        currState = lobbyState;
     }
 
     private void Update() {
