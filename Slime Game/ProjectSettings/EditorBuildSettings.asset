@@ -12,19 +12,19 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/Test Soccer.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/CenterGoal.unity
+    path: Assets/Scenes/Game Scenes/Map_CenterGoal.unity
     guid: eb5ce6bddfa474c499187961a2db4834
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/DoubleDiamond.unity
+    path: Assets/Scenes/Game Scenes/Map_DoubleDiamond.unity
     guid: 027c2a64a6dddb745a85f68bef088e38
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/RoofGoals.unity
+    path: Assets/Scenes/Game Scenes/Map_RoofGoals.unity
     guid: f80f8b343badfd244a06082972d74333
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/Standard.unity
+    path: Assets/Scenes/Game Scenes/Map_Standard.unity
     guid: 2c0441806cb02e448bfe4dc209fe5675
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/Vollyball.unity
+    path: Assets/Scenes/Game Scenes/Map_Vollyball.unity
     guid: eaf035dee6a9da449925e70f37196bc5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

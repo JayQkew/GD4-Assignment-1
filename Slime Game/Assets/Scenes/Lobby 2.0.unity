@@ -702,10 +702,10 @@ GameObject:
   m_Component:
   - component: {fileID: 586346752}
   - component: {fileID: 586346753}
-  - component: {fileID: 586346754}
   - component: {fileID: 586346755}
   - component: {fileID: 586346756}
   - component: {fileID: 586346757}
+  - component: {fileID: 586346758}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -747,24 +747,6 @@ MonoBehaviour:
   team1Score: 0
   team2Score: 0
   maximumScore: 4
---- !u!114 &586346754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586346751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0771ce32c32361d47979f51556f23a9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeText: {fileID: 2011551096}
-  player1ReadyText: {fileID: 1659927432}
-  player2ReadyText: {fileID: 1181132094}
-  readyTxt:
-  - {fileID: 1659927432}
-  - {fileID: 1181132094}
 --- !u!114 &586346755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,6 +786,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  lobbyState:
+    timeText: {fileID: 2011551096}
+    readyTxt:
+    - {fileID: 1659927432}
+    - {fileID: 1181132094}
+--- !u!114 &586346758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586346751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40857587f6b0914cb79bdea30be3bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allMaps: []
+  list: 
+  roundLimit: 0
+  listIndex: 0
+  team1Total: 0
+  team2Total: 0
 --- !u!1 &594907779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,40 +2285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16bc11c9b41b948448d0bfb58c93c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1889705901
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1889705902}
-  m_Layer: 0
-  m_Name: Setup
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1889705902
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889705901}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 519420032}
-  - {fileID: 619394802}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1942055972
+--- !u!43 &1888025539
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2478,6 +2450,39 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1889705901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889705902}
+  m_Layer: 0
+  m_Name: Setup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1889705902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889705901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 519420032}
+  - {fileID: 619394802}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2011551094
 GameObject:
   m_ObjectHideFlags: 0
