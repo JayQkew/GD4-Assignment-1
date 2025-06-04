@@ -14,10 +14,10 @@ public class SceneChangeManager : MonoBehaviour
     public void ChangeScene()
     {
         int newScene = 0;
-        if (MapManager.instance.listIndex < MapManager.instance.roundLimit)
+        if (MapManager.Instance.listIndex < MapManager.Instance.roundLimit)
         {
-            newScene = MapManager.instance.SelectLevel();
-            MapManager.instance.listIndex++;
+            newScene = MapManager.Instance.SelectLevel();
+            MapManager.Instance.listIndex++;
         }
         else
         {

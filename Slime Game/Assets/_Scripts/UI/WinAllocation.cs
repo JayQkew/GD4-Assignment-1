@@ -16,18 +16,18 @@ public class WinAllocation : MonoBehaviour
     private GameObject player2;
     public void CalculateWinner()
     {
-        Debug.Log(MapManager.instance.WhoWon());
-        if (MapManager.instance.WhoWon() == 0)
+        Debug.Log(MapManager.Instance.WhoWon());
+        if (MapManager.Instance.WhoWon() == 0)
         {
             player1.SetActive(true);
             player2.SetActive(false);
         }
-        else if (MapManager.instance.WhoWon() == 1)
+        else if (MapManager.Instance.WhoWon() == 1)
         {
             player1.SetActive(false);
             player2.SetActive(true);
         }
-        else if (MapManager.instance.WhoWon() == 3)
+        else if (MapManager.Instance.WhoWon() == 3)
         {
             player1.SetActive(false);
             player2.SetActive(false);

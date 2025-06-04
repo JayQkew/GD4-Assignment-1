@@ -1,14 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class MapManager : MonoBehaviour
 {
-    public static MapManager instance { get; private set; }
+    public static MapManager Instance { get; private set; }
 
     public string[] allMaps = Array.Empty<string>();
+    public List<string> mapPool = new List<string>();
+    public List<string> previousMaps = new List<string>();
+    
     public List<int> list = new List<int>(3);
     public int roundLimit;
     public int listIndex = 0;
@@ -17,12 +22,12 @@ public class MapManager : MonoBehaviour
     [SerializeField] public int team2Total;
 
     private void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (Instance == null) {
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else {
-            Destroy(gameObject); // Destroy duplicates
+            Destroy(gameObject);
         }
 
         // ArrangeList();
@@ -41,6 +46,22 @@ public class MapManager : MonoBehaviour
                 Debug.Log(sceneName);
             }
         }
+        allMaps = maps.ToArray();
+        mapPool = maps; //temporary
+    }
+
+    public void NextMap() {
+        int randIndex = Random.Range(0, mapPool.Count);
+        string map = mapPool[randIndex];
+        mapPool.RemoveAt(randIndex);
+        previousMaps.Add(map);
+
+        if (mapPool.Count == 0) {
+            mapPool = previousMaps.ToList();
+            previousMaps.Clear();
+        }
+        
+        SceneManager.LoadScene(map);
     }
 
     public void ArrangeList() {
