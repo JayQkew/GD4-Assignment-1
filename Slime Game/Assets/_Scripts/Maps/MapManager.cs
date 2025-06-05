@@ -10,7 +10,7 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
 
-    public string[] allMaps = Array.Empty<string>();
+    public MapCard[] mapCards;
     public List<string> mapPool = new List<string>();
     public List<string> previousMaps = new List<string>();
     
@@ -43,11 +43,15 @@ public class MapManager : MonoBehaviour
             string sceneName = Path.GetFileNameWithoutExtension(path);
             if (sceneName.Substring(0, 3) == "Map") {
                 maps.Add(sceneName);
-                Debug.Log(sceneName);
             }
         }
-        allMaps = maps.ToArray();
         mapPool = maps; //temporary
+        mapCards = new MapCard[maps.Count];
+
+        foreach (string map in maps) {
+            mapCards[0] = new MapCard(map);
+            mapPool.Add(map);
+        }
     }
 
     public void NextMap() {
@@ -102,7 +106,6 @@ public class MapManager : MonoBehaviour
             team1Total++;
         }
     }
-
     public int WhoWon() {
         if (team1Total > team2Total) {
             return 0;
