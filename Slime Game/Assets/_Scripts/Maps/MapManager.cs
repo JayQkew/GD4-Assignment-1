@@ -74,6 +74,12 @@ public class MapManager : MonoBehaviour
         foreach (Map map in maps) {
             if (map.selected) mapPool.Add(map.mapName);
         }
+        
+        if (mapPool.Count == 0) {
+            foreach (Map map in maps) {
+                mapPool.Add(map.mapName);
+            }
+        }
     }
 
     public void ArrangeList() {

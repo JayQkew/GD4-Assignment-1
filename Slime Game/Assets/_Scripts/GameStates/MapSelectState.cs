@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -14,6 +15,10 @@ public class MapSelectState : GameBaseState
     private List<MapCard> mapCards = new List<MapCard>();
     public override void EnterState(GameManager manager) {
         GameObject.Find("SelectAll").GetComponent<Button>().onClick.AddListener(SelectAllMaps);
+        GameObject.Find("Done Button").GetComponent<Button>().onClick.AddListener(() => {
+            manager.SwitchState(GameState.Lobby);
+        });
+        
         foreach (Map map in MapManager.Instance.maps) {
             GameObject mapCard = GameObject.Instantiate(mapCardPrefab, mapCardsParent);
             mapCard.GetComponent<MapCard>().SetMapCard(map);
@@ -34,9 +39,5 @@ public class MapSelectState : GameBaseState
         foreach (MapCard card in mapCards) {
             card.SelectCard(selectAll);
         }
-    }
-
-    public void Done(GameManager manager) {
-        manager.SwitchState(GameState.Lobby);
     }
 }
