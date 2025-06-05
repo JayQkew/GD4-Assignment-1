@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class LobbyState : GameBaseState
@@ -8,10 +9,11 @@ public class LobbyState : GameBaseState
     private float currTime;
     private const float MaxTime = 4;
 
-    private String startText;
+    private String startText = "";
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private GameObject[] readyTxt;
     public override void EnterState(GameManager manager) {
+        SceneManager.LoadScene("Lobby 2.0");
         currTime = MaxTime;
         startText = timeText.text;
     }

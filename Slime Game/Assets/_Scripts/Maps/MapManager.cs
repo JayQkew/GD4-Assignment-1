@@ -68,6 +68,14 @@ public class MapManager : MonoBehaviour
         SceneManager.LoadScene(map);
     }
 
+    public void GetSelectedMaps() {
+        mapPool.Clear();
+        previousMaps.Clear();
+        foreach (Map map in maps) {
+            if (map.selected) mapPool.Add(map.mapName);
+        }
+    }
+
     public void ArrangeList() {
         list.Clear(); // Clear the list before populating it
         int sceneCount = SceneManager.sceneCountInBuildSettings;

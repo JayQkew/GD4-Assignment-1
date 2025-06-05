@@ -7,8 +7,6 @@ using UnityEngine.UI;
 [Serializable]
 public class MapSelectState : GameBaseState
 {
-    public List<Map> selecedMaps = new List<Map>();
-    public Map[] allMaps;
     [SerializeField] private GameObject mapCardPrefab;
     [SerializeField] private Transform mapCardsParent;
 
@@ -16,8 +14,7 @@ public class MapSelectState : GameBaseState
     private List<MapCard> mapCards = new List<MapCard>();
     public override void EnterState(GameManager manager) {
         GameObject.Find("SelectAll").GetComponent<Button>().onClick.AddListener(SelectAllMaps);
-        allMaps = MapManager.Instance.maps;
-        foreach (Map map in allMaps) {
+        foreach (Map map in MapManager.Instance.maps) {
             GameObject mapCard = GameObject.Instantiate(mapCardPrefab, mapCardsParent);
             mapCard.GetComponent<MapCard>().SetMapCard(map);
             mapCards.Add(mapCard.GetComponent<MapCard>());
@@ -29,7 +26,7 @@ public class MapSelectState : GameBaseState
     }
 
     public override void ExitState(GameManager manager) {
-        //clear all the cards
+        MapManager.Instance.GetSelectedMaps();
     }
 
     public void SelectAllMaps() {
@@ -37,5 +34,9 @@ public class MapSelectState : GameBaseState
         foreach (MapCard card in mapCards) {
             card.SelectCard(selectAll);
         }
+    }
+
+    public void Done(GameManager manager) {
+        manager.SwitchState(GameState.Lobby);
     }
 }

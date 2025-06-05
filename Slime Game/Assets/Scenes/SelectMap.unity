@@ -509,8 +509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 1
   mapSelectState:
-    selecedMaps: []
-    allMaps: []
     mapCardPrefab: {fileID: 4046592762321564581, guid: a29f97543e28c8d4ea86c00fa4b19366, type: 3}
     mapCardsParent: {fileID: 24819006}
   lobbyState:
