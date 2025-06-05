@@ -4,13 +4,14 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
 
-    public MapCard[] mapCards;
+    public Map[] maps;
     public List<string> mapPool = new List<string>();
     public List<string> previousMaps = new List<string>();
     
@@ -36,21 +37,20 @@ public class MapManager : MonoBehaviour
 
     private void GetAllMaps() {
         int sceneCount = SceneManager.sceneCountInBuildSettings;
-        List<string> maps = new List<string>();
+        List<string> mapNames = new List<string>();
 
         for (int i = 0; i < sceneCount; i++) {
             string path = SceneUtility.GetScenePathByBuildIndex(i);
             string sceneName = Path.GetFileNameWithoutExtension(path);
             if (sceneName.Substring(0, 3) == "Map") {
-                maps.Add(sceneName);
+                mapNames.Add(sceneName);
             }
         }
-        mapPool = maps; //temporary
-        mapCards = new MapCard[maps.Count];
+        maps = new Map[mapNames.Count];
 
-        foreach (string map in maps) {
-            mapCards[0] = new MapCard(map);
-            mapPool.Add(map);
+        for (int i = 0; i < mapNames.Count; i++) {
+            maps[i] = new Map(mapNames[i]);
+            mapPool.Add(mapNames[i]);
         }
     }
 

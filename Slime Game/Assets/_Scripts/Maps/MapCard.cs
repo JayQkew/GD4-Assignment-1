@@ -1,12 +1,12 @@
+using TMPro;
 using UnityEngine;
 
-[System.Serializable]
-public class MapCard
+public class MapCard : MonoBehaviour
 {
-    public string mapName;
-    public bool selected;
-
-    public MapCard(string _mapName) {
-        mapName = _mapName;
+    public Map map;
+    
+    public void SetMapCard(Map newMap) {
+        map = newMap;
+        GetComponentInChildren<TextMeshProUGUI>().text = newMap.mapName.Substring(4, newMap.mapName.Length - 4);
     }
 }
