@@ -119,6 +119,128 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &50957804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 50957810}
+  - component: {fileID: 50957809}
+  - component: {fileID: 50957808}
+  - component: {fileID: 50957807}
+  - component: {fileID: 50957806}
+  - component: {fileID: 50957805}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &50957805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50957804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40857587f6b0914cb79bdea30be3bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maps: []
+  mapPool: []
+  previousMaps: []
+  list: 
+  roundLimit: 0
+  listIndex: 0
+  team1Total: 0
+  team2Total: 0
+--- !u!114 &50957806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50957804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1f3ae62b6c220458db730c3332338f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 1
+  mapSelectState:
+    mapCardPrefab: {fileID: 4046592762321564581, guid: a29f97543e28c8d4ea86c00fa4b19366, type: 3}
+    mapCardsParent: {fileID: 0}
+  lobbyState:
+    timeText: {fileID: 0}
+    readyTxt:
+    - {fileID: 0}
+    - {fileID: 0}
+--- !u!114 &50957807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50957804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42668a2941b88046bba77a72be29740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &50957808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50957804}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0d3f55962259a42834895dc24e6c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+--- !u!114 &50957809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50957804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ea1276015d189408e980712ff506d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballSpawn: {fileID: 0}
+  ball: {fileID: 0}
+  text_team1Score: {fileID: 0}
+  text_team2Score: {fileID: 0}
+  team1Score: 0
+  team2Score: 0
+  maximumScore: 4
+--- !u!4 &50957810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50957804}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &61643236
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +1089,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 889584741}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1407203065}
+        m_TargetAssemblyTypeName: StartScreen, Assembly-CSharp
+        m_MethodName: GoToMapSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &889584741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,6 +1214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407203064}
+  - component: {fileID: 1407203065}
   m_Layer: 0
   m_Name: StartSceneManager
   m_TagString: Untagged
@@ -1102,6 +1237,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1407203065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407203063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c8d1389c3b53a4da40daad1d8ec411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1490745232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,3 +1635,4 @@ SceneRoots:
   - {fileID: 1868383400}
   - {fileID: 167405327}
   - {fileID: 1407203064}
+  - {fileID: 50957810}

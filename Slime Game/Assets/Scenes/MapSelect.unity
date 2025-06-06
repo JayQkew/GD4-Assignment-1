@@ -424,12 +424,8 @@ GameObject:
   m_Component:
   - component: {fileID: 586346752}
   - component: {fileID: 586346753}
-  - component: {fileID: 586346755}
-  - component: {fileID: 586346756}
-  - component: {fileID: 586346757}
-  - component: {fileID: 586346758}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: Local Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,83 +455,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 586346751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ea1276015d189408e980712ff506d7, type: 3}
+  m_Script: {fileID: 11500000, guid: b79b6e467540dbc4caa65a7caa5fad27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpawn: {fileID: 0}
-  ball: {fileID: 0}
-  text_team1Score: {fileID: 0}
-  text_team2Score: {fileID: 0}
-  team1Score: 0
-  team2Score: 0
-  maximumScore: 4
---- !u!114 &586346755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586346751}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de0d3f55962259a42834895dc24e6c63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
---- !u!114 &586346756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586346751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42668a2941b88046bba77a72be29740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &586346757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586346751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1f3ae62b6c220458db730c3332338f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 1
-  mapSelectState:
-    mapCardPrefab: {fileID: 4046592762321564581, guid: a29f97543e28c8d4ea86c00fa4b19366, type: 3}
-    mapCardsParent: {fileID: 24819006}
-  lobbyState:
-    timeText: {fileID: 0}
-    readyTxt:
-    - {fileID: 0}
-    - {fileID: 0}
---- !u!114 &586346758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586346751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e40857587f6b0914cb79bdea30be3bdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maps: []
-  mapPool: []
-  previousMaps: []
-  list: 
-  roundLimit: 0
-  listIndex: 0
-  team1Total: 0
-  team2Total: 0
 --- !u!1 &779843085
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,13 +541,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 586346751}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 586346753}
+        m_TargetAssemblyTypeName: MapSelectScene, Assembly-CSharp
+        m_MethodName: SelectAllMaps
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1020,7 +942,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1169005034}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 586346753}
+        m_TargetAssemblyTypeName: MapSelectScene, Assembly-CSharp
+        m_MethodName: NextScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1169005034
 MonoBehaviour:
   m_ObjectHideFlags: 0

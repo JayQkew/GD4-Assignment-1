@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class StartScreen : MonoBehaviour
 {
     public void GoToMapSelect() {
-        SceneManager.LoadScene("SelectMap");
+        GameManager.Instance.SwitchState(GameState.MapSelect);
     }
 
     public void ExitGame() {
