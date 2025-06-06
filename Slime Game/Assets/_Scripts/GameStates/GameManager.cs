@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     public GameState state;
 
     private GameBaseState currState;
@@ -12,6 +13,16 @@ public class GameManager : MonoBehaviour
     public DraftState draftState = new DraftState();
     public PodiumState podiumState = new PodiumState();
     public LimboState limboState = new LimboState();
+
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start() {
         currState = lobbyState;

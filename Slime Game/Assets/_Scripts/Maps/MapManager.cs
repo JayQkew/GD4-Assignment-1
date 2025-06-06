@@ -42,7 +42,7 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < sceneCount; i++) {
             string path = SceneUtility.GetScenePathByBuildIndex(i);
             string sceneName = Path.GetFileNameWithoutExtension(path);
-            if (sceneName.Substring(0, 3) == "Map") {
+            if (sceneName.Split('_')[0] == "Map") {
                 mapNames.Add(sceneName);
             }
         }
