@@ -36,6 +36,12 @@ public class MapSelectState : GameBaseState
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         mapCardsParent = GameObject.Find("Maps").transform;
+        GameObject.Find("SelectAll").GetComponent<Button>().onClick.AddListener(SelectAllMaps);
+        GameObject.Find("Done Button").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            GameManager.Instance.SwitchState(GameState.Lobby);
+        });
+        
         foreach (Map map in MapManager.Instance.maps) {
             GameObject mapCard = GameObject.Instantiate(mapCardPrefab, mapCardsParent);
             mapCard.GetComponent<MapCard>().SetMapCard(map);
