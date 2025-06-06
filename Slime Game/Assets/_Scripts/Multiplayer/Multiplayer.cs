@@ -39,7 +39,6 @@ public class Multiplayer : MonoBehaviour
         players[_playerInputManager.playerCount - 1] = playerInput.gameObject;
 
         playerInput.actions["Ready"].performed += ctx => SetReady(playerInput.playerIndex);
-        Debug.Log(playerInput.playerIndex);
         _multiplayerCollider.OnPlayerJoined(playerInput);
     }
 
