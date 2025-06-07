@@ -15,7 +15,7 @@ public class Goals : MonoBehaviour
         {
             PointManager.Instance.Score((int)team);
             PointManager.Instance.RespawnBall();
-            GameObject burst=Instantiate(pufferfishBurst, transform, false);
+            GameObject burst = Instantiate(pufferfishBurst, transform, false);
             burst.transform.localPosition = Vector3.zero;
             goalBurst.Play();
             goalPing.Play();

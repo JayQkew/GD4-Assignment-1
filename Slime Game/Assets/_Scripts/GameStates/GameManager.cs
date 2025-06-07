@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        currState = lobbyState;
+        currState = limboState;
     }
 
     private void Update() {
