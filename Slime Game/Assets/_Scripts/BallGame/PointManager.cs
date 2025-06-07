@@ -19,6 +19,7 @@ public class PointManager : MonoBehaviour
     [Space(5)] [SerializeField] private int maximumScore; //Maximum score allowed before a team wins the round
 
     [SerializeField] private int minWinPoints;
+    [SerializeField] private int roundWinPoints;
     [SerializeField] private int[] points = new int[2];
     [SerializeField] private int[] roundsWon = new int[2];
     
@@ -38,8 +39,22 @@ public class PointManager : MonoBehaviour
     public void Score(int playerScored) {
         points[playerScored]++;
         int otherPlayerPoints = points[(playerScored + 1) % 2];
-        if (points[playerScored] > minWinPoints && points[playerScored] >= otherPlayerPoints + 2) {    
-            Debug.Log($"Player {playerScored} wins!");
+        if (points[playerScored] > minWinPoints && points[playerScored] >= otherPlayerPoints + 2) {
+            Debug.Log($"Player {playerScored} wins the round!");
+            RoundWon(playerScored);
+        }
+    }
+
+    private void RoundWon(int playerScored) {
+        roundsWon[playerScored]++;
+        int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
+        if(roundsWon[playerScored] >= otherPlayerRounds + 2) {
+            Debug.Log($"Player {playerScored} wins the GAME!");
+        }
+
+        //resets the points
+        for (int i = 0; i < points.Length; i++) {
+            points[i] = 0;
         }
     }
 

@@ -747,6 +747,10 @@ MonoBehaviour:
   team1Score: 0
   team2Score: 0
   maximumScore: 4
+  minWinPoints: 3
+  roundWinPoints: 0
+  points: 0000000000000000
+  roundsWon: 0000000000000000
 --- !u!114 &586346755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,7 +1926,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1402742384
+--- !u!43 &1392280134
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
