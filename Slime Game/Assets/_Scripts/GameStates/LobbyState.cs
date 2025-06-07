@@ -14,6 +14,7 @@ public class LobbyState : GameBaseState
     [SerializeField] private GameObject[] readyTxt;
     public override void EnterState(GameManager manager) {
         SceneManager.LoadScene("Lobby 2.0");
+        SceneManager.sceneLoaded += OnSceneLoaded;
         currTime = MaxTime;
     }
 
@@ -44,5 +45,10 @@ public class LobbyState : GameBaseState
     private void ResetTimer() {
         currTime = MaxTime;
         timeText.text = startText;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        timeText = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        startText = timeText.text;
     }
 }
