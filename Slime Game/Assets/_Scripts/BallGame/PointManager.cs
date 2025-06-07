@@ -18,6 +18,10 @@ public class PointManager : MonoBehaviour
     public int team2Score;
     [Space(5)] [SerializeField] private int maximumScore; //Maximum score allowed before a team wins the round
 
+    [SerializeField] private int minWinPoints;
+    [SerializeField] private int[] points = new int[2];
+    [SerializeField] private int[] roundsWon = new int[2];
+    
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -26,9 +30,16 @@ public class PointManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) Score(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) Score(1);
+    }
+
+    // 0 index for playerScored
+    public void Score(int playerScored) {
+        points[playerScored]++;
+        int otherPlayerPoints = points[(playerScored + 1) % 2];
+        if (points[playerScored] > minWinPoints && points[playerScored] >= otherPlayerPoints + 2) {    
+            Debug.Log($"Player {playerScored} wins!");
         }
     }
 
