@@ -13,7 +13,7 @@ public class PointManager : MonoBehaviour
     public GameObject ball;
 
     [Header("Points")] 
-    [SerializeField] private TextMeshProUGUI[] scoreText;
+    private TextMeshProUGUI[] scoreText = new TextMeshProUGUI[2];
 
     [SerializeField] private int pointsToWinRound;
     [SerializeField] private int minRoundsToWin;
@@ -68,7 +68,7 @@ public class PointManager : MonoBehaviour
         // get the score texts
         if (scene.name.Split('_')[0] == "Map") {
             scoreText[0] = GameObject.Find("Team 1 (Blue)").GetComponent<TextMeshProUGUI>();
-            scoreText[1] = GameObject.Find("Team 1 (Pink)").GetComponent<TextMeshProUGUI>();
+            scoreText[1] = GameObject.Find("Team 2 (Pink)").GetComponent<TextMeshProUGUI>();
             ballSpawn = GameObject.Find("Ball Spawn").transform;
         }
     }

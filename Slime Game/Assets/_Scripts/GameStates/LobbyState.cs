@@ -28,6 +28,7 @@ public class LobbyState : GameBaseState
     }
 
     public override void ExitState(GameManager manager) {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     
     private void UpdateTimer(GameManager manager) {
@@ -49,6 +50,11 @@ public class LobbyState : GameBaseState
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         timeText = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        readyTxt[0] = GameObject.Find("Ready1");
+        readyTxt[1] = GameObject.Find("Ready2");
+        
+        readyTxt[0].SetActive(false);
+        readyTxt[1].SetActive(false);
         startText = timeText.text;
     }
 }

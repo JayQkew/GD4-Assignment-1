@@ -25,6 +25,7 @@ public class MapSelectState : GameBaseState
 
     public override void ExitState(GameManager manager) {
         MapManager.Instance.GetSelectedMaps();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void SelectAllMaps() {
