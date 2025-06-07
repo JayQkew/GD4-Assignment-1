@@ -747,8 +747,8 @@ MonoBehaviour:
   team1Score: 0
   team2Score: 0
   maximumScore: 4
-  minWinPoints: 3
-  roundWinPoints: 0
+  pointsToWinRound: 3
+  minRoundsToWin: 3
   points: 0000000000000000
   roundsWon: 0000000000000000
 --- !u!114 &586346755
