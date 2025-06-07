@@ -13,9 +13,8 @@ public class Goals : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            PointManager.Instance.UpdateScore(team);
+            PointManager.Instance.Score((int)team);
             PointManager.Instance.RespawnBall();
-            PointManager.Instance.CheckScores(team);
             GameObject burst=Instantiate(pufferfishBurst, transform, false);
             burst.transform.localPosition = Vector3.zero;
             goalBurst.Play();

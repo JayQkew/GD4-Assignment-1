@@ -81,26 +81,6 @@ public class PointManager : MonoBehaviour
         ball.transform.position = ballSpawn.position;
         ball.GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
     }
-
-    public void CheckScores(Teams scoredAgainst)
-    {
-        if (scoredAgainst == Teams.TeamOne)
-        {
-            if (team2Score == maximumScore)
-            {
-                MapManager.Instance.UpdateTotalScores(scoredAgainst);
-                SceneChangeManager.Instance.ChangeScene();
-            }
-        }
-        else
-        {
-            if (team1Score == maximumScore)
-            {
-                MapManager.Instance.UpdateTotalScores(scoredAgainst);
-                SceneChangeManager.Instance.ChangeScene();
-            }
-        }
-    }
 }
 
 public enum Teams

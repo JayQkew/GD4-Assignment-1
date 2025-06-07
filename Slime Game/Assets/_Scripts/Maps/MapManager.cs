@@ -18,10 +18,6 @@ public class MapManager : MonoBehaviour
     public List<int> list = new List<int>(3);
     public int roundLimit;
     public int listIndex = 0;
-
-    [SerializeField] public int team1Total;
-    [SerializeField] public int team2Total;
-
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -110,24 +106,5 @@ public class MapManager : MonoBehaviour
 
     public int SelectLevel() {
         return list[listIndex];
-    }
-
-    public void UpdateTotalScores(Teams scoredAgainst) {
-        if (scoredAgainst == Teams.TeamOne) {
-            team2Total++;
-        }
-        else {
-            team1Total++;
-        }
-    }
-    public int WhoWon() {
-        if (team1Total > team2Total) {
-            return 0;
-        }
-        else if (team1Total < team2Total) {
-            return 1;
-        }
-
-        return 2;
     }
 }
