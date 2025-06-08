@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 [Serializable]
 public class MapSelectState : GameBaseState
@@ -44,7 +45,7 @@ public class MapSelectState : GameBaseState
         });
         
         foreach (Map map in MapManager.Instance.maps) {
-            GameObject mapCard = GameObject.Instantiate(mapCardPrefab, mapCardsParent);
+            GameObject mapCard = Object.Instantiate(mapCardPrefab, mapCardsParent);
             mapCard.GetComponent<MapCard>().SetMapCard(map);
             mapCards.Add(mapCard.GetComponent<MapCard>());
         }

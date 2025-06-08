@@ -20,6 +20,7 @@ public class RoundState : GameBaseState
         currRoundTime += Time.deltaTime;
         if (currRoundTime >= maxRoundTime) {
             // check if a player is in the lead, otherwise go into sudden death
+            Debug.Log("SUDDEN DEATH");
             PointManager pointManager = PointManager.Instance;
             pointManager.suddenDeath = true;
             if (pointManager.points[0] == pointManager.points[1]) return;

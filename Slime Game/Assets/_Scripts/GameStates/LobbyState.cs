@@ -13,7 +13,7 @@ public class LobbyState : GameBaseState
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private GameObject[] readyTxt;
     public override void EnterState(GameManager manager) {
-        SceneManager.LoadScene("Lobby 2.0");
+        SceneManager.LoadScene("Lobby");
         SceneManager.sceneLoaded += OnSceneLoaded;
         currTime = MaxTime;
     }
