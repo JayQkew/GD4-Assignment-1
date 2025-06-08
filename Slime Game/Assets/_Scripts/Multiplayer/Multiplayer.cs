@@ -59,13 +59,12 @@ public class Multiplayer : MonoBehaviour
         spawnPoints = new Transform[2];
         Transform playerSpawnPoints = GameObject.FindGameObjectWithTag("PlayerSpawns").transform;
         for (int i = 0; i < spawnPoints.Length; i++) {
-            spawnPoints[i] = playerSpawnPoints.transform;
+            spawnPoints[i] = playerSpawnPoints.GetChild(i);
         }
     }
     
     private void SetReady(int playerIndex) {
         if (SceneManager.GetActiveScene().name == "Lobby 2.0") {
-            // if (playerIndex >= ready.Length - 1) return;
             ready[playerIndex] = !ready[playerIndex];
         }
     }

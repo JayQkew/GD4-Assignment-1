@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-//Title: How I Wont the GMTK Game Jam
+//Title: How I Won the GMTK Game Jam
 //Author: JimmyGameDev
 //Date: Jan 18, 2025
 //Availablity: https://www.youtube.com/watch?v=y1D4DiZhSIo

@@ -1,13 +1,19 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class RoundState : GameBaseState
 {
     [SerializeField] private float maxRoundTime;
     [SerializeField] private float currRoundTime;
+    
+    [SerializeField] private Transform[] spawns = new Transform[2];
     public override void EnterState(GameManager manager) {
         currRoundTime = 0f;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        PointManager.Instance.onScore.AddListener(PointReset);
     }
 
     public override void UpdateState(GameManager manager) {
@@ -18,5 +24,22 @@ public class RoundState : GameBaseState
     }
 
     public override void ExitState(GameManager manager) {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        PointManager.Instance.onScore.RemoveListener(PointReset);
+    }
+
+    private void PointReset() {
+        //each player goes back to spawn (move the soft bodies)
+        for (int i = 0; i < spawns.Length; i++) {
+            Multiplayer.Instance.players[i].GetComponentInChildren<SoftBody>().MoveSoftBody(spawns[i].position);
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        //get the spawns
+        Transform spawnParent = GameObject.FindGameObjectWithTag("PlayerSpawns").transform;
+        for (int i = 0; i < spawns.Length; i++) {
+            spawns[i] = spawnParent.GetChild(i);
+        }
     }
 }

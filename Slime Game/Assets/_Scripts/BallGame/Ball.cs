@@ -16,6 +16,10 @@ public class Ball : MonoBehaviour
         PointManager.Instance.onScore.AddListener(Respawn);
     }
 
+    private void OnDestroy() {
+        PointManager.Instance.onScore.RemoveListener(Respawn);
+    }
+
     private void Respawn() {
         _rb.linearVelocity = Vector2.zero;
         _rb.angularVelocity = 0f;
