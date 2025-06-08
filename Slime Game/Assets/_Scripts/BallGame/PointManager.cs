@@ -7,14 +7,12 @@ public class PointManager : MonoBehaviour
 {
     public static PointManager Instance { get; private set; }
 
-    [SerializeField]
-    [Header("Points")] 
-    private TextMeshProUGUI[] scoreText = new TextMeshProUGUI[2];
-
+    [SerializeField] private TextMeshProUGUI[] scoreText = new TextMeshProUGUI[2];
     [SerializeField] private int pointsToWinRound;
     [SerializeField] private int minRoundsToWin;
-    [SerializeField] private int[] points = new int[2];
-    [SerializeField] private int[] roundsWon = new int[2];
+    public int[] points = new int[2];
+    public int[] roundsWon = new int[2];
+    public bool suddenDeath;
 
     public UnityEvent onScore;
 
@@ -35,13 +33,13 @@ public class PointManager : MonoBehaviour
         points[playerScored]++;
         scoreText[playerScored].text = points[playerScored].ToString();
         onScore?.Invoke();
-        if (points[playerScored] >= pointsToWinRound) {
+        if (points[playerScored] >= pointsToWinRound || suddenDeath) {
             Debug.Log($"Player {playerScored} wins the round!");
             RoundWon(playerScored);
         }
     }
 
-    private void RoundWon(int playerScored) {
+    public void RoundWon(int playerScored) {
         roundsWon[playerScored]++;
         int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
         if (roundsWon[playerScored] >= otherPlayerRounds + 2) {

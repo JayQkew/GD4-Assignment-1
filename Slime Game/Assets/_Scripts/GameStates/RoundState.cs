@@ -20,12 +20,17 @@ public class RoundState : GameBaseState
         currRoundTime += Time.deltaTime;
         if (currRoundTime >= maxRoundTime) {
             // check if a player is in the lead, otherwise go into sudden death
+            PointManager pointManager = PointManager.Instance;
+            pointManager.suddenDeath = true;
+            if (pointManager.points[0] == pointManager.points[1]) return;
+            pointManager.RoundWon(pointManager.points[0] > pointManager.points[1] ? 0 : 1);
         }
     }
 
     public override void ExitState(GameManager manager) {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         PointManager.Instance.onScore.RemoveListener(PointReset);
+        PointManager.Instance.suddenDeath = false;
     }
 
     private void PointReset() {
