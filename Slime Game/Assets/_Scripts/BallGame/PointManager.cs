@@ -64,8 +64,8 @@ public class PointManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         // get the score texts
         if (scene.name.Split('_')[0] == "Map") {
-            scoreText[0] = GameObject.Find("Team 1 (Blue)").GetComponent<TextMeshProUGUI>();
-            scoreText[1] = GameObject.Find("Team 2 (Pink)").GetComponent<TextMeshProUGUI>();
+            scoreText[0] = GameObject.Find("Player 1 Score").GetComponent<TextMeshProUGUI>();
+            scoreText[1] = GameObject.Find("Player 2 Score").GetComponent<TextMeshProUGUI>();
         }
     }
 }

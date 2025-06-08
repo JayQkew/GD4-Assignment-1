@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Goals : MonoBehaviour
 {
-    public Teams team;
+    [FormerlySerializedAs("team")] public Teams scoringTeam;
     public GameObject pufferfishBurst;
     public AudioSource goalBurst;
     public AudioSource goalPing;
@@ -10,7 +11,7 @@ public class Goals : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            PointManager.Instance.Score((int)team);
+            PointManager.Instance.Score((int)scoringTeam);
             GameObject burst = Instantiate(pufferfishBurst, transform, false);
             burst.transform.localPosition = Vector3.zero;
             goalBurst.Play();
