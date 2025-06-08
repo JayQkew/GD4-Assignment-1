@@ -264,7 +264,7 @@ public class SoftBody : MonoBehaviour
     /// <summary>
     /// moves the soft body to the given position
     /// </summary>
-    /// <param name="newPosition"></param>
+    /// <param name="newPosition">position in world space</param>
     public void MoveSoftBody(Vector2 newPosition) {
         Vector2[] dif = new Vector2[nodes.Count];
         for (int i = 0; i < nodes.Count; i++) {

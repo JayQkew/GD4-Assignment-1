@@ -64,7 +64,8 @@ public class Multiplayer : MonoBehaviour
     }
     
     private void SetReady(int playerIndex) {
-        if (SceneManager.GetActiveScene().name == "Lobby 2.0") {
+        if (SceneManager.GetActiveScene().name == "Lobby" +
+            "") {
             ready[playerIndex] = !ready[playerIndex];
         }
     }
