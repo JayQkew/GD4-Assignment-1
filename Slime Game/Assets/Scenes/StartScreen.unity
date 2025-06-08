@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 50957810}
   - component: {fileID: 50957809}
-  - component: {fileID: 50957807}
   - component: {fileID: 50957806}
   - component: {fileID: 50957805}
   m_Layer: 0
@@ -178,18 +177,6 @@ MonoBehaviour:
     readyTxt:
     - {fileID: 0}
     - {fileID: 0}
---- !u!114 &50957807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50957804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42668a2941b88046bba77a72be29740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &50957809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,9 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpawn: {fileID: 0}
-  ball: {fileID: 0}
-  pointsToWinRound: 0
-  minRoundsToWin: 0
+  ball: {fileID: 1700498261395572728, guid: c951b632ef81576409da86fada6243bc, type: 3}
+  pointsToWinRound: 3
+  minRoundsToWin: 3
   points: 0000000000000000
   roundsWon: 0000000000000000
 --- !u!4 &50957810
