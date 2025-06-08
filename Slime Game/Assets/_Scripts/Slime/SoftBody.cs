@@ -281,4 +281,15 @@ public class SoftBody : MonoBehaviour
             rb.AddForce(force, forceMode);
         }
     }
+
+    /// <summary>
+    /// Resets the velocity of the soft body
+    /// </summary>
+    public void ResetVelocity() {
+        foreach (Rigidbody2D rb in nodesRb) {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0;
+            rb.rotation = 0;
+        }
+    }
 }

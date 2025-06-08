@@ -31,7 +31,9 @@ public class RoundState : GameBaseState
     private void PointReset() {
         //each player goes back to spawn (move the soft bodies)
         for (int i = 0; i < spawns.Length; i++) {
-            Multiplayer.Instance.players[i].GetComponentInChildren<SoftBody>().MoveSoftBody(spawns[i].position);
+            SoftBody softBody = Multiplayer.Instance.players[i].GetComponentInChildren<SoftBody>();
+            softBody.MoveSoftBody(spawns[i].position);
+            softBody.ResetVelocity();
         }
     }
 
