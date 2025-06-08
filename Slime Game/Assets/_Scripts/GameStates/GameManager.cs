@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     private GameBaseState currState;
     public MapSelectState mapSelectState = new MapSelectState();
     public LobbyState lobbyState = new LobbyState();
-    public MatchState matchState = new MatchState();
+    public RoundState roundState = new RoundState();
     public DraftState draftState = new DraftState();
     public PodiumState podiumState = new PodiumState();
     public LimboState limboState = new LimboState();
@@ -41,8 +42,8 @@ public class GameManager : MonoBehaviour
             case GameState.Lobby:
                 currState = lobbyState;
                 break;
-            case GameState.Match:
-                currState = matchState;
+            case GameState.Round:
+                currState = roundState;
                 break;
             case GameState.Draft:
                 currState = draftState;
@@ -72,7 +73,7 @@ public enum GameState
 {
     MapSelect,
     Lobby,
-    Match,
+    Round,
     Draft,
     Winner,
     Limbo

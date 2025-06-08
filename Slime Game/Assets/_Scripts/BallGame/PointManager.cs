@@ -1,17 +1,16 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class PointManager : MonoBehaviour
 {
     public static PointManager Instance { get; private set; }
 
-    [Header("Ball")] public Transform ballSpawn;
+    [Header("Ball")] 
+    public Transform ballSpawn;
     public GameObject ball;
 
+    [SerializeField]
     [Header("Points")] 
     private TextMeshProUGUI[] scoreText = new TextMeshProUGUI[2];
 
@@ -35,6 +34,7 @@ public class PointManager : MonoBehaviour
     // 0 index for playerScored
     public void Score(int playerScored) {
         points[playerScored]++;
+        scoreText[playerScored].text = points[playerScored].ToString();
         if (points[playerScored] >= pointsToWinRound) {
             Debug.Log($"Player {playerScored} wins the round!");
             RoundWon(playerScored);
@@ -48,14 +48,16 @@ public class PointManager : MonoBehaviour
             Debug.Log($"Player {playerScored} wins the GAME!");
 
             //resets the rounds
-            for (int i = 0; i < roundsWon[playerScored]; i++) {
-                roundsWon[playerScored] = 0;
+            for (int i = 0; i < roundsWon.Length; i++) {
+                roundsWon[i] = 0;
+                scoreText[i].text = points[i].ToString();
             }
         }
 
         //resets the points
         for (int i = 0; i < points.Length; i++) {
             points[i] = 0;
+            scoreText[i].text = points[i].ToString();
         }
     }
 

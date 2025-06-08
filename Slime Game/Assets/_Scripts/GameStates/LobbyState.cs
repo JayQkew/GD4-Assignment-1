@@ -19,6 +19,7 @@ public class LobbyState : GameBaseState
     }
 
     public override void UpdateState(GameManager manager) {
+        if (!Multiplayer.Instance) return;
         bool[] playerReady = Multiplayer.Instance.ready;
         if (playerReady[0] && playerReady[1]) UpdateTimer(manager);
         else ResetTimer();
@@ -35,7 +36,7 @@ public class LobbyState : GameBaseState
         currTime -= Time.deltaTime;
         if (currTime <= 0) {
             MapManager.Instance.NextMap();
-            manager.SwitchState(GameState.Match);
+            manager.SwitchState(GameState.Round);
         }
         else if (currTime <= 1) timeText.text = "GO!";
         else if (currTime <= 2) timeText.text = "1";
