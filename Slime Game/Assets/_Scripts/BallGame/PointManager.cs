@@ -1,14 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PointManager : MonoBehaviour
 {
     public static PointManager Instance { get; private set; }
-
-    [Header("Ball")] 
-    public Transform ballSpawn;
-    public GameObject ball;
 
     [SerializeField]
     [Header("Points")] 
@@ -18,6 +15,8 @@ public class PointManager : MonoBehaviour
     [SerializeField] private int minRoundsToWin;
     [SerializeField] private int[] points = new int[2];
     [SerializeField] private int[] roundsWon = new int[2];
+
+    public UnityEvent onScore;
 
     private void Awake() {
         if (Instance == null) Instance = this;
@@ -35,6 +34,7 @@ public class PointManager : MonoBehaviour
     public void Score(int playerScored) {
         points[playerScored]++;
         scoreText[playerScored].text = points[playerScored].ToString();
+        onScore?.Invoke();
         if (points[playerScored] >= pointsToWinRound) {
             Debug.Log($"Player {playerScored} wins the round!");
             RoundWon(playerScored);
@@ -61,17 +61,11 @@ public class PointManager : MonoBehaviour
         }
     }
 
-    public void RespawnBall() {
-        ball.transform.position = ballSpawn.position;
-        ball.GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
-    }
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         // get the score texts
         if (scene.name.Split('_')[0] == "Map") {
             scoreText[0] = GameObject.Find("Team 1 (Blue)").GetComponent<TextMeshProUGUI>();
             scoreText[1] = GameObject.Find("Team 2 (Pink)").GetComponent<TextMeshProUGUI>();
-            ballSpawn = GameObject.Find("Ball Spawn").transform;
         }
     }
 }

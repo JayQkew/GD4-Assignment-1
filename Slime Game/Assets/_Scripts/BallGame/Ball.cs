@@ -1,17 +1,29 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
-    public static Ball Instance {get; private set;}
-
     [SerializeField] private Transform spawnPoint;
+    private Rigidbody2D _rb;
 
-    private void Awake()
-    {
-        Instance = this;
+    private void Awake() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Respawn() => transform.position = spawnPoint.position;
+    private void Start() {
+        PointManager.Instance.onScore.AddListener(Respawn);
+    }
 
+    private void Respawn() {
+        _rb.linearVelocity = Vector2.zero;
+        _rb.angularVelocity = 0f;
+        _rb.rotation = 0f;
+        transform.position = spawnPoint.position;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        spawnPoint = GameObject.Find("Ball Spawn").transform;
+    }
 }
