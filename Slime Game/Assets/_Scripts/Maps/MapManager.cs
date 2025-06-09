@@ -77,34 +77,4 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-
-    public void ArrangeList() {
-        list.Clear(); // Clear the list before populating it
-        int sceneCount = SceneManager.sceneCountInBuildSettings;
-        if (sceneCount <= 1) return; // if there is only one scene, then there is nothing to add.
-
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-
-        for (int i = 0; i < roundLimit; i++) {
-            int newScene;
-            int safetyCounter = 0;
-            int maxSafety = sceneCount * 2;
-
-            do {
-                newScene = UnityEngine.Random.Range(1, sceneCount);
-                safetyCounter++;
-            } while ((newScene == currentScene || list.Contains(newScene)) && safetyCounter < maxSafety);
-
-            if (safetyCounter >= maxSafety) {
-                Debug.LogWarning("LevelList: Could not generate unique scene index.");
-                break; // Exit the loop to prevent infinite loop
-            }
-
-            list.Add(newScene);
-        }
-    }
-
-    public int SelectLevel() {
-        return list[listIndex];
-    }
 }

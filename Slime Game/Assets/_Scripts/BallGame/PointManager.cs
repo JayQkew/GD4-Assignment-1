@@ -42,20 +42,23 @@ public class PointManager : MonoBehaviour
     public void RoundWon(int playerScored) {
         roundsWon[playerScored]++;
         int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
-        if (roundsWon[playerScored] >= otherPlayerRounds + 2) {
-            Debug.Log($"Player {playerScored} wins the GAME!");
-
-            //resets the rounds
-            for (int i = 0; i < roundsWon.Length; i++) {
-                roundsWon[i] = 0;
-                scoreText[i].text = points[i].ToString();
-            }
-        }
-
+        
         //resets the points
         for (int i = 0; i < points.Length; i++) {
             points[i] = 0;
             scoreText[i].text = points[i].ToString();
+        }
+        
+        if (roundsWon[playerScored] >= otherPlayerRounds + 2) {
+            for (int i = 0; i < roundsWon.Length; i++) {
+                roundsWon[i] = 0;
+                scoreText[i].text = points[i].ToString();
+            }
+            Debug.Log($"Player {playerScored} wins the GAME!");
+            GameManager.Instance.SwitchState(GameState.Winner);
+        }
+        else {
+            GameManager.Instance.SwitchState(GameState.Draft);
         }
     }
 
