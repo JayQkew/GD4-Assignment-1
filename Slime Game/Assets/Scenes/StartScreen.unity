@@ -180,6 +180,13 @@ MonoBehaviour:
   roundState:
     maxRoundTime: 120
     currRoundTime: 0
+    spawns:
+    - {fileID: 0}
+    - {fileID: 0}
+  draftState:
+    allCards: {fileID: 11400000, guid: 2af61f6007be98c4cafcd20647d947af, type: 2}
+    draftSize: 4
+    cardPrefab: {fileID: 0}
 --- !u!114 &50957809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,8 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ea1276015d189408e980712ff506d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpawn: {fileID: 0}
-  ball: {fileID: 1700498261395572728, guid: c951b632ef81576409da86fada6243bc, type: 3}
   scoreText:
   - {fileID: 0}
   - {fileID: 0}
@@ -201,6 +206,10 @@ MonoBehaviour:
   minRoundsToWin: 3
   points: 0000000000000000
   roundsWon: 0000000000000000
+  suddenDeath: 0
+  onScore:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &50957810
 Transform:
   m_ObjectHideFlags: 0

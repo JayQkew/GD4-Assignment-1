@@ -18,6 +18,7 @@ public class Ball : MonoBehaviour
 
     private void OnDestroy() {
         PointManager.Instance.onScore.RemoveListener(Respawn);
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Respawn() {

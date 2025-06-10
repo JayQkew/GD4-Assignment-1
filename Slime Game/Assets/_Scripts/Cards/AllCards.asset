@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd198d4d020a5044ad73226c3127a8e, type: 3}
   m_Name: AllCards
   m_EditorClassIdentifier: 
-  cards: []
+  cards:
+  - cardName: Cool Card
+    modifiers: []
+    abilities: []
+    description: has a bunch of cool abilites
+    icon: {fileID: -4364034832326165938, guid: f8d3117739dcfce49822898ae26d7a00, type: 3}
+  - cardName: Swag Card
+    modifiers: []
+    abilities: []
+    description: has a swag ability
+    icon: {fileID: -3603556060819865620, guid: cc9521f52cba41249b93ac5ca71f685b, type: 3}
+  - cardName: Test Card
+    modifiers: []
+    abilities: []
+    description: a card to test card system
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
