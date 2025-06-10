@@ -9,6 +9,7 @@ public class Card
     public Modifier[] modifiers;
     public GameObject[] abilities;
     public string description;
+    public Sprite icon;
     
     // the abilities will subscribe events to the input handler or where necessary when spawned
 }
