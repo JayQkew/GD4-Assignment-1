@@ -25,6 +25,10 @@ public class DraftState : GameBaseState
     }
 
     public override void ExitState(GameManager manager) {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        for (int i = 0; i < draftSize; i++) {
+            Object.Destroy(draftParent.GetChild(i).gameObject);
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
