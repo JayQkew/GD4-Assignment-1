@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -29,24 +30,22 @@ public class DraftState : GameBaseState
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         //draft cards
         draftParent = GameObject.Find("Draft").transform;
-        Debug.Log(draftParent.name);
         Card[] draft = DraftedCards();
-        foreach (Card card in draft) {
+
+        for (int i = 0; i < draft.Length; i++) {
             GameObject cardObject = Object.Instantiate(cardPrefab, draftParent);
-            cardObject.GetComponent<CardLogic>().SetCard(card);
+            cardObject.GetComponent<CardLogic>().SetCard(draft[i]);
+            if (i == 0) EventSystem.current.firstSelectedGameObject = cardObject;
         }
         //show current players cards
     }
 
     private Card[] DraftedCards() {
-        List<Card> _allCards = allCards.cards.ToList();
         Card[] cards = new Card[draftSize];
         for (int i = 0; i < draftSize; i++) {
-            Card card = _allCards[Random.Range(0, _allCards.Count)];
+            Card card = allCards.cards[Random.Range(0, allCards.cards.Length)];
             cards[i] = card;
-            _allCards.Remove(card);
         }
-        
         return cards;
     }
 }
