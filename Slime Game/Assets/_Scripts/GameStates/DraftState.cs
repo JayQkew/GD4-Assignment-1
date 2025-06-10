@@ -12,7 +12,7 @@ public class DraftState : GameBaseState
     [SerializeField] private AllCards allCards;
     [SerializeField] private int draftSize;
     [SerializeField] private GameObject cardPrefab;
-    private Transform draftParent;
+    [SerializeField] private Transform draftParent;
     
     public override void EnterState(GameManager manager) {
         SceneManager.LoadScene("Draft");
@@ -29,6 +29,7 @@ public class DraftState : GameBaseState
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         //draft cards
         draftParent = GameObject.Find("Draft").transform;
+        Debug.Log(draftParent.name);
         Card[] draft = DraftedCards();
         foreach (Card card in draft) {
             GameObject cardObject = Object.Instantiate(cardPrefab, draftParent);

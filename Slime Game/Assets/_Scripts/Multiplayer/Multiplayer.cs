@@ -56,10 +56,12 @@ public class Multiplayer : MonoBehaviour
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        spawnPoints = new Transform[2];
-        Transform playerSpawnPoints = GameObject.FindGameObjectWithTag("PlayerSpawns").transform;
-        for (int i = 0; i < spawnPoints.Length; i++) {
-            spawnPoints[i] = playerSpawnPoints.GetChild(i);
+        if (scene.name != "Draft") {
+            spawnPoints = new Transform[2];
+            Transform playerSpawnPoints = GameObject.FindGameObjectWithTag("PlayerSpawns").transform;
+            for (int i = 0; i < spawnPoints.Length; i++) {
+                spawnPoints[i] = playerSpawnPoints.GetChild(i);
+            }
         }
     }
     
