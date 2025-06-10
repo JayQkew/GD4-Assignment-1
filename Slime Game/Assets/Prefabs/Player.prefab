@@ -129,6 +129,46 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 378aaf38-55f7-451c-a1f6-6ddfd485a711
     m_ActionName: 'Small Slime/Ready[/DualShock4GamepadHID/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6eb30c8d-a409-43f8-9d39-784c5928421c
+    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f5f3c19a-0937-410f-9ef8-f89335bfb43d
+    m_ActionName: 'UI/Submit[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 185a9ef9-b733-4c11-9d1c-d097e4ea0110
+    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20ae0297-f13c-4634-9e0e-8206fe149ff3
+    m_ActionName: 'UI/Point[/Mouse/position,/Pen/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 096cad32-8e40-474f-93fd-ee2301aa3229
+    m_ActionName: 'UI/Click[/Mouse/leftButton,/Pen/tip]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6ebbaa91-b2b4-4197-a421-12d886970bc3
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ab741d4b-c713-4a99-ae84-3ac71290fd17
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1bdefacd-1920-44a4-9265-cdbb58fb570a
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 653c1768-b42d-4171-a09f-387e954d44c5
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 305357d5-59c3-48bd-b8bd-5c1faf59a8f8
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Slime
@@ -267,7 +307,6 @@ GameObject:
   - component: {fileID: 7828041273076503282}
   - component: {fileID: 8747095788319027792}
   - component: {fileID: 6662356125951656662}
-  - component: {fileID: 5053450647664229506}
   - component: {fileID: 4492303020482217538}
   - component: {fileID: 9032125561978380824}
   m_Layer: 7
@@ -355,18 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currFuel: 0
   isInflated: 0
---- !u!114 &5053450647664229506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3125267497290260237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 016d51467612cb34493c044953ed2344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &4492303020482217538
 Rigidbody2D:
   serializedVersion: 5
