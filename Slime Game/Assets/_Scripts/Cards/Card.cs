@@ -7,7 +7,8 @@ public class Card
 {
     public string cardName;
     public Modifier[] modifiers;
-    public UnityEvent<GameObject> onTriggerAbility;
+    public GameObject[] abilities;
     public string description;
     
+    // the abilities will subscribe events to the input handler or where necessary when spawned
 }

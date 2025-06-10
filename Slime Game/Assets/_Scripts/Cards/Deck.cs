@@ -6,6 +6,7 @@ public class Deck : MonoBehaviour
 {
     private PlayerStats playerStats;
     public List<Card> cards;
+    public Transform abilitiesParent;
 
     private void Awake() {
         playerStats = GetComponent<PlayerStats>();
@@ -18,6 +19,10 @@ public class Deck : MonoBehaviour
     public void AddCard(Card card) {
         foreach (Modifier modifier in card.modifiers) {
             playerStats.ModifyStat(modifier);
+        }
+
+        foreach (GameObject ability in card.abilities) {
+            Instantiate(ability, Vector3.zero, Quaternion.identity, abilitiesParent);
         }
         cards.Add(card);
     }
