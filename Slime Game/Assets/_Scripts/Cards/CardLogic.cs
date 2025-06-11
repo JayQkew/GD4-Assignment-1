@@ -31,7 +31,7 @@ public class CardLogic : MonoBehaviour,
 
     public void OnSubmit(BaseEventData eventData) {
         Debug.Log(card.cardName + " submitted");
-        //add card to players deck
+        //add card to players deck (need to get the active player)
         GameManager.Instance.SwitchState(GameState.Round);
     }
 

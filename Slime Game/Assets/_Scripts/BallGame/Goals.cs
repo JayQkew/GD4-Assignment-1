@@ -7,10 +7,9 @@ public class Goals : MonoBehaviour
     public GameObject pufferfishBurst;
     public AudioSource goalBurst;
     public AudioSource goalPing;
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Ball"))
-        {
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Ball")) {
             PointManager.Instance.Score((int)scoringTeam);
             GameObject burst = Instantiate(pufferfishBurst, transform, false);
             burst.transform.localPosition = Vector3.zero;

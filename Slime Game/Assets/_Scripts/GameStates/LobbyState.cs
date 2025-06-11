@@ -35,7 +35,6 @@ public class LobbyState : GameBaseState
     private void UpdateTimer(GameManager manager) {
         currTime -= Time.deltaTime;
         if (currTime <= 0) {
-            MapManager.Instance.NextMap();
             manager.SwitchState(GameState.Round);
         }
         else if (currTime <= 1) timeText.text = "GO!";

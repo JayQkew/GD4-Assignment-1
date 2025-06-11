@@ -12,6 +12,7 @@ public class RoundState : GameBaseState
     [SerializeField] private Transform[] spawns = new Transform[2];
     public override void EnterState(GameManager manager) {
         currRoundTime = 0f;
+        MapManager.Instance.NextMap();
         SceneManager.sceneLoaded += OnSceneLoaded;
         PointManager.Instance.onScore.AddListener(PointReset);
     }

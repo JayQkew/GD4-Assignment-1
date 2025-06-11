@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class DraftState : GameBaseState
 {
+    public Deck lostPlayerDeck;
     [SerializeField] private AllCards allCards;
     [SerializeField] private int draftSize;
     [SerializeField] private GameObject cardPrefab;
@@ -19,6 +20,7 @@ public class DraftState : GameBaseState
         SceneManager.LoadScene("Draft");
         SceneManager.sceneLoaded += OnSceneLoaded;
         //disable the other players ui selection
+        //get
     }
 
     public override void UpdateState(GameManager manager) {
