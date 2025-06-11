@@ -4,8 +4,13 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private BaseStats baseStats;
     [SerializeField] private Stat[] stats;
+    
     private void Awake() {
-        stats = baseStats.stats;
+        // Create deep copies of the stats instead of just copying references
+        stats = new Stat[baseStats.stats.Length];
+        for (int i = 0; i < baseStats.stats.Length; i++) {
+            stats[i] = baseStats.stats[i].Copy();
+        }
     }
 
     public float GetStatValue(StatName stat) {
@@ -32,6 +37,10 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void ResetStats() {
-        stats = baseStats.stats;
+        // Create fresh copies from the base stats again
+        stats = new Stat[baseStats.stats.Length];
+        for (int i = 0; i < baseStats.stats.Length; i++) {
+            stats[i] = baseStats.stats[i].Copy();
+        }
     }
 }
