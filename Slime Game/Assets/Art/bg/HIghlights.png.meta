@@ -1,0 +1,1937 @@
+fileFormatVersion: 2
+guid: 80a6a7d9daa0b7d41b40b6dd07d62679
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5040816518084658163
+    second: HIghlights_0
+  - first:
+      213: 5373274637980675
+    second: HIghlights_1
+  - first:
+      213: 928042358415124357
+    second: HIghlights_2
+  - first:
+      213: 6392057725743154702
+    second: HIghlights_3
+  - first:
+      213: 1339151606802186341
+    second: HIghlights_4
+  - first:
+      213: -7159235821767638397
+    second: HIghlights_5
+  - first:
+      213: -4765438374010478535
+    second: HIghlights_6
+  - first:
+      213: 7380365864492929736
+    second: HIghlights_7
+  - first:
+      213: 9205292239385730392
+    second: HIghlights_8
+  - first:
+      213: 2771264590659527446
+    second: HIghlights_9
+  - first:
+      213: 7624885981928193969
+    second: HIghlights_10
+  - first:
+      213: 2661254062047039954
+    second: HIghlights_11
+  - first:
+      213: -9037344494928083411
+    second: HIghlights_12
+  - first:
+      213: -4489029847767761369
+    second: HIghlights_13
+  - first:
+      213: 4873366576767804887
+    second: HIghlights_14
+  - first:
+      213: 2397316395179951988
+    second: HIghlights_15
+  - first:
+      213: -8134410018930554824
+    second: HIghlights_16
+  - first:
+      213: 4318107170879981315
+    second: HIghlights_17
+  - first:
+      213: -5191356702767686019
+    second: HIghlights_18
+  - first:
+      213: -5367719601470788168
+    second: HIghlights_19
+  - first:
+      213: 6334437004107054505
+    second: HIghlights_20
+  - first:
+      213: 5356674408771936694
+    second: HIghlights_21
+  - first:
+      213: -3510497672003896722
+    second: HIghlights_22
+  - first:
+      213: 5333457494815247786
+    second: HIghlights_23
+  - first:
+      213: 2137382779313095456
+    second: HIghlights_24
+  - first:
+      213: 4710678758391815911
+    second: HIghlights_25
+  - first:
+      213: 6816313687594948444
+    second: HIghlights_26
+  - first:
+      213: -1442622767149387041
+    second: HIghlights_27
+  - first:
+      213: 7041281556776262584
+    second: HIghlights_28
+  - first:
+      213: 1373591464961712916
+    second: HIghlights_29
+  - first:
+      213: 6243177050678448597
+    second: HIghlights_30
+  - first:
+      213: 5920948116754552803
+    second: HIghlights_31
+  - first:
+      213: 2651678190359943085
+    second: HIghlights_32
+  - first:
+      213: -8397011373219842153
+    second: HIghlights_33
+  - first:
+      213: 7044646046798912213
+    second: HIghlights_34
+  - first:
+      213: -8554507106092376496
+    second: HIghlights_35
+  - first:
+      213: -8596534132125851694
+    second: HIghlights_36
+  - first:
+      213: -6304678392976410059
+    second: HIghlights_37
+  - first:
+      213: -925681811854678775
+    second: HIghlights_38
+  - first:
+      213: 397436767735853855
+    second: HIghlights_39
+  - first:
+      213: 3287484772962507233
+    second: HIghlights_40
+  - first:
+      213: 3491682332633599167
+    second: HIghlights_41
+  - first:
+      213: 379482040503028573
+    second: HIghlights_42
+  - first:
+      213: 7388107040271777004
+    second: HIghlights_43
+  - first:
+      213: 5096829565988430203
+    second: HIghlights_44
+  - first:
+      213: -4645518151454160545
+    second: HIghlights_45
+  - first:
+      213: -471581506535501636
+    second: HIghlights_46
+  - first:
+      213: 1229604892627911169
+    second: HIghlights_47
+  - first:
+      213: 7477722727401450007
+    second: HIghlights_48
+  - first:
+      213: -3009785149106147263
+    second: HIghlights_49
+  - first:
+      213: 5387933266997130436
+    second: HIghlights_50
+  - first:
+      213: -5245197465403613985
+    second: HIghlights_51
+  - first:
+      213: 4535214558911657865
+    second: HIghlights_52
+  - first:
+      213: -2234323945941152981
+    second: HIghlights_53
+  - first:
+      213: -633223569408435
+    second: HIghlights_54
+  - first:
+      213: 1555175373140081472
+    second: HIghlights_55
+  - first:
+      213: -6133985536487138379
+    second: HIghlights_56
+  - first:
+      213: -8212271202909325184
+    second: HIghlights_57
+  - first:
+      213: -3382258384393731516
+    second: HIghlights_58
+  - first:
+      213: -6448398878675137037
+    second: HIghlights_59
+  - first:
+      213: -3609851018733187821
+    second: HIghlights_60
+  - first:
+      213: 6723752983485135248
+    second: HIghlights_61
+  - first:
+      213: 1913725405579962391
+    second: HIghlights_62
+  - first:
+      213: 8383975854543698797
+    second: HIghlights_63
+  - first:
+      213: -2656529553398289021
+    second: HIghlights_64
+  - first:
+      213: 8582920673553895939
+    second: HIghlights_65
+  - first:
+      213: 4984796136113999597
+    second: HIghlights_66
+  - first:
+      213: -8807535797834599152
+    second: HIghlights_67
+  - first:
+      213: -3805265892232784736
+    second: HIghlights_68
+  - first:
+      213: -4255146764378636602
+    second: HIghlights_69
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HIghlights_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1056
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f38b527ae394f540800000000000000
+      internalID: 5040816518084658163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_1
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1064
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304d31ef6f6131000800000000000000
+      internalID: 5373274637980675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_2
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 1058
+        width: 33
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58769d5ab9111ec00800000000000000
+      internalID: 928042358415124357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_3
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 990
+        width: 135
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0646be82a625b850800000000000000
+      internalID: 6392057725743154702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_4
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 971
+        width: 52
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56086df8a4f959210800000000000000
+      internalID: 1339151606802186341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_5
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 1060
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 382c94c83f845ac90800000000000000
+      internalID: -7159235821767638397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_6
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 1057
+        width: 46
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93027161c03cdddb0800000000000000
+      internalID: -4765438374010478535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1041
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c21581a6a35c6660800000000000000
+      internalID: 7380365864492929736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_8
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 1013
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85d1f3e1584cfbf70800000000000000
+      internalID: 9205292239385730392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_9
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 991
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61321e06672857620800000000000000
+      internalID: 2771264590659527446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_10
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 983
+        width: 33
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bf7fa5f66901d960800000000000000
+      internalID: 7624885981928193969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_11
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 986
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d11161387caee420800000000000000
+      internalID: 2661254062047039954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_12
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 975
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26caf25017e49280800000000000000
+      internalID: -9037344494928083411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_13
+      rect:
+        serializedVersion: 2
+        x: 1624
+        y: 976
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72e3da92323c3b1c0800000000000000
+      internalID: -4489029847767761369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_14
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 923
+        width: 27
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5a184d41da1a340800000000000000
+      internalID: 4873366576767804887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 970
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477cbe45f8af44120800000000000000
+      internalID: 2397316395179951988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_16
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 962
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 838044c8f25cc1f80800000000000000
+      internalID: -8134410018930554824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_17
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 944
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3074e56f79ffceb30800000000000000
+      internalID: 4318107170879981315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_18
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 897
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7e5035759894f7b0800000000000000
+      internalID: -5191356702767686019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_19
+      rect:
+        serializedVersion: 2
+        x: 1776
+        y: 909
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bdae6c36770285b0800000000000000
+      internalID: -5367719601470788168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_20
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 916
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9adf3e9d4e078e750800000000000000
+      internalID: 6334437004107054505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_21
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 915
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b1e6407efab65a40800000000000000
+      internalID: 5356674408771936694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_22
+      rect:
+        serializedVersion: 2
+        x: 1861
+        y: 890
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a3f5b77f4384fc0800000000000000
+      internalID: -3510497672003896722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_23
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 829
+        width: 23
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad8b1b655f340a40800000000000000
+      internalID: 5333457494815247786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_24
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 603
+        width: 83
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0238efd305289ad10800000000000000
+      internalID: 2137382779313095456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_25
+      rect:
+        serializedVersion: 2
+        x: 1903
+        y: 867
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee1cec5f51bf5140800000000000000
+      internalID: 4710678758391815911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_26
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 841
+        width: 51
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c57daba3f29689e50800000000000000
+      internalID: 6816313687594948444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_27
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 818
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd27b239c36cafbe0800000000000000
+      internalID: -1442622767149387041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_28
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 823
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bb98230548a7b160800000000000000
+      internalID: 7041281556776262584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_29
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 751
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4132d87e82aff0310800000000000000
+      internalID: 1373591464961712916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_30
+      rect:
+        serializedVersion: 2
+        x: 1908
+        y: 801
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d15f87237834a650800000000000000
+      internalID: 6243177050678448597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_31
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 680
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e75ca011fe6b2250800000000000000
+      internalID: 5920948116754552803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_32
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 613
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da71e03d347acc420800000000000000
+      internalID: 2651678190359943085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_33
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 565
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 797f05435a2d77b80800000000000000
+      internalID: -8397011373219842153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_34
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 577
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5da1fc3614c93c160800000000000000
+      internalID: 7044646046798912213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_35
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 539
+        width: 43
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05e1fc85c19484980800000000000000
+      internalID: -8554507106092376496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_36
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 423
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df1e13d0c9f2b880800000000000000
+      internalID: -8596534132125851694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_37
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 329
+        width: 27
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a7f8bb7684188a0800000000000000
+      internalID: -6304678392976410059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_38
+      rect:
+        serializedVersion: 2
+        x: 1626
+        y: 329
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 905ac5deb415723f0800000000000000
+      internalID: -925681811854678775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_39
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 314
+        width: 24
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f13339172aaf38500800000000000000
+      internalID: 397436767735853855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_40
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 279
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e99fe0bbfd7f9d20800000000000000
+      internalID: 3287484772962507233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_41
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 244
+        width: 34
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbc0221f492f47030800000000000000
+      internalID: 3491682332633599167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_42
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 210
+        width: 46
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5bc2deb7e0344500800000000000000
+      internalID: 379482040503028573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_43
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 134
+        width: 110
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec36f19534d78660800000000000000
+      internalID: 7388107040271777004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_44
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 182
+        width: 38
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b71e2717c739bb640800000000000000
+      internalID: 5096829565988430203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_45
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 152
+        width: 18
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5902f0baddc78fb0800000000000000
+      internalID: -4645518151454160545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_46
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 224
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb0de4c4e1b9479f0800000000000000
+      internalID: -471581506535501636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_47
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 208
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1024b27922f601110800000000000000
+      internalID: 1229604892627911169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_48
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 162
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71ae0afa33536c760800000000000000
+      internalID: 7477722727401450007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_49
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 192
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14038497a581b36d0800000000000000
+      internalID: -3009785149106147263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_50
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 157
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c4bfd482c8c5ca40800000000000000
+      internalID: 5387933266997130436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_51
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 167
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdc96d902b05537b0800000000000000
+      internalID: -5245197465403613985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_52
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 79
+        width: 70
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 987fb1cdc9150fe30800000000000000
+      internalID: 4535214558911657865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_53
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 143
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b470985361ef0e0800000000000000
+      internalID: -2234323945941152981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_54
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 146
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4ef4162610cdfff0800000000000000
+      internalID: -633223569408435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 83
+        width: 41
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04b337f13c7159510800000000000000
+      internalID: 1555175373140081472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_56
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 123
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bbdc4067a4bfdaa0800000000000000
+      internalID: -6133985536487138379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_57
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 72
+        width: 18
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0887b67f9d6280e80800000000000000
+      internalID: -8212271202909325184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_58
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 48
+        width: 52
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44200ab5bedcf01d0800000000000000
+      internalID: -3382258384393731516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_59
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 61
+        width: 56
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fd8a8a826fa286a0800000000000000
+      internalID: -6448398878675137037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_60
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 103
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d8350df9b37edc0800000000000000
+      internalID: -3609851018733187821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_61
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 63
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 099ba1ae6b19f4d50800000000000000
+      internalID: 6723752983485135248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_62
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 66
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 718eb35fd1bee8a10800000000000000
+      internalID: 1913725405579962391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_63
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 57
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6b77879e9dd95470800000000000000
+      internalID: 8383975854543698797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_64
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 39
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38d2e52327c122bd0800000000000000
+      internalID: -2656529553398289021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_65
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 36
+        width: 94
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 302598ad0e8ac1770800000000000000
+      internalID: 8582920673553895939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_66
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 16
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dee80dadcad8d2540800000000000000
+      internalID: 4984796136113999597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_67
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 15
+        width: 128
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 015388f2bd855c580800000000000000
+      internalID: -8807535797834599152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_68
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 0
+        width: 36
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a41e8905daf03bc0800000000000000
+      internalID: -3805265892232784736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HIghlights_69
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 0
+        width: 47
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cefe02009ea2f4c0800000000000000
+      internalID: -4255146764378636602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      HIghlights_0: 5040816518084658163
+      HIghlights_1: 5373274637980675
+      HIghlights_10: 7624885981928193969
+      HIghlights_11: 2661254062047039954
+      HIghlights_12: -9037344494928083411
+      HIghlights_13: -4489029847767761369
+      HIghlights_14: 4873366576767804887
+      HIghlights_15: 2397316395179951988
+      HIghlights_16: -8134410018930554824
+      HIghlights_17: 4318107170879981315
+      HIghlights_18: -5191356702767686019
+      HIghlights_19: -5367719601470788168
+      HIghlights_2: 928042358415124357
+      HIghlights_20: 6334437004107054505
+      HIghlights_21: 5356674408771936694
+      HIghlights_22: -3510497672003896722
+      HIghlights_23: 5333457494815247786
+      HIghlights_24: 2137382779313095456
+      HIghlights_25: 4710678758391815911
+      HIghlights_26: 6816313687594948444
+      HIghlights_27: -1442622767149387041
+      HIghlights_28: 7041281556776262584
+      HIghlights_29: 1373591464961712916
+      HIghlights_3: 6392057725743154702
+      HIghlights_30: 6243177050678448597
+      HIghlights_31: 5920948116754552803
+      HIghlights_32: 2651678190359943085
+      HIghlights_33: -8397011373219842153
+      HIghlights_34: 7044646046798912213
+      HIghlights_35: -8554507106092376496
+      HIghlights_36: -8596534132125851694
+      HIghlights_37: -6304678392976410059
+      HIghlights_38: -925681811854678775
+      HIghlights_39: 397436767735853855
+      HIghlights_4: 1339151606802186341
+      HIghlights_40: 3287484772962507233
+      HIghlights_41: 3491682332633599167
+      HIghlights_42: 379482040503028573
+      HIghlights_43: 7388107040271777004
+      HIghlights_44: 5096829565988430203
+      HIghlights_45: -4645518151454160545
+      HIghlights_46: -471581506535501636
+      HIghlights_47: 1229604892627911169
+      HIghlights_48: 7477722727401450007
+      HIghlights_49: -3009785149106147263
+      HIghlights_5: -7159235821767638397
+      HIghlights_50: 5387933266997130436
+      HIghlights_51: -5245197465403613985
+      HIghlights_52: 4535214558911657865
+      HIghlights_53: -2234323945941152981
+      HIghlights_54: -633223569408435
+      HIghlights_55: 1555175373140081472
+      HIghlights_56: -6133985536487138379
+      HIghlights_57: -8212271202909325184
+      HIghlights_58: -3382258384393731516
+      HIghlights_59: -6448398878675137037
+      HIghlights_6: -4765438374010478535
+      HIghlights_60: -3609851018733187821
+      HIghlights_61: 6723752983485135248
+      HIghlights_62: 1913725405579962391
+      HIghlights_63: 8383975854543698797
+      HIghlights_64: -2656529553398289021
+      HIghlights_65: 8582920673553895939
+      HIghlights_66: 4984796136113999597
+      HIghlights_67: -8807535797834599152
+      HIghlights_68: -3805265892232784736
+      HIghlights_69: -4255146764378636602
+      HIghlights_7: 7380365864492929736
+      HIghlights_8: 9205292239385730392
+      HIghlights_9: 2771264590659527446
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
