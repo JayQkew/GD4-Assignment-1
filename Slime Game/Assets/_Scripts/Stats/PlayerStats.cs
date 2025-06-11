@@ -30,4 +30,8 @@ public class PlayerStats : MonoBehaviour
         Stat stat = GetStat(modifier.affectedStat);
         stat.ApplyModifier(modifier);
     }
+
+    public void ResetStats() {
+        stats = baseStats.stats;
+    }
 }

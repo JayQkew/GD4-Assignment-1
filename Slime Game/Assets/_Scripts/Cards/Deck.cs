@@ -26,4 +26,10 @@ public class Deck : MonoBehaviour
         }
         cards.Add(card);
     }
+
+    public void ClearDeck() {
+        cards.Clear();
+        Destroy(abilitiesParent);
+        abilitiesParent = new GameObject("Abilities").transform;
+    }
 }
