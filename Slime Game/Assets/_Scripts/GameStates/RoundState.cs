@@ -14,7 +14,7 @@ public class RoundState : GameBaseState
         currRoundTime = 0f;
         MapManager.Instance.NextMap();
         SceneManager.sceneLoaded += OnSceneLoaded;
-        PointManager.Instance.onScore.AddListener(PointReset);
+        // PointManager.Instance.onScore.AddListener(ResetPlayerPos);
     }
 
     public override void UpdateState(GameManager manager) {
@@ -31,11 +31,11 @@ public class RoundState : GameBaseState
 
     public override void ExitState(GameManager manager) {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        PointManager.Instance.onScore.RemoveListener(PointReset);
+        // PointManager.Instance.onScore.RemoveListener(ResetPlayerPos);
         PointManager.Instance.suddenDeath = false;
     }
 
-    private void PointReset() {
+    private void ResetPlayerPos() {
         //each player goes back to spawn (move the soft bodies)
         for (int i = 0; i < spawns.Length; i++) {
             SoftBody softBody = Multiplayer.Instance.players[i].GetComponentInChildren<SoftBody>();
@@ -50,5 +50,6 @@ public class RoundState : GameBaseState
         for (int i = 0; i < spawns.Length; i++) {
             spawns[i] = spawnParent.GetChild(i);
         }
+        ResetPlayerPos();
     }
 }
