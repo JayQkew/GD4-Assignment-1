@@ -55,6 +55,7 @@ public class PointManager : MonoBehaviour
                 scoreText[i].text = points[i].ToString();
             }
             Debug.Log($"Player {playerScored} wins the GAME!");
+            GameManager.Instance.podiumState.winnerNumber = playerScored;
             GameManager.Instance.SwitchState(GameState.Podium);
         }
         else {
