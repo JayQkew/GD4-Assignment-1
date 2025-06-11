@@ -58,7 +58,7 @@ public class Multiplayer : MonoBehaviour
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (scene.name != "Draft") {
+        if (scene.name != "Draft" || scene.name != "StartScreen" || scene.name != "MapSelect" || scene.name != "Podium") {
             spawnPoints = new Transform[2];
             Transform playerSpawnPoints = GameObject.FindGameObjectWithTag("PlayerSpawns").transform;
             for (int i = 0; i < spawnPoints.Length; i++) {
@@ -68,28 +68,11 @@ public class Multiplayer : MonoBehaviour
     }
 
     public void SetUIInteraction(int player, bool active) {
-        var playerInput = _playerInputs[player];
-    
-        if (active) {
-            // Enable UI actions
-            playerInput.actions["Navigate"].Enable();
-            playerInput.actions["Submit"].Enable();
-            playerInput.actions["Cancel"].Enable();
-            playerInput.actions["Point"].Enable();
-            playerInput.actions["Click"].Enable();
-            playerInput.actions["ScrollWheel"].Enable();
-            playerInput.actions["MiddleClick"].Enable();
-            playerInput.actions["RightClick"].Enable();
-        } else {
-            // Disable UI actions
-            playerInput.actions["Navigate"].Disable();
-            playerInput.actions["Submit"].Disable();
-            playerInput.actions["Cancel"].Disable();
-            playerInput.actions["Point"].Disable();
-            playerInput.actions["Click"].Disable();
-            playerInput.actions["ScrollWheel"].Disable();
-            playerInput.actions["MiddleClick"].Disable();
-            playerInput.actions["RightClick"].Disable();
+        if (active) { 
+            _playerInputs[player].actions.FindActionMap("UI").Enable();
+        }
+        else {
+            _playerInputs[player].actions.FindActionMap("UI").Disable();
         }
     }
     
