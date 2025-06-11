@@ -55,7 +55,7 @@ public class PointManager : MonoBehaviour
                 scoreText[i].text = points[i].ToString();
             }
             Debug.Log($"Player {playerScored} wins the GAME!");
-            GameManager.Instance.SwitchState(GameState.Winner);
+            GameManager.Instance.SwitchState(GameState.Podium);
         }
         else {
             Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0).GetComponent<Deck>();

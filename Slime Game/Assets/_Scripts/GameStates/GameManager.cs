@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             case GameState.Draft:
                 currState = draftState;
                 break;
-            case GameState.Winner:
+            case GameState.Podium:
                 currState = podiumState;
                 break;
             case GameState.Limbo:
@@ -75,6 +75,6 @@ public enum GameState
     Lobby,
     Round,
     Draft,
-    Winner,
+    Podium,
     Limbo
 }
