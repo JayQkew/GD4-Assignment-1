@@ -390,11 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92667a3675bf33a438fdf0eaab050ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-  - cardName: 
-    modifiers: []
-    abilities: []
-    description: 
+  cards: []
+  abilitiesParent: {fileID: 3014630841701627682}
 --- !u!114 &8747095788319027792
 MonoBehaviour:
   m_ObjectHideFlags: 0
