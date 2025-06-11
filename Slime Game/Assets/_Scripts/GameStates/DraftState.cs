@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class DraftState : GameBaseState
 {
-    public GameObject winner;
+    public int winner;
     public Deck lostPlayerDeck;
     [SerializeField] private AllCards allCards;
     [SerializeField] private int draftSize;
@@ -20,7 +20,7 @@ public class DraftState : GameBaseState
     public override void EnterState(GameManager manager) {
         SceneManager.LoadScene("Draft");
         SceneManager.sceneLoaded += OnSceneLoaded;
-        winner.SetActive(false);
+        Multiplayer.Instance.SetUIInteraction(winner, false);
         //disable the other players ui selection
         //get
     }
@@ -30,10 +30,10 @@ public class DraftState : GameBaseState
 
     public override void ExitState(GameManager manager) {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        Multiplayer.Instance.SetUIInteraction(winner, true);
         for (int i = 0; i < draftSize; i++) {
             Object.Destroy(draftParent.GetChild(i).gameObject);
         }
-        winner.SetActive(false);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
