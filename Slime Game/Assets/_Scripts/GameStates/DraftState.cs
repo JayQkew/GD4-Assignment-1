@@ -20,7 +20,6 @@ public class DraftState : GameBaseState
     public override void EnterState(GameManager manager) {
         SceneManager.LoadScene("Draft");
         SceneManager.sceneLoaded += OnSceneLoaded;
-        Multiplayer.Instance.SetUIInteraction(winner, false);
         //disable the other players ui selection
         //get
     }
@@ -30,13 +29,18 @@ public class DraftState : GameBaseState
 
     public override void ExitState(GameManager manager) {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        Multiplayer.Instance.SetUIInteraction(winner, true);
+        Multiplayer.Instance.SetUIInteraction(0, true);
+        Multiplayer.Instance.SetUIInteraction(1, true);
         for (int i = 0; i < draftSize; i++) {
             Object.Destroy(draftParent.GetChild(i).gameObject);
         }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        Multiplayer.Instance.SetUIInteraction(winner, false);
+        int loser = (winner + 1) % 2;
+        Multiplayer.Instance.SetUIInteraction(loser, true);
+
         //draft cards
         draftParent = GameObject.Find("Draft").transform;
         Card[] draft = DraftedCards();

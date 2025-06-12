@@ -60,9 +60,11 @@ public class PointManager : MonoBehaviour
         }
         else {
             Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0).GetComponent<Deck>();
-            GameManager.Instance.draftState.winner = playerScored;
+            int winner = playerScored;
             GameManager.Instance.draftState.lostPlayerDeck = lostPlayerDeck;
+            GameManager.Instance.draftState.winner = winner;
             GameManager.Instance.SwitchState(GameState.Draft);
+
         }
     }
 
