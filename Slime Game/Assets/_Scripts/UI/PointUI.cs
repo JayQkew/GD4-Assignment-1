@@ -9,7 +9,7 @@ public class PointUI : MonoBehaviour
     [SerializeField] private GameObject[] advantage = new GameObject[2];
     [SerializeField] private TextMeshProUGUI[] roundsWon = new TextMeshProUGUI[2];
     [SerializeField] private Transform[] playerPoints = new Transform[2];
-    private Image[,] points = new Image[2,3];
+    private Image[,] _points = new Image[2,3];
 
     private void Awake() {
         if (Instance == null) {
@@ -28,8 +28,20 @@ public class PointUI : MonoBehaviour
         for (int i = 0; i < playerPoints.Length; i++) {
             int children = playerPoints[i].childCount;
             for (int j = 0; j < children; j++) {
-                points[i,j] = playerPoints[i].GetChild(j).GetComponent<Image>();
+                _points[i,j] = playerPoints[i].GetChild(j).GetComponent<Image>();
             }
         }
+    }
+
+    public void UpdatePointsUI(int player, int points) {
+        for (int i = 0; i < points; i++) {
+            Color color = playerPoints[i].GetComponent<Image>().color;
+            color.a = 1;
+            _points[player,i].color = color;
+        }
+    }
+
+    public void UpdateRoundsWon(int player, int rounds) {
+        roundsWon[player].text = rounds.ToString();
     }
 }
