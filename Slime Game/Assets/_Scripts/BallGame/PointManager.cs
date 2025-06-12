@@ -49,7 +49,8 @@ public class PointManager : MonoBehaviour
             scoreText[i].text = points[i].ToString();
         }
         
-        if (roundsWon[playerScored] >= otherPlayerRounds + 2) {
+        if (roundsWon[playerScored] >= otherPlayerRounds + 2 &&
+            roundsWon[playerScored] >= minRoundsToWin) {
             for (int i = 0; i < roundsWon.Length; i++) {
                 roundsWon[i] = 0;
                 scoreText[i].text = points[i].ToString();
