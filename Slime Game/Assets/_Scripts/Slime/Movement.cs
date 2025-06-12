@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     private InputHandler inputHandler;
     private PlayerStats playerStats;
 
-    [SerializeReference] private float currFuel;
+    public float currFuel;
     [SerializeField] private bool isInflated;
 
     private void Awake() {
