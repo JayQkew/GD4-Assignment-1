@@ -49,8 +49,14 @@ public class PointUI : MonoBehaviour
     public void UpdateAdvantage() {
         //check who has advantage
         int advantageTo = PointManager.Instance.Advantage();
-        if (advantageTo == -1) return;
-        advantage[advantageTo].SetActive(true);
-        advantage[(advantageTo + 1) % 2].SetActive(false);
+        Debug.Log("Advantage to " + advantageTo);
+        if (advantageTo == -1) {
+            advantage[0].SetActive(false);
+            advantage[1].SetActive(false);
+        }
+        else {
+            advantage[advantageTo].SetActive(true);
+            advantage[(advantageTo + 1) % 2].SetActive(false);
+        }
     }
 }
