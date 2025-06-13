@@ -95,8 +95,8 @@ public class PointManager : MonoBehaviour
         }
         else {
             if (p1 == p2) return -1; // No advantage or match point
-            if (p1 >= minRoundsToWin - 1 && (p2 < minRoundsToWin)) return 2; // Player 1 match point
-            if (p2 >= minRoundsToWin - 1 && (p1 < minRoundsToWin)) return 3; // Player 2 match point
+            if (p1 >= minRoundsToWin - 1 && p2 < minRoundsToWin) return 2; // Player 1 round point
+            if (p2 >= minRoundsToWin - 1 && p1 < minRoundsToWin) return 3; // Player 2 round point
         }
         return -1;
     }

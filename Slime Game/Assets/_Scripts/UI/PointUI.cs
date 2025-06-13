@@ -9,6 +9,7 @@ public class PointUI : MonoBehaviour
     [SerializeField] private GameObject[] advantage = new GameObject[2];
     [SerializeField] private TextMeshProUGUI[] roundsWon = new TextMeshProUGUI[2];
     [SerializeField] private Transform[] playerPoints = new Transform[2];
+    [SerializeField] private Slider[] timerSlider = new Slider[2];
     private Image[,] _points = new Image[2,3];
 
     private void Awake() {
@@ -58,7 +59,7 @@ public class PointUI : MonoBehaviour
             advantage[0].SetActive(advantageTo % 2 == 0);
             advantage[1].SetActive(advantageTo % 2 == 1);
 
-            advantage[advantageTo % 2].GetComponent<TextMeshProUGUI>().text = "MP";
+            advantage[advantageTo % 2].GetComponent<TextMeshProUGUI>().text = "RP";
         }
         else {
             advantage[advantageTo].SetActive(true);
@@ -66,5 +67,13 @@ public class PointUI : MonoBehaviour
             
             advantage[advantageTo].GetComponent<TextMeshProUGUI>().text = "AD";
         }
+    }
+
+    public void UpdateTimer(float max, float curr) {
+        timerSlider[0].maxValue = max;
+        timerSlider[1].maxValue = max;
+        
+        timerSlider[0].value = curr;
+        timerSlider[1].value = curr;
     }
 }
