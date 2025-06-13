@@ -35,13 +35,14 @@ public class PointUI : MonoBehaviour
 
     public void UpdatePointsUI(int player, int points) {
         for (int i = 0; i < points; i++) {
-            Color color = playerPoints[i].GetComponent<Image>().color;
+            Color color = playerPoints[player].GetChild(0).GetComponent<Image>().color;
             color.a = 1;
             _points[player,i].color = color;
         }
     }
 
-    public void UpdateRoundsWon(int player, int rounds) {
-        roundsWon[player].text = rounds.ToString();
+    public void UpdateRoundsWon() {
+        roundsWon[0].text = PointManager.Instance.roundsWon[0].ToString();
+        roundsWon[1].text = PointManager.Instance.roundsWon[1].ToString();
     }
 }

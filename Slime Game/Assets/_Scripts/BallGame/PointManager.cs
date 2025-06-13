@@ -36,7 +36,6 @@ public class PointManager : MonoBehaviour
         PointUI.Instance.UpdatePointsUI(playerScored, points[playerScored]);
         if (points[playerScored] >= pointsToWinRound || suddenDeath) {
             Debug.Log($"Player {playerScored} wins the round!");
-            PointUI.Instance.UpdateRoundsWon(playerScored, roundsWon[playerScored]);
             RoundWon(playerScored);
         }
     }

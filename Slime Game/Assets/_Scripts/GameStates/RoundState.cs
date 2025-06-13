@@ -49,5 +49,6 @@ public class RoundState : GameBaseState
             spawns[i] = spawnParent.GetChild(i);
         }
         ResetPlayerPos();
+        PointUI.Instance.UpdateRoundsWon();
     }
 }
