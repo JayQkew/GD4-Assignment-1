@@ -45,4 +45,12 @@ public class PointUI : MonoBehaviour
         roundsWon[0].text = PointManager.Instance.roundsWon[0].ToString();
         roundsWon[1].text = PointManager.Instance.roundsWon[1].ToString();
     }
+
+    public void UpdateAdvantage() {
+        //check who has advantage
+        int advantageTo = PointManager.Instance.Advantage();
+        if (advantageTo == -1) return;
+        advantage[advantageTo].SetActive(true);
+        advantage[(advantageTo + 1) % 2].SetActive(false);
+    }
 }

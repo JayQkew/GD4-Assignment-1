@@ -50,5 +50,6 @@ public class RoundState : GameBaseState
         }
         ResetPlayerPos();
         PointUI.Instance.UpdateRoundsWon();
+        PointUI.Instance.UpdateAdvantage();
     }
 }

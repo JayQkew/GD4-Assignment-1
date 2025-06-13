@@ -77,6 +77,15 @@ public class PointManager : MonoBehaviour
             scoreText[1] = GameObject.Find("Player 2 Score").GetComponent<TextMeshProUGUI>();
         }
     }
+
+    /// <summary>
+    /// checks which player has advantage
+    /// </summary>
+    /// <returns>-1 is no-one</returns>
+    public int Advantage() {
+        if (points[0] == points[1]) return -1;
+        return points[0] < points[1] ? 0 : 1;
+    }
 }
 
 public enum Teams
