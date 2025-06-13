@@ -19,7 +19,7 @@ public class PointManager : MonoBehaviour
     private void Awake() {
         if (Instance == null) Instance = this;
         else if (Instance != this) Destroy(gameObject);
-        
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -43,30 +43,31 @@ public class PointManager : MonoBehaviour
     public void RoundWon(int playerScored) {
         roundsWon[playerScored]++;
         int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
-        
+
         //resets the points
         for (int i = 0; i < points.Length; i++) {
             points[i] = 0;
             scoreText[i].text = points[i].ToString();
         }
-        
+
         if (roundsWon[playerScored] >= otherPlayerRounds + 2 &&
             roundsWon[playerScored] >= minRoundsToWin) {
             for (int i = 0; i < roundsWon.Length; i++) {
                 roundsWon[i] = 0;
                 scoreText[i].text = points[i].ToString();
             }
+
             Debug.Log($"Player {playerScored} wins the GAME!");
             GameManager.Instance.podiumState.winnerNumber = playerScored;
             GameManager.Instance.SwitchState(GameState.Podium);
         }
         else {
-            Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0).GetComponent<Deck>();
+            Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0)
+                .GetComponent<Deck>();
             int winner = playerScored;
             GameManager.Instance.draftState.lostPlayerDeck = lostPlayerDeck;
             GameManager.Instance.draftState.winner = winner;
             GameManager.Instance.SwitchState(GameState.Draft);
-
         }
     }
 
@@ -82,51 +83,23 @@ public class PointManager : MonoBehaviour
     /// checks which player has advantage
     /// </summary>
     /// <returns>-1 is no-one</returns>
-    public int Advantage()
-    {
-        int p1 = points[0];
-        int p2 = points[1];
+    public int Advantage() {
+        int p1 = roundsWon[0];
+        int p2 = roundsWon[1];
 
         // Deuce and beyond
-        if (p1 >= minRoundsToWin && p2 >= minRoundsToWin)
-        {
-            if (p1 == p2)
-                return -1; // Deuce
-
-            if (p1 == p2 + 1)
-                return 0; // Advantage Player 1
-
-            if (p2 == p1 + 1)
-                return 1; // Advantage Player 2
-
-            if (p1 >= p2 + 2)
-                return 2; // Player 1 wins
-
-            if (p2 >= p1 + 2)
-                return 3; // Player 2 wins
+        if (p1 >= minRoundsToWin && p2 >= minRoundsToWin) {
+            if (p1 == p2) return -1; // Deuce
+            if (p1 > p2) return 0; // Advantage Player 1
+            if (p2 > p1) return 1; // Advantage Player 2
         }
-        else
-        {
-            // Player 1 wins directly
-            if (p1 >= 4 && p1 >= p2 + 1)
-                return 2;
-
-            // Player 2 wins directly
-            if (p2 >= 4 && p2 >= p1 + 1)
-                return 3;
-
-            // Player 1 match point
-            if (p1 == 3 && (p2 < 3))
-                return 4;
-
-            // Player 2 match point
-            if (p2 == 3 && (p1 < 3))
-                return 5;
+        else {
+            if (p1 == p2) return -1; // No advantage or match point
+            if (p1 >= minRoundsToWin - 1 && (p2 < minRoundsToWin)) return 2; // Player 1 match point
+            if (p2 >= minRoundsToWin - 1 && (p1 < minRoundsToWin)) return 3; // Player 2 match point
         }
-
-        return -1; // No advantage or match point
+        return -1;
     }
-
 }
 
 public enum Teams

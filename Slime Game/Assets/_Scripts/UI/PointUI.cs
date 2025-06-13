@@ -54,9 +54,17 @@ public class PointUI : MonoBehaviour
             advantage[0].SetActive(false);
             advantage[1].SetActive(false);
         }
+        else if (advantageTo == 2 || advantageTo == 3) {
+            advantage[0].SetActive(advantageTo % 2 == 0);
+            advantage[1].SetActive(advantageTo % 2 == 1);
+
+            advantage[advantageTo % 2].GetComponent<TextMeshProUGUI>().text = "MP";
+        }
         else {
             advantage[advantageTo].SetActive(true);
             advantage[(advantageTo + 1) % 2].SetActive(false);
+            
+            advantage[advantageTo].GetComponent<TextMeshProUGUI>().text = "AD";
         }
     }
 }
