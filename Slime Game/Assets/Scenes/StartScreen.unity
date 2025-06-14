@@ -239,7 +239,6 @@ GameObject:
   - component: {fileID: 61643237}
   - component: {fileID: 61643239}
   - component: {fileID: 61643238}
-  - component: {fileID: 61643240}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -365,22 +364,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61643236}
   m_CullTransparentMesh: 1
---- !u!114 &61643240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61643236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 953a2ba0cf2fa364fb4a3d7b90d3c1d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationSpeed: 1
-  playOnStart: 1
-  minWeight: 0
-  maxWeight: 1
 --- !u!1 &167405324
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.012148449, g: 0.012198647, b: 0.066037714, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
