@@ -14,30 +14,24 @@ public class BombSpawner : MonoBehaviour
     [Header("Timer")] [SerializeField] private float currTime;
     [SerializeField] private float spawnTime;
 
-    private void Start()
-    {
-        for (int i = 0; i < maxLiveBombs; i++)
-        {
+    private void Start() {
+        for (int i = 0; i < maxLiveBombs; i++) {
             GameObject bomb = Instantiate(bombPrefab, transform);
             bombs.Add(bomb);
-            bomb.SetActive(false);
+            // bomb.SetActive(false);
         }
     }
 
-    private void Update()
-    {
+    private void Update() {
         currTime += Time.deltaTime;
-        if (currTime >= spawnTime)
-        {
+        if (currTime >= spawnTime) {
             SpawnBomb();
             currTime = 0;
         }
     }
 
-    private void SpawnBomb()
-    {
-        if (LiveBombs() < maxLiveBombs)
-        {
+    private void SpawnBomb() {
+        if (LiveBombs() < maxLiveBombs) {
             float randAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             Vector2 dir = new Vector2(Mathf.Cos(randAngle), Mathf.Sin(randAngle));
 
@@ -46,23 +40,18 @@ public class BombSpawner : MonoBehaviour
         }
     }
 
-    private int LiveBombs()
-    {
+    private int LiveBombs() {
         int count = 0;
-        foreach (GameObject bomb in bombs)
-        {
+        foreach (GameObject bomb in bombs) {
             count += bomb.activeSelf ? 1 : 0;
         }
 
         return count;
     }
 
-    private GameObject FetchBomb()
-    {
-        foreach (GameObject bomb in bombs)
-        {
-            if (bomb.activeSelf == false)
-            {
+    private GameObject FetchBomb() {
+        foreach (GameObject bomb in bombs) {
+            if (bomb.activeSelf == false) {
                 bomb.SetActive(true);
                 bomb.transform.position = transform.position;
                 return bomb;

@@ -9,176 +9,102 @@ using UnityEngine.Serialization;
 public class Movement : MonoBehaviour
 {
     private SoftBody _softBody;
-    [HideInInspector] public InputHandler inputHandler;
-    private Gamepad _gamepad;
+    private InputHandler inputHandler;
+    private PlayerStats playerStats;
 
-    [Header("Resource")]
-    [SerializeReference] private float currAir;
-    [SerializeReference] private float maxAir;
-    
-    [Header("Movement Settings")] [SerializeField]
-    private float _movementMultiplier;
-    [SerializeField] private float _moveCostMultiplier = 1;
+    public float currFuel;
+    [SerializeField] private bool isInflated;
 
-    [Header("Inflate Settings")] [SerializeField]
-    private bool isInflated;
-    [SerializeField] private float _inflateTime;
-    [SerializeField] private float _maxRadius;
-    private float _startRadius;
-    [SerializeReference] private Vector2 _inflateShake;
-    [SerializeField] private float _maxFrequency;
-    private float _startFrequency;
-
-    [Header("Dash Settings")] 
-    [SerializeField] private float _dashCooldown;
-    [SerializeField] private float _dashForceMultiplier;
-    [SerializeField] private float _dashCost;
-    
-    private void Awake()
-    {
+    private void Awake() {
         _softBody = GetComponent<SoftBody>();
         inputHandler = transform.parent.GetComponent<InputHandler>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
-    private void Start()
-    {
-        _gamepad = Gamepad.current;
-        
-        _startRadius = _softBody.radius;
-        _startFrequency = _softBody.frequency;
+    private void Start() {
+        currFuel = playerStats.GetStatValue(StatName.Fuel);
+        inputHandler.onInflate.AddListener(Inflate);
+        inputHandler.onDeflate.AddListener(Deflate);
 
-        inputHandler.OnGrab.AddListener(Grab);
-        inputHandler.OnRelease.AddListener(Release);
-
-        inputHandler.OnInflate.AddListener(Inflate);
-        inputHandler.OnDeflate.AddListener(Deflate);
-        
-        inputHandler.OnDash.AddListener(Dash);
+        inputHandler.onDash.AddListener(Dash);
     }
 
-    private void Update()
-    {
+    private void Update() {
         Move(inputHandler.moveInput);
-        if(Grounded()) currAir = maxAir;
-        
-        if(currAir < 0) Deflate();
-
-        if (isInflated) _softBody.radius = SetSlimeRadius();
+        if (Grounded()) currFuel = playerStats.GetStatValue(StatName.Fuel);
+        if (isInflated) _softBody.currRadius = SetSlimeRadius();
     }
 
-    private void Move(Vector2 dir)
-    {
+    private void Move(Vector2 dir) {
         Vector2 constrainedDir = new Vector2(dir.x, 0);
 
-        if (isInflated)
-        {
-            if(currAir > 0 &&
-               dir != Vector2.zero)
-            {
+        if (isInflated) {
+            if (currFuel > 0 && dir != Vector2.zero) {
                 MoveForce(dir);
-                currAir -= _moveCostMultiplier * Time.deltaTime;
+                currFuel -= playerStats.GetStatValue(StatName.MoveCost) * Time.deltaTime;
             }
-            else MoveForce(constrainedDir);
+            // else MoveForce(constrainedDir);
         }
-        else
-        {
+        else {
             MoveForce(constrainedDir);
         }
     }
 
-    private void MoveForce(Vector2 dir)
-    {
-        foreach (Rigidbody2D rb in _softBody.nodes_rb)
-        {
-            if (rb.transform.position.y >= _softBody.transform.position.y)  
-                rb.AddForce(dir * (_movementMultiplier * 100 * Time.deltaTime), ForceMode2D.Force);
-            else rb.AddForce(dir * (_movementMultiplier * 50 * Time.deltaTime), ForceMode2D.Force);
-        }
-    }
-    
-    private void Grab()
-    {
-        foreach (SoftBodyNode node in _softBody.node_scripts)
-        {
-            node.Grab();
+    private void MoveForce(Vector2 dir) {
+        float moveMult = playerStats.GetStatValue(StatName.MoveSpeed);
+        foreach (Rigidbody2D rb in _softBody.nodesRb) {
+            if (rb.transform.position.y >= _softBody.transform.position.y)
+                rb.AddForce(dir * (moveMult * 100 * Time.deltaTime), ForceMode2D.Force);
+            else rb.AddForce(dir * (moveMult * 50 * Time.deltaTime), ForceMode2D.Force);
         }
     }
 
-    private void Release()
-    {
-        foreach (SoftBodyNode node in _softBody.node_scripts)
-        {
-            node.Release();
+    private void Inflate() {
+        foreach (Rigidbody2D rb in _softBody.nodesRb) {
+            rb.gravityScale = 0;
         }
+
+        isInflated = true;
+        _softBody.currRadius = SetSlimeRadius();
+        _softBody.frequency = playerStats.GetStatValue(StatName.MaxFrequency);
     }
 
-    private void Inflate()
-    {
-        if (currAir > 0)
-        {
-            _gamepad.SetMotorSpeeds(_inflateShake.x, _inflateShake.y);
-        
-            foreach (Rigidbody2D rb in _softBody.nodes_rb)
-            {
-                rb.gravityScale = 0;
-            }  
-            isInflated = true;
-            _softBody.radius = SetSlimeRadius();
-            _softBody.frequency = _maxFrequency;
-        }
-    }
-
-    private void Deflate()
-    {
-        foreach (Rigidbody2D rb in _softBody.nodes_rb)
-        {
+    private void Deflate() {
+        foreach (Rigidbody2D rb in _softBody.nodesRb) {
             rb.gravityScale = 1;
-        }  
-        
+        }
+
         isInflated = false;
-        _softBody.radius = _startRadius;
-        _softBody.frequency = _startFrequency;
-        _gamepad.PauseHaptics();
+        _softBody.currRadius = playerStats.GetStatValue(StatName.MinRadius);
+        _softBody.frequency = playerStats.GetStatValue(StatName.MinFrequency);
     }
 
-    private void Dash()
-    {
-        if (currAir > 0 && inputHandler.aimInput != Vector2.zero)
-        {
-            foreach (Rigidbody2D rb in _softBody.nodes_rb)
-            {
-                rb.linearVelocity *= 0.5f;
-            }   
-            foreach (Rigidbody2D rb in _softBody.nodes_rb)
-            {
-                rb.AddForce(inputHandler.aimInput * _dashForceMultiplier, ForceMode2D.Impulse);
+    private void Dash() {
+        if (currFuel > 0 && inputHandler.aimInput != Vector2.zero) {
+            foreach (Rigidbody2D rb in _softBody.nodesRb) {
+                rb.linearVelocity *= 0.25f;
+                rb.AddForce(inputHandler.aimInput * playerStats.GetStatValue(StatName.DashForce), ForceMode2D.Impulse);
             }
-
-            currAir -= _dashCost;
+            currFuel -= playerStats.GetStatValue(StatName.DashCost);
         }
     }
 
-    private bool Grounded()
-    {
-        foreach (SoftBodyNode node in _softBody.node_scripts)
-        {
+    private bool Grounded() {
+        foreach (SoftBodyNode node in _softBody.nodeScripts) {
             if (node.touchingGround) return true;
         }
-
         return false;
     }
 
-    private float SetSlimeRadius()
-    {
-        float airRatio = currAir / maxAir;
-        float radiusDiff = _maxRadius - _startRadius;
-
-        return (airRatio * radiusDiff) + _startRadius;
+    private float SetSlimeRadius() {
+        float minRadius = playerStats.GetStatValue(StatName.MinRadius);
+        float radiusDiff = playerStats.GetStatValue(StatName.MaxRadius) - minRadius;
+        return radiusDiff + minRadius;
     }
 
-    public void AirRefill(float amount)
-    {
-        currAir += amount;
-        if (currAir > maxAir) currAir = maxAir;
+    public void AirRefill(float amount) {
+        float maxFuel = playerStats.GetStatValue(StatName.Fuel);
+        currFuel += amount;
+        if (currFuel > maxFuel) currFuel = maxFuel;
     }
 }
