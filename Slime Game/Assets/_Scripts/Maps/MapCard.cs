@@ -8,7 +8,7 @@ public class MapCard : MonoBehaviour
     public Map map;
     private Button button;
     private Image image;
-    
+
     [SerializeField] private Color selectedColor;
     [SerializeField] private Color unselectedColor;
 
@@ -27,6 +27,9 @@ public class MapCard : MonoBehaviour
 
     public void SelectCard(bool selected) {
         map.selected = selected;
-        image.color = selected ? selectedColor : unselectedColor;
+        // image.color = selected ? selectedColor : unselectedColor;
+        ColorBlock colors = button.colors;
+        colors.normalColor = selected ? selectedColor : unselectedColor;
+        button.colors = colors;
     }
 }
