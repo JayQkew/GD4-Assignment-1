@@ -7,7 +7,6 @@ public class PointManager : MonoBehaviour
 {
     public static PointManager Instance { get; private set; }
 
-    [SerializeField] private TextMeshProUGUI[] scoreText = new TextMeshProUGUI[2];
     [SerializeField] private int pointsToWinRound;
     [SerializeField] private int minRoundsToWin;
     public int[] points = new int[2];
@@ -19,8 +18,6 @@ public class PointManager : MonoBehaviour
     private void Awake() {
         if (Instance == null) Instance = this;
         else if (Instance != this) Destroy(gameObject);
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update() {
@@ -31,11 +28,9 @@ public class PointManager : MonoBehaviour
     // 0 index for playerScored
     public void Score(int playerScored) {
         points[playerScored]++;
-        scoreText[playerScored].text = points[playerScored].ToString();
         onScore?.Invoke();
         PointUI.Instance.UpdatePointsUI(playerScored, points[playerScored]);
         if (points[playerScored] >= pointsToWinRound || suddenDeath) {
-            Debug.Log($"Player {playerScored} wins the round!");
             RoundWon(playerScored);
         }
     }
@@ -47,17 +42,14 @@ public class PointManager : MonoBehaviour
         //resets the points
         for (int i = 0; i < points.Length; i++) {
             points[i] = 0;
-            scoreText[i].text = points[i].ToString();
         }
 
         if (roundsWon[playerScored] >= otherPlayerRounds + 2 &&
             roundsWon[playerScored] >= minRoundsToWin) {
             for (int i = 0; i < roundsWon.Length; i++) {
                 roundsWon[i] = 0;
-                scoreText[i].text = points[i].ToString();
             }
 
-            Debug.Log($"Player {playerScored} wins the GAME!");
             GameManager.Instance.podiumState.winnerNumber = playerScored;
             GameManager.Instance.SwitchState(GameState.Podium);
         }
@@ -68,14 +60,6 @@ public class PointManager : MonoBehaviour
             GameManager.Instance.draftState.lostPlayerDeck = lostPlayerDeck;
             GameManager.Instance.draftState.winner = winner;
             GameManager.Instance.SwitchState(GameState.Draft);
-        }
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        // get the score texts
-        if (scene.name.Split('_')[0] == "Map") {
-            scoreText[0] = GameObject.Find("Player 1 Score").GetComponent<TextMeshProUGUI>();
-            scoreText[1] = GameObject.Find("Player 2 Score").GetComponent<TextMeshProUGUI>();
         }
     }
 

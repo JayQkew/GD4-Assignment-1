@@ -69,10 +69,11 @@ public class PointUI : MonoBehaviour
         }
     }
 
-    public void UpdateTimer(float max, float curr) {
+    public void SetTimerMaxValue(float max) {
         timerSlider[0].maxValue = max;
         timerSlider[1].maxValue = max;
-        
+    }
+    public void UpdateTimer(float curr) {
         timerSlider[0].value = curr;
         timerSlider[1].value = curr;
     }
