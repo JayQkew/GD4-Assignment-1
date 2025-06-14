@@ -12,14 +12,13 @@ public class RoundState : GameBaseState
     [SerializeField] private Transform[] spawns = new Transform[2];
     public override void EnterState(GameManager manager) {
         currRoundTime = maxRoundTime;
-        PointUI.Instance.SetTimerMaxValue(maxRoundTime);
         MapManager.Instance.NextMap();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public override void UpdateState(GameManager manager) {
         currRoundTime -= Time.deltaTime;
-        PointUI.Instance.UpdateTimer(currRoundTime);
+        PointUI.Instance?.UpdateTimer(currRoundTime);
         if (currRoundTime <= 0) {
             // check if a player is in the lead, otherwise go into sudden death
             Debug.Log("SUDDEN DEATH");
@@ -53,5 +52,6 @@ public class RoundState : GameBaseState
         ResetPlayerPos();
         PointUI.Instance.UpdateRoundsWon();
         PointUI.Instance.UpdateAdvantage();
+        PointUI.Instance.SetTimerMaxValue(maxRoundTime);
     }
 }
