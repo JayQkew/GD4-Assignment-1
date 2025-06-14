@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 49b1172cf787f9b4d981ec218268e57d
+guid: 7e0757c5b8ccc6a4b92e82bbed27815a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Excon
+  - Manrope
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
