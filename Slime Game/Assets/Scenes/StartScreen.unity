@@ -184,11 +184,15 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
   draftState:
+    winner: 0
     lostPlayerDeck: {fileID: 0}
     allCards: {fileID: 11400000, guid: 2af61f6007be98c4cafcd20647d947af, type: 2}
     draftSize: 4
     cardPrefab: {fileID: 8620214281233145340, guid: 0c60f9e8f8120a84da3d6564da59f4f3, type: 3}
     draftParent: {fileID: 0}
+  podiumState:
+    winnerNumber: 0
+    winnerText: {fileID: 0}
 --- !u!114 &50957809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,9 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ea1276015d189408e980712ff506d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText:
-  - {fileID: 0}
-  - {fileID: 0}
   pointsToWinRound: 3
   minRoundsToWin: 3
   points: 0000000000000000
@@ -238,6 +239,7 @@ GameObject:
   - component: {fileID: 61643237}
   - component: {fileID: 61643239}
   - component: {fileID: 61643238}
+  - component: {fileID: 61643240}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -284,12 +286,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Abyssal Arena
-
-'
+  m_text: Abyssal Arena
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 23832231a256bb647b4259427cdc7810, type: 2}
+  m_sharedMaterial: {fileID: 3261154271914900503, guid: 23832231a256bb647b4259427cdc7810, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 97690656
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -365,6 +365,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61643236}
   m_CullTransparentMesh: 1
+--- !u!114 &61643240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61643236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953a2ba0cf2fa364fb4a3d7b90d3c1d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 1
+  playOnStart: 1
+  minWeight: 0
+  maxWeight: 1
 --- !u!1 &167405324
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,8 +734,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6f107a748f5b824087ab6d2adad83db, type: 2}
+  m_sharedMaterial: {fileID: -3708543171431474408, guid: e6f107a748f5b824087ab6d2adad83db, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -749,7 +765,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1308,8 +1324,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6f107a748f5b824087ab6d2adad83db, type: 2}
+  m_sharedMaterial: {fileID: -3708543171431474408, guid: e6f107a748f5b824087ab6d2adad83db, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1339,7 +1355,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1610,8 +1626,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6f107a748f5b824087ab6d2adad83db, type: 2}
+  m_sharedMaterial: {fileID: -3708543171431474408, guid: e6f107a748f5b824087ab6d2adad83db, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1641,7 +1657,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
