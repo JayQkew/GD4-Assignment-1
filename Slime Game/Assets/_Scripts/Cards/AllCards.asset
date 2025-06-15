@@ -32,7 +32,7 @@ MonoBehaviour:
     abilities: []
     description: more powertful dash
     icon: {fileID: -3603556060819865620, guid: cc9521f52cba41249b93ac5ca71f685b, type: 3}
-  - cardName: Gills
+  - cardName: Fuel Capacity
     modifiers:
     - affectedStat: 0
       type: 1
