@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     private InputHandler inputHandler;
     private PlayerStats playerStats;
 
+    public bool moveConsumeFuel = true;
+    public bool dashConsumeFuel = true;
     public float currFuel;
     [SerializeField] private bool isInflated;
 
@@ -41,7 +43,7 @@ public class Movement : MonoBehaviour
         if (isInflated) {
             if (currFuel > 0 && dir != Vector2.zero) {
                 MoveForce(dir);
-                currFuel -= playerStats.GetStatValue(StatName.MoveCost) * Time.deltaTime;
+                if(moveConsumeFuel) currFuel -= playerStats.GetStatValue(StatName.MoveCost) * Time.deltaTime;
             }
             // else MoveForce(constrainedDir);
         }
@@ -59,7 +61,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Inflate() {
+    public void Inflate() {
         foreach (Rigidbody2D rb in _softBody.nodesRb) {
             rb.gravityScale = 0;
         }
@@ -69,7 +71,7 @@ public class Movement : MonoBehaviour
         _softBody.frequency = playerStats.GetStatValue(StatName.MaxFrequency);
     }
 
-    private void Deflate() {
+    public void Deflate() {
         foreach (Rigidbody2D rb in _softBody.nodesRb) {
             rb.gravityScale = 1;
         }
@@ -85,7 +87,7 @@ public class Movement : MonoBehaviour
                 rb.linearVelocity *= 0.25f;
                 rb.AddForce(inputHandler.aimInput * playerStats.GetStatValue(StatName.DashForce), ForceMode2D.Impulse);
             }
-            currFuel -= playerStats.GetStatValue(StatName.DashCost);
+            if (dashConsumeFuel) currFuel -= playerStats.GetStatValue(StatName.DashCost);
         }
     }
 

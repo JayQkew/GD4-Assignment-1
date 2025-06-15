@@ -22,7 +22,7 @@ MonoBehaviour:
       type: 0
       value: 2
     abilities: []
-    description: has a bunch of cool abilites
+    description: resting size is smaller BUT inflated size is bigger
     icon: {fileID: -4364034832326165938, guid: f8d3117739dcfce49822898ae26d7a00, type: 3}
   - cardName: Caudal Fin
     modifiers:
@@ -30,7 +30,7 @@ MonoBehaviour:
       type: 0
       value: 1.5
     abilities: []
-    description: has a swag ability
+    description: more powertful dash
     icon: {fileID: -3603556060819865620, guid: cc9521f52cba41249b93ac5ca71f685b, type: 3}
   - cardName: Gills
     modifiers:
@@ -38,7 +38,7 @@ MonoBehaviour:
       type: 1
       value: 20
     abilities: []
-    description: a card to test card system
+    description: have more fuel capacity
     icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
   - cardName: Ego
     modifiers:
@@ -55,4 +55,10 @@ MonoBehaviour:
       value: 2
     abilities: []
     description: Increased movement speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Invert Inflation
+    modifiers: []
+    abilities:
+    - {fileID: 644223161715141526, guid: 945f808735fa8704daee326efa1d4049, type: 3}
+    description: stay constantly inflated and deflate on command
     icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
