@@ -1,16 +1,24 @@
+using System;
 using UnityEngine;
 
 public class SurfaceSpeed : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    private Movement playerMovement;
+    private PlayerStats playerStats;
+    public float currValue;
+    public float multValue;
+
+    private void Awake() {
+        playerMovement = transform.parent.parent.GetComponentInChildren<Movement>();
+        playerStats = playerMovement.GetComponent<PlayerStats>();
+        if (playerMovement.surfaceSpeed == null) {
+            playerMovement.surfaceSpeed = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        currValue = playerMovement.TouchingSurface() ? 
+            playerStats.GetStatValue(StatName.MoveSpeed) * multValue :
+            playerStats.GetStatValue(StatName.MoveSpeed);
     }
 }

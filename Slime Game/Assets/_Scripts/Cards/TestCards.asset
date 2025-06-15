@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TestCards
   m_EditorClassIdentifier: 
   cards:
-  - cardName: Invert Inflation
+  - cardName: Surface Speed
     modifiers: []
     abilities:
-    - {fileID: 644223161715141526, guid: 945f808735fa8704daee326efa1d4049, type: 3}
-    description: stay constantly inflated and deflate on command
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
     icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}

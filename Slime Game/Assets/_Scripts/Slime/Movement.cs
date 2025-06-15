@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     private SoftBody _softBody;
     private InputHandler inputHandler;
     private PlayerStats playerStats;
+    [HideInInspector] public SurfaceSpeed surfaceSpeed;
 
     public bool moveConsumeFuel = true;
     public bool dashConsumeFuel = true;
@@ -53,7 +54,9 @@ public class Movement : MonoBehaviour
     }
 
     private void MoveForce(Vector2 dir) {
-        float moveMult = playerStats.GetStatValue(StatName.MoveSpeed);
+        float moveMult = surfaceSpeed == null ?
+            playerStats.GetStatValue(StatName.MoveSpeed) :
+            surfaceSpeed.currValue;
         foreach (Rigidbody2D rb in _softBody.nodesRb) {
             if (rb.transform.position.y >= _softBody.transform.position.y)
                 rb.AddForce(dir * (moveMult * 100 * Time.deltaTime), ForceMode2D.Force);
@@ -98,9 +101,9 @@ public class Movement : MonoBehaviour
         return false;
     }
 
-    private bool TouchingSurface() {
+    public bool TouchingSurface() {
         foreach (SoftBodyNode node in _softBody.nodeScripts) {
-            if (node.touchingGround) return true;
+            if (node.touchingGround || node.touchingSurface) return true;
         }
         return false;
     }
