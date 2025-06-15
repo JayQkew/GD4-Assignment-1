@@ -84,10 +84,10 @@ public class Movement : MonoBehaviour
         _softBody.frequency = playerStats.GetStatValue(StatName.MinFrequency);
     }
 
-    private void Dash() {
+    public void Dash() {
         if (currFuel > 0 && inputHandler.aimInput != Vector2.zero) {
             foreach (Rigidbody2D rb in _softBody.nodesRb) {
-                rb.linearVelocity *= 0.25f;
+                rb.linearVelocity = Vector2.zero;
                 rb.AddForce(inputHandler.aimInput * playerStats.GetStatValue(StatName.DashForce), ForceMode2D.Impulse);
             }
             if (dashConsumeFuel) currFuel -= playerStats.GetStatValue(StatName.DashCost);
