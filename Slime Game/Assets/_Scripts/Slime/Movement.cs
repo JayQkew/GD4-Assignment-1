@@ -98,6 +98,13 @@ public class Movement : MonoBehaviour
         return false;
     }
 
+    private bool TouchingSurface() {
+        foreach (SoftBodyNode node in _softBody.nodeScripts) {
+            if (node.touchingGround) return true;
+        }
+        return false;
+    }
+
     private float SetSlimeRadius() {
         float minRadius = playerStats.GetStatValue(StatName.MinRadius);
         float radiusDiff = playerStats.GetStatValue(StatName.MaxRadius) - minRadius;
