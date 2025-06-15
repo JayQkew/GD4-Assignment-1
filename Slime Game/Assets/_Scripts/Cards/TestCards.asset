@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TestCards
   m_EditorClassIdentifier: 
   cards:
-  - cardName: Surface Speed
+  - cardName: Gills
     modifiers: []
     abilities:
-    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
-    description: When in contact with a surface, greatly increase movment speed
+    - {fileID: 7896421873736369768, guid: ea3a794eb6891264da9e6b855b5d5915, type: 3}
+    description: Movement while inflated does not consume fuel
     icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
