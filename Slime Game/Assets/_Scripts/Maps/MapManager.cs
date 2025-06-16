@@ -30,15 +30,21 @@ public class MapManager : MonoBehaviour
         // ArrangeList();
         GetAllMaps();
     }
-
     private void GetAllMaps() {
+        // Get all scenes in the build
         int sceneCount = SceneManager.sceneCountInBuildSettings;
+        // Initialise a list that will hold the names of the maps
         List<string> mapNames = new List<string>();
 
+        //Iterate through each scene
         for (int i = 0; i < sceneCount; i++) {
+            //Get the path of the scene
             string path = SceneUtility.GetScenePathByBuildIndex(i);
+            //Get the name of the path above without the .scene extension
             string sceneName = Path.GetFileNameWithoutExtension(path);
+            //Check that the scene ends in _Map
             if (sceneName.Split('_')[0] == "Map") {
+                //If so, add it to the mapNames list initialised above.
                 mapNames.Add(sceneName);
             }
         }
