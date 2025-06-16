@@ -27,6 +27,7 @@ public class DraftState : GameBaseState
         if (_firstTime) {
             cards = new List<Card>();
             cards.AddRange(allCards.cards);
+            _firstTime = false;
         }
     }
 
