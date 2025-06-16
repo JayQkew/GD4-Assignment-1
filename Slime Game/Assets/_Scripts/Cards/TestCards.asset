@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TestCards
   m_EditorClassIdentifier: 
   cards:
-  - cardName: Spit Ball
+  - cardName: Vacuum Chamber
     modifiers:
     - affectedStat: 8
       type: 1
-      value: 10
+      value: 25
     abilities:
-    - {fileID: 2788687696285482981, guid: 1114b615de46ff144a6c210d8c10f7db, type: 3}
-    description: Replace Dash with the ability to shoot a spit ball
+    - {fileID: 3995271139560676606, guid: 1940195bd9dcc664d88530f07e614b68, type: 3}
+    description: When dashing, create a vortex that pull objects towards the centre
     icon: {fileID: -7313494123036120174, guid: d3dd4d8cb7ea1b54f8fef81eb1f0a95a, type: 3}

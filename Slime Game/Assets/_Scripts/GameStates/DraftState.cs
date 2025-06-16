@@ -10,9 +10,11 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class DraftState : GameBaseState
 {
+    private bool _firstTime = true;
     public int winner;
     public Deck lostPlayerDeck;
     [SerializeField] private AllCards allCards;
+    public List<Card> cards;
     [SerializeField] private int draftSize;
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform draftParent;
@@ -22,6 +24,10 @@ public class DraftState : GameBaseState
         SceneManager.sceneLoaded += OnSceneLoaded;
         //disable the other players ui selection
         //get
+        if (_firstTime) {
+            cards = new List<Card>();
+            cards.AddRange(allCards.cards);
+        }
     }
 
     public override void UpdateState(GameManager manager) {
@@ -54,11 +60,11 @@ public class DraftState : GameBaseState
     }
 
     private Card[] DraftedCards() {
-        Card[] cards = new Card[draftSize];
+        Card[] selectedCards = new Card[draftSize];
         for (int i = 0; i < draftSize; i++) {
-            Card card = allCards.cards[Random.Range(0, allCards.cards.Length)];
-            cards[i] = card;
+            Card card = cards[Random.Range(0, allCards.cards.Length)];
+            selectedCards[i] = card;
         }
-        return cards;
+        return selectedCards;
     }
 }

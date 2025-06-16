@@ -16,8 +16,9 @@ public class VacuumChamber : MonoBehaviour
         movement = transform.parent.parent.GetComponentInChildren<Movement>();
         playerStats = transform.parent.parent.GetComponentInChildren<PlayerStats>();
         inputHandler = transform.parent.parent.GetComponent<InputHandler>();
+        softBody = playerStats.GetComponentInChildren<SoftBody>();
         
-        inputHandler.onDash.RemoveListener(movement.Dash);
+        // inputHandler.onDash.RemoveListener(movement.Dash);
         inputHandler.onDash.AddListener(SpawnVacuum);
     }
 
@@ -26,10 +27,11 @@ public class VacuumChamber : MonoBehaviour
             movement.currFuel -= playerStats.GetStatValue(StatName.DashCost);
             
             Vector2 pos = softBody.transform.position;
-
-            RaycastHit2D[] hit = Physics2D.CircleCastAll(pos, radius, Vector2.zero, 0,targetLayers);
-            foreach (RaycastHit2D h in hit) {
+            
+            Collider2D[] hits = Physics2D.OverlapCircleAll(pos, radius, targetLayers);
+            foreach (Collider2D h in hits) {
                 Rigidbody2D rb = h.transform.GetComponent<Rigidbody2D>();
+                Debug.Log(h.transform.name);
                 if (rb != null) {
                     Vector2 direction = (pos - rb.position).normalized;
                     rb.AddForce(direction * pullForce, ForceMode2D.Impulse);
