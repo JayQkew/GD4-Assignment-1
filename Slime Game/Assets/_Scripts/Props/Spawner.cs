@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 
     private void Start() {
         for (int i = 0; i < maxLiveSpawns; i++) {
-            GameObject spawn = Instantiate(spawnPrefab, transform);
+            GameObject spawn = Instantiate(spawnPrefab, transform.position, Quaternion.identity, transform);
             spawns.Add(spawn);
         }
     }
@@ -38,6 +38,7 @@ public class Spawner : MonoBehaviour
             Vector2 dir = new Vector2(Mathf.Cos(randAngle), Mathf.Sin(randAngle));
 
             GameObject spawn = FetchSpawn();
+            float force = Random.Range(1f, spawnForce);
             spawn.GetComponent<Rigidbody2D>().AddForce(dir * spawnForce, ForceMode2D.Impulse);
         }
     }

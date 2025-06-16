@@ -28,6 +28,7 @@ public class Refill : MonoBehaviour
         foreach (RefillState state in refillStates) {
             maxTime += state.windUpTime;
         }
+        gameObject.SetActive(false);
     }
 
     private void Update() {
