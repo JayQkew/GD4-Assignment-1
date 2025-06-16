@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[SelectionBase]
 public class Bomb : MonoBehaviour
 {
     [SerializeField] private bool triggered = false;

@@ -9,59 +9,52 @@ public class Refill : MonoBehaviour
 
     [SerializeField] private float currRefill;
     [SerializeField] private float currTime;
+
     [Space(10)]
-    [SerializeField, Tooltip("Largest to Smallest")] private RefillState[] refillStates;
+    [SerializeField, Tooltip("Largest to Smallest")]
+    private RefillState[] refillStates;
 
     private float maxTime = 0;
-    
+
     [Header("GUI")]
     private GameObject gui;
 
-    private void Awake()
-    {
+    private void Awake() {
         gui = transform.GetChild(0).gameObject;
         col = GetComponent<CircleCollider2D>();
     }
 
-    private void Start()
-    {
-        foreach (RefillState state in refillStates)
-        {
+    private void Start() {
+        foreach (RefillState state in refillStates) {
             maxTime += state.windUpTime;
         }
     }
 
-    private void Update()
-    {
+    private void Update() {
         if (currTime < maxTime) RefillUpdate();
     }
 
-    private void RefillUpdate()
-    {
+    private void RefillUpdate() {
         currTime += Time.deltaTime;
 
-        foreach (RefillState state in refillStates)
-        {
-            if (currTime >= state.windUpTime)
-            {
+        foreach (RefillState state in refillStates) {
+            if (currTime >= state.windUpTime) {
                 currRefill = state.amount;
                 gui.SetActive(true);
                 gui.transform.localScale = Vector3.one * state.size;
                 col.enabled = true;
-                col.radius = state.size/2;
+                col.radius = state.size / 2;
                 return;
             }
         }
-        
+
         gui.SetActive(false);
         col.enabled = false;
     }
-    
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
+
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
             other.GetComponent<Movement>().AirRefill(currRefill);
             col.enabled = false;
             currTime = 0;
