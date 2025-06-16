@@ -74,3 +74,12 @@ MonoBehaviour:
     - {fileID: 7896421873736369768, guid: ea3a794eb6891264da9e6b855b5d5915, type: 3}
     description: Movement while inflated does not consume fuel
     icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Spit Ball
+    modifiers:
+    - affectedStat: 8
+      type: 1
+      value: 10
+    abilities:
+    - {fileID: 2788687696285482981, guid: 1114b615de46ff144a6c210d8c10f7db, type: 3}
+    description: Replace Dash with the ability to shoot a spit ball
+    icon: {fileID: -7313494123036120174, guid: d3dd4d8cb7ea1b54f8fef81eb1f0a95a, type: 3}
