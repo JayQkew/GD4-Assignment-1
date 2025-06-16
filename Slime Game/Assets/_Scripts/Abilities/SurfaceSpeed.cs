@@ -11,6 +11,16 @@ public class SurfaceSpeed : MonoBehaviour
     private void Awake() {
         playerMovement = transform.parent.parent.GetComponentInChildren<Movement>();
         playerStats = playerMovement.GetComponent<PlayerStats>();
+        
+        SurfaceSpeed[] thisAbility = transform.parent.GetComponentsInChildren<SurfaceSpeed>();
+        if (thisAbility.Length >= 2) {
+            foreach (SurfaceSpeed surfaceSpeed in thisAbility) {
+                if (surfaceSpeed != this) {
+                    surfaceSpeed.multValue *= multValue;
+                    Destroy(gameObject);
+                }
+            }
+        }
         if (playerMovement.surfaceSpeed == null) {
             playerMovement.surfaceSpeed = this;
         }
