@@ -186,7 +186,8 @@ MonoBehaviour:
   draftState:
     winner: 0
     lostPlayerDeck: {fileID: 0}
-    allCards: {fileID: 11400000, guid: 2af61f6007be98c4cafcd20647d947af, type: 2}
+    allCards: {fileID: 11400000, guid: 7fecf90f0f108c6409af6446cfe1d226, type: 2}
+    cards: []
     draftSize: 4
     cardPrefab: {fileID: 8620214281233145340, guid: 0c60f9e8f8120a84da3d6564da59f4f3, type: 3}
     draftParent: {fileID: 0}

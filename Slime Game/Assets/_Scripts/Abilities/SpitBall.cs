@@ -17,6 +17,16 @@ public class SpitBall : MonoBehaviour
         movement = playerStats.GetComponent<Movement>();
         softBody = playerStats.GetComponentInChildren<SoftBody>();
         
+        SpitBall[] thisAbility = transform.parent.GetComponentsInChildren<SpitBall>();
+        if (thisAbility.Length >= 2) {
+            foreach (SpitBall spitBall in thisAbility) {
+                if (spitBall != this) {
+                    spitBall.projectileForce += projectileForce;
+                    Destroy(gameObject);
+                }
+            }
+        }
+        
         inputHandler.onDash.AddListener(ShootProjectile);
         inputHandler.onDash.RemoveListener(movement.Dash);
     }

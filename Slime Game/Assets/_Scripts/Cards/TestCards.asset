@@ -13,12 +13,45 @@ MonoBehaviour:
   m_Name: TestCards
   m_EditorClassIdentifier: 
   cards:
-  - cardName: Vacuum Chamber
-    modifiers:
-    - affectedStat: 8
-      type: 1
-      value: 25
+  - cardName: Surface Speed
+    modifiers: []
     abilities:
-    - {fileID: 3995271139560676606, guid: 1940195bd9dcc664d88530f07e614b68, type: 3}
-    description: When dashing, create a vortex that pull objects towards the centre
-    icon: {fileID: -7313494123036120174, guid: d3dd4d8cb7ea1b54f8fef81eb1f0a95a, type: 3}
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}

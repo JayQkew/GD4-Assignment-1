@@ -13,6 +13,15 @@ public class InvertedInflation : MonoBehaviour
         InputHandler inputHandler = transform.parent.GetComponentInParent<InputHandler>();
         Debug.Log(inputHandler ? "Found Input Handler" : "Couldn't Find Input Handler");
         
+        InvertedInflation[] thisAbility = transform.parent.GetComponentsInChildren<InvertedInflation>();
+        if (thisAbility.Length >= 2) {
+            foreach (InvertedInflation invertedInflation in thisAbility) {
+                if (invertedInflation != this) {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        
         inputHandler.onInflate.RemoveListener(playerMovement.Inflate);
         inputHandler.onInflate.AddListener(playerMovement.Deflate);
         
