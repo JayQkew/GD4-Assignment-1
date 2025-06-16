@@ -53,13 +53,12 @@ public class Refill : MonoBehaviour
         col.enabled = false;
     }
 
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
-            other.GetComponent<Movement>().AirRefill(currRefill);
-            col.enabled = false;
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Player")) {
+            collision.gameObject.GetComponent<Movement>().AirRefill(currRefill);
             currTime = 0;
             currRefill = 0;
+            gameObject.SetActive(false);
         }
     }
 }
