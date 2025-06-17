@@ -95,22 +95,20 @@ public class RoundState : GameBaseState
 
     private void StartScoreCameraEffects() {
         // cinemachineCamera.Follow = ball.transform;
-        Time.timeScale = 0.2f;
         
         // Start the transition to score effects
-        gm.StartCoroutine(LerpVolumeEffects(true, 1.5f)); // true = to score effects, 1f = duration
+        gm.StartCoroutine(LerpBloomChromatic(true, 0.25f)); // true = to score effects, 1f = duration
     }
 
     private void EndScoreCameraEffects() {
         // cinemachineCamera.Follow = null;
         // cinemachineCamera.transform.position = new Vector3(0, 0, -10);
-        Time.timeScale = 1;
         
         // Start the transition back to normal effects
-        gm.StartCoroutine(LerpVolumeEffects(false, 0.5f)); // false = to normal effects, 0.5f = duration
+        gm.StartCoroutine(LerpBloomChromatic(false, 0.25f)); // false = to normal effects, 0.5f = duration
     }
 
-    private IEnumerator LerpVolumeEffects(bool toScoreEffects, float duration) {
+    private IEnumerator LerpBloomChromatic(bool toScoreEffects, float duration) {
         volume.profile.TryGet(out Bloom bloom);
         volume.profile.TryGet(out ChromaticAberration chromaticAberration);
         
@@ -159,16 +157,13 @@ public class RoundState : GameBaseState
 
     private void StartRoundWon() {
         Time.timeScale = 0.2f;
-        cinemachineCamera.Follow = ball.transform;
         
-        gm.StartCoroutine(LerpVolumeEffects(true, 1.5f));
+        gm.StartCoroutine(LerpBloomChromatic(true, 1.5f));
     }
 
     private void EndRoundWon() {
         Time.timeScale = 1;
-        cinemachineCamera.Follow = null;
-        cinemachineCamera.transform.position = ball.transform.position;
         
-        gm.StartCoroutine(LerpVolumeEffects(false, 0.5f));
+        gm.StartCoroutine(LerpBloomChromatic(false, 0.5f));
     }
 }
