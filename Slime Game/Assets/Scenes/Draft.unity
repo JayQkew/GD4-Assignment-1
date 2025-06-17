@@ -511,7 +511,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0.03137255, a: 1}
+  m_BackGroundColor: {r: 0, g: 0.023529414, b: 0.24705884, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1661,8 +1661,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choose a mutation
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29c892e5c3a6c6941be2bfa55cea93ce, type: 2}
-  m_sharedMaterial: {fileID: -7519157700589317759, guid: 29c892e5c3a6c6941be2bfa55cea93ce, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d441d5454fb65bf428fa1a56d1144f43, type: 2}
+  m_sharedMaterial: {fileID: -4491762403719327172, guid: d441d5454fb65bf428fa1a56d1144f43, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1686,8 +1686,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
