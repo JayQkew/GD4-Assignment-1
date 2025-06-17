@@ -187,6 +187,9 @@ MonoBehaviour:
     - {fileID: 1332157593033796950, guid: 46cefe0c9a6a8f041b9f12a06fadd618, type: 3}
     - {fileID: 8264591104274167507, guid: 2362d7681454f924c922c48578db695c, type: 3}
     - {fileID: 8566932181079513745, guid: e695433ca4772ab46a21f90c9e2da8b3, type: 3}
+    ball: {fileID: 0}
+    cinemachineCamera: {fileID: 0}
+    volume: {fileID: 0}
   draftState:
     winner: 0
     lostPlayerDeck: {fileID: 0}
@@ -215,7 +218,18 @@ MonoBehaviour:
   points: 0000000000000000
   roundsWon: 0000000000000000
   suddenDeath: 0
-  onScore:
+  effectLength: 0.6
+  onScoreStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onScoreEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  roundWonEffectLength: 0
+  onRoundWonStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onRoundWonEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &50957810
@@ -550,7 +564,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: f4a32b3c92a91ce4f8b1677a1956d4cc, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 8cc26b2dfa457b542aa6f3c3aa01df04, type: 2}
 --- !u!1 &400375140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,8 +1922,8 @@ Canvas:
   m_GameObject: {fileID: 1868383396}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 280786048}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

@@ -1,6 +1,9 @@
 using System;
-using TMPro;
+using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -12,10 +15,17 @@ public class RoundState : GameBaseState
     [SerializeField] private float currRoundTime;
     
     [SerializeField] private Transform[] spawns = new Transform[2];
-    
     [SerializeField] private GameObject[] props;
+
+    [SerializeField] private GameObject ball;
+    
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private Volume volume;
+
+    private GameManager gm;
     public override void EnterState(GameManager manager) {
         currRoundTime = maxRoundTime;
+        gm = manager;
         MapManager.Instance.NextMap();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -35,6 +45,8 @@ public class RoundState : GameBaseState
 
     public override void ExitState(GameManager manager) {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        PointManager.Instance.onScoreStart.RemoveListener(StartScoreCameraEffects);
+        PointManager.Instance.onScoreEnd.RemoveListener(EndScoreCameraEffects);
         PointManager.Instance.suddenDeath = false;
     }
 
@@ -58,6 +70,17 @@ public class RoundState : GameBaseState
         PointUI.Instance.UpdateAdvantage();
         PointUI.Instance.SetTimerMaxValue(maxRoundTime);
         SetUpProps();
+        
+        cinemachineCamera = Object.FindObjectOfType<CinemachineCamera>();
+        volume = Object.FindObjectOfType<Volume>();
+
+        PointManager.Instance.onScoreStart.AddListener(StartScoreCameraEffects);
+        PointManager.Instance.onScoreEnd.AddListener(EndScoreCameraEffects);
+        
+        PointManager.Instance.onRoundWonStart.AddListener(StartRoundWon);
+        PointManager.Instance.onRoundWonEnd.AddListener(EndRoundWon);
+        
+        ball = GameObject.FindGameObjectWithTag("Ball");
     }
 
     private void SetUpProps() {
@@ -68,5 +91,79 @@ public class RoundState : GameBaseState
             if (prop == null) continue;
             Object.Instantiate(prop, spawn.transform.position, Quaternion.identity, propParent);
         }
+    }
+
+    private void StartScoreCameraEffects() {
+        // cinemachineCamera.Follow = ball.transform;
+        
+        // Start the transition to score effects
+        gm.StartCoroutine(LerpBloomChromatic(true, 0.25f)); // true = to score effects, 1f = duration
+    }
+
+    private void EndScoreCameraEffects() {
+        // cinemachineCamera.Follow = null;
+        // cinemachineCamera.transform.position = new Vector3(0, 0, -10);
+        
+        // Start the transition back to normal effects
+        gm.StartCoroutine(LerpBloomChromatic(false, 0.25f)); // false = to normal effects, 0.5f = duration
+    }
+
+    private IEnumerator LerpBloomChromatic(bool toScoreEffects, float duration) {
+        volume.profile.TryGet(out Bloom bloom);
+        volume.profile.TryGet(out ChromaticAberration chromaticAberration);
+        
+        float bloomStart, bloomEnd;
+        float chromaStart, chromaEnd;
+        
+        if (toScoreEffects) {
+            bloomStart = bloom.intensity.value;
+            bloomEnd = 25f;
+            chromaStart = chromaticAberration.intensity.value;
+            chromaEnd = 1.0f;
+        } else {
+            bloomStart = bloom.intensity.value;
+            bloomEnd = 5f;
+            chromaStart = chromaticAberration.intensity.value;
+            chromaEnd = 0.15f;
+        }
+        
+        float totalTime = 0f;
+        
+        while (totalTime < duration) {
+            totalTime += Time.unscaledDeltaTime;
+            float t = totalTime / duration;
+            
+            float smoothStep = t * t * (3f - 2f * t);
+            
+            if (bloom != null) {
+                bloom.intensity.value = Mathf.Lerp(bloomStart, bloomEnd, smoothStep);
+            }
+            
+            if (chromaticAberration != null) {
+                chromaticAberration.intensity.value = Mathf.Lerp(chromaStart, chromaEnd, smoothStep);
+            }
+            
+            yield return null;
+        }
+        
+        if (bloom != null) {
+            bloom.intensity.value = bloomEnd;
+        }
+        
+        if (chromaticAberration != null) {
+            chromaticAberration.intensity.value = chromaEnd;
+        }
+    }
+
+    private void StartRoundWon() {
+        Time.timeScale = 0.2f;
+        
+        gm.StartCoroutine(LerpBloomChromatic(true, 1.5f));
+    }
+
+    private void EndRoundWon() {
+        Time.timeScale = 1;
+        
+        gm.StartCoroutine(LerpBloomChromatic(false, 0.5f));
     }
 }

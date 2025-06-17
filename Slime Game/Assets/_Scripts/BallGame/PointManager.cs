@@ -1,7 +1,9 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class PointManager : MonoBehaviour
 {
@@ -13,7 +15,13 @@ public class PointManager : MonoBehaviour
     public int[] roundsWon = new int[2];
     public bool suddenDeath;
 
-    public UnityEvent onScore;
+    public float effectLength;
+    public UnityEvent onScoreStart;
+    public UnityEvent onScoreEnd;
+
+    public float roundWonEffectLength;
+    public UnityEvent onRoundWonStart;
+    public UnityEvent onRoundWonEnd;
 
     private void Awake() {
         if (Instance == null) Instance = this;
@@ -28,39 +36,20 @@ public class PointManager : MonoBehaviour
     // 0 index for playerScored
     public void Score(int playerScored) {
         points[playerScored]++;
-        onScore?.Invoke();
         PointUI.Instance.UpdatePointsUI(playerScored, points[playerScored]);
         if (points[playerScored] >= pointsToWinRound || suddenDeath) {
             RoundWon(playerScored);
+            return;
         }
+        StartCoroutine(ScoreCoroutine());
     }
 
     public void RoundWon(int playerScored) {
         roundsWon[playerScored]++;
-        int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
-
-        //resets the points
         for (int i = 0; i < points.Length; i++) {
             points[i] = 0;
         }
-
-        if (roundsWon[playerScored] >= otherPlayerRounds + 2 &&
-            roundsWon[playerScored] >= minRoundsToWin) {
-            for (int i = 0; i < roundsWon.Length; i++) {
-                roundsWon[i] = 0;
-            }
-
-            GameManager.Instance.podiumState.winnerNumber = playerScored;
-            GameManager.Instance.SwitchState(GameState.Podium);
-        }
-        else {
-            Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0)
-                .GetComponent<Deck>();
-            int winner = playerScored;
-            GameManager.Instance.draftState.lostPlayerDeck = lostPlayerDeck;
-            GameManager.Instance.draftState.winner = winner;
-            GameManager.Instance.SwitchState(GameState.Draft);
-        }
+        StartCoroutine(RoundWonCoroutine(playerScored));
     }
 
     /// <summary>
@@ -83,6 +72,36 @@ public class PointManager : MonoBehaviour
             if (p2 >= minRoundsToWin - 1 && p1 < minRoundsToWin) return 3; // Player 2 round point
         }
         return -1;
+    }
+
+    private IEnumerator ScoreCoroutine() {
+        onScoreStart?.Invoke();
+        yield return new WaitForSeconds(effectLength);
+        onScoreEnd?.Invoke();
+    }
+
+    private IEnumerator RoundWonCoroutine(int playerScored) {
+        onRoundWonStart?.Invoke();
+        yield return new WaitForSeconds(effectLength);
+        onRoundWonEnd?.Invoke();
+        int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
+        if (roundsWon[playerScored] >= otherPlayerRounds + 2 &&
+            roundsWon[playerScored] >= minRoundsToWin) {
+            for (int i = 0; i < roundsWon.Length; i++) {
+                roundsWon[i] = 0;
+            }
+
+            GameManager.Instance.podiumState.winnerNumber = playerScored;
+            GameManager.Instance.SwitchState(GameState.Podium);
+        }
+        else {
+            Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0)
+                .GetComponent<Deck>();
+            int winner = playerScored;
+            GameManager.Instance.draftState.lostPlayerDeck = lostPlayerDeck;
+            GameManager.Instance.draftState.winner = winner;
+            GameManager.Instance.SwitchState(GameState.Draft);
+        }
     }
 }
 

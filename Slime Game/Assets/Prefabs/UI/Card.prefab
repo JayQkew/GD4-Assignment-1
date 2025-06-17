@@ -167,10 +167,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Text
+  m_text: this is the description of the card
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d441d5454fb65bf428fa1a56d1144f43, type: 2}
-  m_sharedMaterial: {fileID: -4491762403719327172, guid: d441d5454fb65bf428fa1a56d1144f43, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6906f43f865472743839fb2e34b90db0, type: 2}
+  m_sharedMaterial: {fileID: 6566232411129507211, guid: 6906f43f865472743839fb2e34b90db0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -194,13 +194,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

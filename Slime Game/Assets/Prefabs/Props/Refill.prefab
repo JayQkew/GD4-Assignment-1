@@ -134,18 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec779c8d73abbcf44909a6efde308e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currRefill: 0
-  currTime: 0
-  refillStates:
-  - amount: 100
-    windUpTime: 12
-    size: 1.5
-  - amount: 45
-    windUpTime: 7
-    size: 1
-  - amount: 15
-    windUpTime: 3
-    size: 0.5
+  refillAmount: 50
 --- !u!58 &2021309014869159729
 CircleCollider2D:
   m_ObjectHideFlags: 0
