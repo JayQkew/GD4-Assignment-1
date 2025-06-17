@@ -63,7 +63,7 @@ public class DraftState : GameBaseState
     private Card[] DraftedCards() {
         Card[] selectedCards = new Card[draftSize];
         for (int i = 0; i < draftSize; i++) {
-            Card card = cards[Random.Range(0, allCards.cards.Length)];
+            Card card = cards[Random.Range(0, cards.Count)];
             selectedCards[i] = card;
         }
         return selectedCards;
