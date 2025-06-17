@@ -19,6 +19,10 @@ public class PointManager : MonoBehaviour
     public UnityEvent onScoreStart;
     public UnityEvent onScoreEnd;
 
+    public float roundWonEffectLength;
+    public UnityEvent onRoundWonStart;
+    public UnityEvent onRoundWonEnd;
+
     private void Awake() {
         if (Instance == null) Instance = this;
         else if (Instance != this) Destroy(gameObject);
@@ -32,35 +36,20 @@ public class PointManager : MonoBehaviour
     // 0 index for playerScored
     public void Score(int playerScored) {
         points[playerScored]++;
-        StartCoroutine(ScoreCoroutine(playerScored));
+        PointUI.Instance.UpdatePointsUI(playerScored, points[playerScored]);
+        if (points[playerScored] >= pointsToWinRound || suddenDeath) {
+            RoundWon(playerScored);
+            return;
+        }
+        StartCoroutine(ScoreCoroutine());
     }
 
     public void RoundWon(int playerScored) {
         roundsWon[playerScored]++;
-        int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
-
-        //resets the points
         for (int i = 0; i < points.Length; i++) {
             points[i] = 0;
         }
-
-        if (roundsWon[playerScored] >= otherPlayerRounds + 2 &&
-            roundsWon[playerScored] >= minRoundsToWin) {
-            for (int i = 0; i < roundsWon.Length; i++) {
-                roundsWon[i] = 0;
-            }
-
-            GameManager.Instance.podiumState.winnerNumber = playerScored;
-            GameManager.Instance.SwitchState(GameState.Podium);
-        }
-        else {
-            Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0)
-                .GetComponent<Deck>();
-            int winner = playerScored;
-            GameManager.Instance.draftState.lostPlayerDeck = lostPlayerDeck;
-            GameManager.Instance.draftState.winner = winner;
-            GameManager.Instance.SwitchState(GameState.Draft);
-        }
+        StartCoroutine(RoundWonCoroutine(playerScored));
     }
 
     /// <summary>
@@ -85,15 +74,35 @@ public class PointManager : MonoBehaviour
         return -1;
     }
 
-    private IEnumerator ScoreCoroutine(int playerScored) {
+    private IEnumerator ScoreCoroutine() {
         onScoreStart?.Invoke();
         yield return new WaitForSeconds(effectLength);
         onScoreEnd?.Invoke();
-        PointUI.Instance.UpdatePointsUI(playerScored, points[playerScored]);
-        if (points[playerScored] >= pointsToWinRound || suddenDeath) {
-            RoundWon(playerScored);
+    }
+
+    private IEnumerator RoundWonCoroutine(int playerScored) {
+        onRoundWonStart?.Invoke();
+        yield return new WaitForSeconds(effectLength);
+        onRoundWonEnd?.Invoke();
+        int otherPlayerRounds = roundsWon[(playerScored + 1) % 2];
+        if (roundsWon[playerScored] >= otherPlayerRounds + 2 &&
+            roundsWon[playerScored] >= minRoundsToWin) {
+            for (int i = 0; i < roundsWon.Length; i++) {
+                roundsWon[i] = 0;
+            }
+
+            GameManager.Instance.podiumState.winnerNumber = playerScored;
+            GameManager.Instance.SwitchState(GameState.Podium);
         }
-    } 
+        else {
+            Deck lostPlayerDeck = Multiplayer.Instance.players[(playerScored + 1) % 2].transform.GetChild(0)
+                .GetComponent<Deck>();
+            int winner = playerScored;
+            GameManager.Instance.draftState.lostPlayerDeck = lostPlayerDeck;
+            GameManager.Instance.draftState.winner = winner;
+            GameManager.Instance.SwitchState(GameState.Draft);
+        }
+    }
 }
 
 public enum Teams

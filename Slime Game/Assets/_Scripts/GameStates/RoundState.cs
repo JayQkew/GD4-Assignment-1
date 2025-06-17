@@ -77,6 +77,9 @@ public class RoundState : GameBaseState
         PointManager.Instance.onScoreStart.AddListener(StartScoreCameraEffects);
         PointManager.Instance.onScoreEnd.AddListener(EndScoreCameraEffects);
         
+        PointManager.Instance.onRoundWonStart.AddListener(StartRoundWon);
+        PointManager.Instance.onRoundWonEnd.AddListener(EndRoundWon);
+        
         ball = GameObject.FindGameObjectWithTag("Ball");
     }
 
@@ -152,5 +155,20 @@ public class RoundState : GameBaseState
         if (chromaticAberration != null) {
             chromaticAberration.intensity.value = chromaEnd;
         }
+    }
+
+    private void StartRoundWon() {
+        Time.timeScale = 0.2f;
+        cinemachineCamera.Follow = ball.transform;
+        
+        gm.StartCoroutine(LerpVolumeEffects(true, 1.5f));
+    }
+
+    private void EndRoundWon() {
+        Time.timeScale = 1;
+        cinemachineCamera.Follow = null;
+        cinemachineCamera.transform.position = ball.transform.position;
+        
+        gm.StartCoroutine(LerpVolumeEffects(false, 0.5f));
     }
 }
