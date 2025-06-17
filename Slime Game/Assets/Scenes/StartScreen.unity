@@ -188,10 +188,6 @@ MonoBehaviour:
     - {fileID: 8264591104274167507, guid: 2362d7681454f924c922c48578db695c, type: 3}
     - {fileID: 3244726257207813805, guid: 05b1659c674595d40ac7be7577ba0920, type: 3}
     - {fileID: 8566932181079513745, guid: e695433ca4772ab46a21f90c9e2da8b3, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
   draftState:
     winner: 0
     lostPlayerDeck: {fileID: 0}
