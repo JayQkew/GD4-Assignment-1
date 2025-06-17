@@ -13,11 +13,11 @@ public class Ball : MonoBehaviour
     }
 
     private void Start() {
-        PointManager.Instance.onScore.AddListener(Respawn);
+        PointManager.Instance.onScoreEnd.AddListener(Respawn);
     }
 
     private void OnDestroy() {
-        PointManager.Instance.onScore.RemoveListener(Respawn);
+        PointManager.Instance.onScoreEnd.RemoveListener(Respawn);
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 

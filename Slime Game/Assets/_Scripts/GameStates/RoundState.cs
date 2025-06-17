@@ -1,5 +1,7 @@
 using System;
 using TMPro;
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
@@ -12,8 +14,11 @@ public class RoundState : GameBaseState
     [SerializeField] private float currRoundTime;
     
     [SerializeField] private Transform[] spawns = new Transform[2];
-    
     [SerializeField] private GameObject[] props;
+
+    [SerializeField] private GameObject ball;
+    
+    [SerializeField] private CinemachineCamera cinemachineCamera;
     public override void EnterState(GameManager manager) {
         currRoundTime = maxRoundTime;
         MapManager.Instance.NextMap();
@@ -35,6 +40,8 @@ public class RoundState : GameBaseState
 
     public override void ExitState(GameManager manager) {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        PointManager.Instance.onScoreStart.RemoveListener(StartScoreCameraEffects);
+        PointManager.Instance.onScoreEnd.RemoveListener(EndScoreCameraEffects);
         PointManager.Instance.suddenDeath = false;
     }
 
@@ -58,6 +65,13 @@ public class RoundState : GameBaseState
         PointUI.Instance.UpdateAdvantage();
         PointUI.Instance.SetTimerMaxValue(maxRoundTime);
         SetUpProps();
+        
+        cinemachineCamera = Object.FindObjectOfType<CinemachineCamera>();
+
+        PointManager.Instance.onScoreStart.AddListener(StartScoreCameraEffects);
+        PointManager.Instance.onScoreEnd.AddListener(EndScoreCameraEffects);
+        
+        ball = GameObject.FindGameObjectWithTag("Ball");
     }
 
     private void SetUpProps() {
@@ -68,5 +82,17 @@ public class RoundState : GameBaseState
             if (prop == null) continue;
             Object.Instantiate(prop, spawn.transform.position, Quaternion.identity, propParent);
         }
+    }
+
+    private void StartScoreCameraEffects() {
+        // cinemachineCamera.LookAt = ball.transform;
+        cinemachineCamera.Follow = ball.transform;
+        Time.timeScale = 0.5f;
+    }
+
+    private void EndScoreCameraEffects() {
+        cinemachineCamera.Follow = null;
+        cinemachineCamera.transform.position = new Vector3(0, 0, -10);
+        Time.timeScale = 1;
     }
 }

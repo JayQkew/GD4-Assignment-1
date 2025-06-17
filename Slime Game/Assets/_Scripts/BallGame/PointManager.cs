@@ -1,7 +1,9 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class PointManager : MonoBehaviour
 {
@@ -13,7 +15,9 @@ public class PointManager : MonoBehaviour
     public int[] roundsWon = new int[2];
     public bool suddenDeath;
 
-    public UnityEvent onScore;
+    public float effectLength;
+    public UnityEvent onScoreStart;
+    public UnityEvent onScoreEnd;
 
     private void Awake() {
         if (Instance == null) Instance = this;
@@ -28,11 +32,7 @@ public class PointManager : MonoBehaviour
     // 0 index for playerScored
     public void Score(int playerScored) {
         points[playerScored]++;
-        onScore?.Invoke();
-        PointUI.Instance.UpdatePointsUI(playerScored, points[playerScored]);
-        if (points[playerScored] >= pointsToWinRound || suddenDeath) {
-            RoundWon(playerScored);
-        }
+        StartCoroutine(ScoreCoroutine(playerScored));
     }
 
     public void RoundWon(int playerScored) {
@@ -84,6 +84,16 @@ public class PointManager : MonoBehaviour
         }
         return -1;
     }
+
+    private IEnumerator ScoreCoroutine(int playerScored) {
+        onScoreStart?.Invoke();
+        yield return new WaitForSeconds(effectLength);
+        onScoreEnd?.Invoke();
+        PointUI.Instance.UpdatePointsUI(playerScored, points[playerScored]);
+        if (points[playerScored] >= pointsToWinRound || suddenDeath) {
+            RoundWon(playerScored);
+        }
+    } 
 }
 
 public enum Teams
