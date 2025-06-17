@@ -1,8 +1,9 @@
 using System;
-using TMPro;
+using System.Collections;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -19,8 +20,12 @@ public class RoundState : GameBaseState
     [SerializeField] private GameObject ball;
     
     [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private Volume volume;
+
+    private GameManager gm;
     public override void EnterState(GameManager manager) {
         currRoundTime = maxRoundTime;
+        gm = manager;
         MapManager.Instance.NextMap();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -67,6 +72,7 @@ public class RoundState : GameBaseState
         SetUpProps();
         
         cinemachineCamera = Object.FindObjectOfType<CinemachineCamera>();
+        volume = Object.FindObjectOfType<Volume>();
 
         PointManager.Instance.onScoreStart.AddListener(StartScoreCameraEffects);
         PointManager.Instance.onScoreEnd.AddListener(EndScoreCameraEffects);
@@ -84,15 +90,74 @@ public class RoundState : GameBaseState
         }
     }
 
-    private void StartScoreCameraEffects() {
-        // cinemachineCamera.LookAt = ball.transform;
-        cinemachineCamera.Follow = ball.transform;
-        Time.timeScale = 0.5f;
-    }
+private void StartScoreCameraEffects() {
+    // cinemachineCamera.Follow = ball.transform;
+    Time.timeScale = 0.2f;
+    
+    // Start the transition to score effects
+    gm.StartCoroutine(LerpVolumeEffects(true, 1.5f)); // true = to score effects, 1f = duration
+}
 
-    private void EndScoreCameraEffects() {
-        cinemachineCamera.Follow = null;
-        cinemachineCamera.transform.position = new Vector3(0, 0, -10);
-        Time.timeScale = 1;
+private void EndScoreCameraEffects() {
+    // cinemachineCamera.Follow = null;
+    // cinemachineCamera.transform.position = new Vector3(0, 0, -10);
+    Time.timeScale = 1;
+    
+    // Start the transition back to normal effects
+    gm.StartCoroutine(LerpVolumeEffects(false, 0.5f)); // false = to normal effects, 0.5f = duration
+}
+
+private IEnumerator LerpVolumeEffects(bool toScoreEffects, float duration) {
+    // Get the effects
+    volume.profile.TryGet(out Bloom bloom);
+    volume.profile.TryGet(out ChromaticAberration chromaticAberration);
+    
+    // Define start and end values
+    float bloomStart, bloomEnd;
+    float chromaStart, chromaEnd;
+    
+    if (toScoreEffects) {
+        // Current values to score effect values
+        bloomStart = bloom?.intensity.value ?? 5f;
+        bloomEnd = 25f;
+        chromaStart = chromaticAberration?.intensity.value ?? 0.15f;
+        chromaEnd = 1.0f;
+    } else {
+        // Current values to normal values
+        bloomStart = bloom?.intensity.value ?? 25f;
+        bloomEnd = 5f;
+        chromaStart = chromaticAberration?.intensity.value ?? 1.0f;
+        chromaEnd = 0.15f;
     }
+    
+    float elapsedTime = 0f;
+    
+    while (elapsedTime < duration) {
+        elapsedTime += Time.unscaledDeltaTime; // Use unscaledDeltaTime since you're changing timeScale
+        float t = elapsedTime / duration;
+        
+        // Use smoothstep for eased interpolation (optional - you can use linear t instead)
+        float smoothT = t * t * (3f - 2f * t);
+        
+        // Lerp the values
+        if (bloom != null) {
+            bloom.intensity.value = Mathf.Lerp(bloomStart, bloomEnd, smoothT);
+        }
+        
+        if (chromaticAberration != null) {
+            chromaticAberration.intensity.value = Mathf.Lerp(chromaStart, chromaEnd, smoothT);
+        }
+        
+        yield return null;
+    }
+    
+    // Ensure final values are set exactly
+    if (bloom != null) {
+        bloom.intensity.value = bloomEnd;
+    }
+    
+    if (chromaticAberration != null) {
+        chromaticAberration.intensity.value = chromaEnd;
+    }
+}
 }

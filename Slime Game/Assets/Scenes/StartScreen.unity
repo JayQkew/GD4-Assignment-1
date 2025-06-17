@@ -189,6 +189,7 @@ MonoBehaviour:
     - {fileID: 8566932181079513745, guid: e695433ca4772ab46a21f90c9e2da8b3, type: 3}
     ball: {fileID: 0}
     cinemachineCamera: {fileID: 0}
+    volume: {fileID: 0}
   draftState:
     winner: 0
     lostPlayerDeck: {fileID: 0}
@@ -217,7 +218,7 @@ MonoBehaviour:
   points: 0000000000000000
   roundsWon: 0000000000000000
   suddenDeath: 0
-  effectLength: 3
+  effectLength: 0.6
   onScoreStart:
     m_PersistentCalls:
       m_Calls: []
