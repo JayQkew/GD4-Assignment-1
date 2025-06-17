@@ -20,9 +20,20 @@ MonoBehaviour:
       value: 0.5
     - affectedStat: 3
       type: 0
-      value: 2
+      value: 1.5
     abilities: []
-    description: has a bunch of cool abilites
+    description: resting size is smaller BUT inflated size is bigger
+    icon: {fileID: -4364034832326165938, guid: f8d3117739dcfce49822898ae26d7a00, type: 3}
+  - cardName: Small Goliath
+    modifiers:
+    - affectedStat: 2
+      type: 0
+      value: 0.5
+    - affectedStat: 3
+      type: 0
+      value: 1.5
+    abilities: []
+    description: resting size is smaller BUT inflated size is bigger
     icon: {fileID: -4364034832326165938, guid: f8d3117739dcfce49822898ae26d7a00, type: 3}
   - cardName: Caudal Fin
     modifiers:
@@ -30,19 +41,68 @@ MonoBehaviour:
       type: 0
       value: 1.5
     abilities: []
-    description: has a swag ability
+    description: more powertful dash
     icon: {fileID: -3603556060819865620, guid: cc9521f52cba41249b93ac5ca71f685b, type: 3}
-  - cardName: Gills
+  - cardName: Caudal Fin
+    modifiers:
+    - affectedStat: 7
+      type: 0
+      value: 1.5
+    abilities: []
+    description: more powertful dash
+    icon: {fileID: -3603556060819865620, guid: cc9521f52cba41249b93ac5ca71f685b, type: 3}
+  - cardName: Fuel Capacity
     modifiers:
     - affectedStat: 0
       type: 1
-      value: 20
+      value: 25
     abilities: []
-    description: a card to test card system
+    description: have more fuel capacity
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Fuel Capacity
+    modifiers:
+    - affectedStat: 0
+      type: 1
+      value: 25
+    abilities: []
+    description: have more fuel capacity
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Fuel Capacity
+    modifiers:
+    - affectedStat: 0
+      type: 1
+      value: 25
+    abilities: []
+    description: have more fuel capacity
     icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
   - cardName: Ego
     modifiers:
     - affectedStat: 3
+      type: 1
+      value: 1
+    - affectedStat: 6
+      type: 1
+      value: 0.5
+    abilities: []
+    description: Makes inflation size bigger
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Ego
+    modifiers:
+    - affectedStat: 3
+      type: 1
+      value: 1
+    - affectedStat: 6
+      type: 1
+      value: 0.5
+    abilities: []
+    description: Makes inflation size bigger
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Ego
+    modifiers:
+    - affectedStat: 3
+      type: 1
+      value: 1
+    - affectedStat: 6
       type: 1
       value: 0.5
     abilities: []
@@ -56,3 +116,73 @@ MonoBehaviour:
     abilities: []
     description: Increased movement speed
     icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Aquadinamics
+    modifiers:
+    - affectedStat: 1
+      type: 0
+      value: 2
+    abilities: []
+    description: Increased movement speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Aquadinamics
+    modifiers:
+    - affectedStat: 1
+      type: 0
+      value: 2
+    abilities: []
+    description: Increased movement speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Invert Inflation
+    modifiers: []
+    abilities:
+    - {fileID: 644223161715141526, guid: 945f808735fa8704daee326efa1d4049, type: 3}
+    description: stay constantly inflated and deflate on command
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Invert Inflation
+    modifiers: []
+    abilities:
+    - {fileID: 644223161715141526, guid: 945f808735fa8704daee326efa1d4049, type: 3}
+    description: stay constantly inflated and deflate on command
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Surface Speed
+    modifiers: []
+    abilities:
+    - {fileID: 2327637182493165295, guid: 72b0db6dbda075c4c999742ecd8634f1, type: 3}
+    description: When in contact with a surface, greatly increase movment speed
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Gills
+    modifiers: []
+    abilities:
+    - {fileID: 7896421873736369768, guid: ea3a794eb6891264da9e6b855b5d5915, type: 3}
+    description: Movement while inflated does not consume fuel
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Gills
+    modifiers: []
+    abilities:
+    - {fileID: 7896421873736369768, guid: ea3a794eb6891264da9e6b855b5d5915, type: 3}
+    description: Movement while inflated does not consume fuel
+    icon: {fileID: 3590436184635803431, guid: ea53802404fe85d4580a1baf7caef66c, type: 3}
+  - cardName: Spit Ball
+    modifiers:
+    - affectedStat: 8
+      type: 1
+      value: 10
+    abilities:
+    - {fileID: 2788687696285482981, guid: 1114b615de46ff144a6c210d8c10f7db, type: 3}
+    description: Replace Dash with the ability to shoot a spit ball
+    icon: {fileID: -7313494123036120174, guid: d3dd4d8cb7ea1b54f8fef81eb1f0a95a, type: 3}
+  - cardName: Spit Ball
+    modifiers:
+    - affectedStat: 8
+      type: 1
+      value: 10
+    abilities:
+    - {fileID: 2788687696285482981, guid: 1114b615de46ff144a6c210d8c10f7db, type: 3}
+    description: Replace Dash with the ability to shoot a spit ball
+    icon: {fileID: -7313494123036120174, guid: d3dd4d8cb7ea1b54f8fef81eb1f0a95a, type: 3}

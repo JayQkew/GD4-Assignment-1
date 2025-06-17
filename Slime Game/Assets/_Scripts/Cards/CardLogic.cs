@@ -34,6 +34,7 @@ public class CardLogic : MonoBehaviour,
         //add card to players deck (need to get the active player)
         Deck deck = GameManager.Instance.draftState.lostPlayerDeck;
         deck.AddCard(card);
+        GameManager.Instance.draftState.cards.Remove(card);
         GameManager.Instance.SwitchState(GameState.Round);
     }
 

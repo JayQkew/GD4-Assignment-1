@@ -2,6 +2,8 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class RoundState : GameBaseState
@@ -10,6 +12,8 @@ public class RoundState : GameBaseState
     [SerializeField] private float currRoundTime;
     
     [SerializeField] private Transform[] spawns = new Transform[2];
+    
+    [SerializeField] private GameObject[] props;
     public override void EnterState(GameManager manager) {
         currRoundTime = maxRoundTime;
         MapManager.Instance.NextMap();
@@ -53,5 +57,16 @@ public class RoundState : GameBaseState
         PointUI.Instance.UpdateRoundsWon();
         PointUI.Instance.UpdateAdvantage();
         PointUI.Instance.SetTimerMaxValue(maxRoundTime);
+        SetUpProps();
+    }
+
+    private void SetUpProps() {
+        GameObject[] propSpawns = GameObject.FindGameObjectsWithTag("PropSpawn");
+        Transform propParent = GameObject.Find("Props").transform;
+        foreach (GameObject spawn in propSpawns) {
+            GameObject prop = props[Random.Range(0, props.Length)];
+            if (prop == null) continue;
+            Object.Instantiate(prop, spawn.transform.position, Quaternion.identity, propParent);
+        }
     }
 }

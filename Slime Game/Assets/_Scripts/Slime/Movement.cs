@@ -11,7 +11,10 @@ public class Movement : MonoBehaviour
     private SoftBody _softBody;
     private InputHandler inputHandler;
     private PlayerStats playerStats;
+    [HideInInspector] public SurfaceSpeed surfaceSpeed;
 
+    public bool moveConsumeFuel = true;
+    public bool dashConsumeFuel = true;
     public float currFuel;
     [SerializeField] private bool isInflated;
 
@@ -41,7 +44,7 @@ public class Movement : MonoBehaviour
         if (isInflated) {
             if (currFuel > 0 && dir != Vector2.zero) {
                 MoveForce(dir);
-                currFuel -= playerStats.GetStatValue(StatName.MoveCost) * Time.deltaTime;
+                if(moveConsumeFuel) currFuel -= playerStats.GetStatValue(StatName.MoveCost) * Time.deltaTime;
             }
             // else MoveForce(constrainedDir);
         }
@@ -51,7 +54,9 @@ public class Movement : MonoBehaviour
     }
 
     private void MoveForce(Vector2 dir) {
-        float moveMult = playerStats.GetStatValue(StatName.MoveSpeed);
+        float moveMult = surfaceSpeed == null ?
+            playerStats.GetStatValue(StatName.MoveSpeed) :
+            surfaceSpeed.currValue;
         foreach (Rigidbody2D rb in _softBody.nodesRb) {
             if (rb.transform.position.y >= _softBody.transform.position.y)
                 rb.AddForce(dir * (moveMult * 100 * Time.deltaTime), ForceMode2D.Force);
@@ -59,7 +64,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Inflate() {
+    public void Inflate() {
         foreach (Rigidbody2D rb in _softBody.nodesRb) {
             rb.gravityScale = 0;
         }
@@ -69,7 +74,7 @@ public class Movement : MonoBehaviour
         _softBody.frequency = playerStats.GetStatValue(StatName.MaxFrequency);
     }
 
-    private void Deflate() {
+    public void Deflate() {
         foreach (Rigidbody2D rb in _softBody.nodesRb) {
             rb.gravityScale = 1;
         }
@@ -79,19 +84,26 @@ public class Movement : MonoBehaviour
         _softBody.frequency = playerStats.GetStatValue(StatName.MinFrequency);
     }
 
-    private void Dash() {
+    public void Dash() {
         if (currFuel > 0 && inputHandler.aimInput != Vector2.zero) {
             foreach (Rigidbody2D rb in _softBody.nodesRb) {
-                rb.linearVelocity *= 0.25f;
+                rb.linearVelocity = Vector2.zero;
                 rb.AddForce(inputHandler.aimInput * playerStats.GetStatValue(StatName.DashForce), ForceMode2D.Impulse);
             }
-            currFuel -= playerStats.GetStatValue(StatName.DashCost);
+            if (dashConsumeFuel) currFuel -= playerStats.GetStatValue(StatName.DashCost);
         }
     }
 
     private bool Grounded() {
         foreach (SoftBodyNode node in _softBody.nodeScripts) {
             if (node.touchingGround) return true;
+        }
+        return false;
+    }
+
+    public bool TouchingSurface() {
+        foreach (SoftBodyNode node in _softBody.nodeScripts) {
+            if (node.touchingGround || node.touchingSurface) return true;
         }
         return false;
     }
