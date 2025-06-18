@@ -37,7 +37,7 @@ public class tentacles : MonoBehaviour
             
         }
         
-        transform.position = new Vector2(transform.parent.position.x, lowestNode.transform.position.y+0.5f);
+        transform.position = new Vector2(transform.parent.position.x, lowestNode.transform.position.y);
         
     }
 }
