@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameState state;
 
     private GameBaseState currState;
+    public HowTo howTo = new HowTo();
     public MapSelectState mapSelectState = new MapSelectState();
     public LobbyState lobbyState = new LobbyState();
     public RoundState roundState = new RoundState();
@@ -36,6 +37,9 @@ public class GameManager : MonoBehaviour
     public void SwitchState(GameState newState) {
         currState.ExitState(this);
         switch (newState) {
+            case GameState.HowTo:
+                currState = howTo;
+                break;
             case GameState.MapSelect:
                 currState = mapSelectState;
                 break;
@@ -71,6 +75,7 @@ public abstract class GameBaseState
 
 public enum GameState
 {
+    HowTo,
     MapSelect,
     Lobby,
     Round,
