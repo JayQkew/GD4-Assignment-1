@@ -17,7 +17,6 @@ public class MapSelectState : GameBaseState
     private List<MapCard> mapCards = new List<MapCard>();
     public override void EnterState(GameManager manager) {
         SceneManager.LoadScene("MapSelect");
-        SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -28,6 +27,9 @@ public class MapSelectState : GameBaseState
     public override void ExitState(GameManager manager) {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         MapManager.Instance.GetSelectedMaps();
+        foreach (MapCard card in mapCards) {
+            card.map.selected = false;
+        }
     }
 
     public void SelectAllMaps() {

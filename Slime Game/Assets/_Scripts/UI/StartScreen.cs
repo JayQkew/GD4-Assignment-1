@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour
 {
-    public void GoToHowTo() {
-        GameManager.Instance.SwitchState(GameState.HowTo);
+    public void GoToMapSelect() {
+        GameManager.Instance.SwitchState(GameState.MapSelect);
     }
 
     public void ExitGame() {
