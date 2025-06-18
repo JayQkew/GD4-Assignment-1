@@ -11,6 +11,7 @@ public class CardLogic : MonoBehaviour,
     ICancelHandler
 {
     public Card card;
+    [SerializeField] private Animator animator;
     [SerializeField] private TextMeshProUGUI header;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private Image image;
@@ -24,6 +25,7 @@ public class CardLogic : MonoBehaviour,
     }
 
     public void OnSelect(BaseEventData eventData) {
+        animator.SetTrigger("");
     }
 
     public void OnDeselect(BaseEventData eventData) {
