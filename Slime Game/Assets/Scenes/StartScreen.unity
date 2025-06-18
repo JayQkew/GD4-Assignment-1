@@ -201,6 +201,9 @@ MonoBehaviour:
   podiumState:
     winnerNumber: 0
     winnerText: {fileID: 0}
+    podiumColors:
+    - {r: 0.8745099, g: 0.21960786, b: 0.8745099, a: 1}
+    - {r: 0.29411766, g: 0.9058824, b: 0.70980394, a: 1}
 --- !u!114 &50957809
 MonoBehaviour:
   m_ObjectHideFlags: 0

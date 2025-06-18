@@ -8,6 +8,7 @@ public class PodiumState : GameBaseState
 {
     public int winnerNumber;
     public TextMeshProUGUI winnerText;
+    [SerializeField] private Color[] podiumColors;
     public override void EnterState(GameManager manager) {
         SceneManager.LoadScene("Podium");
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -23,6 +24,7 @@ public class PodiumState : GameBaseState
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         //get text
         winnerText = GameObject.Find("WinnerText").GetComponent<TextMeshProUGUI>();
-        winnerText.text = $"Player {winnerNumber} Won!";
+        winnerText.color = podiumColors[winnerNumber];
+        winnerText.text = $"Player  {winnerNumber + 1}  Wins!";
     }
 }
