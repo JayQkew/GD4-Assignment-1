@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: cb9dd012149a2c24998e66c371a717ad
+guid: d132ce8c2c076694180dc60c4ccf8130
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1297553158580187520
-    second: deflatedDefault_0
+      213: -15056097725527025
+    second: Untitled_Artwork-5_0
   - first:
-      213: -7562755045942878849
-    second: deflatedDefault_1
+      213: 295027247320573565
+    second: Untitled_Artwork-5_1
   - first:
-      213: -2989421038326602401
-    second: deflatedDefault_2
+      213: -3549685520240317566
+    second: Untitled_Artwork-5_2
   - first:
-      213: 2353004689115263609
-    second: deflatedDefault_3
+      213: 5845376210677383961
+    second: Untitled_Artwork-5_3
   - first:
-      213: 2127621157550719570
-    second: deflatedDefault_4
+      213: -7945977994087605532
+    second: Untitled_Artwork-5_4
   - first:
-      213: -161232677084188375
-    second: deflatedDefault_5
+      213: -6600132901040935097
+    second: Untitled_Artwork-5_5
   - first:
-      213: 5959439843311062232
-    second: deflatedDefault_6
+      213: 3345807666103735437
+    second: Untitled_Artwork-5_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,11 +118,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: deflatedDefault_0
+      name: Untitled_Artwork-5_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 34
+        x: 41
+        y: 98
         width: 388
         height: 285
       alignment: 0
@@ -133,18 +133,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08e44a9e64a2efde0800000000000000
-      internalID: -1297553158580187520
+      spriteID: f0ccd531f828acff0800000000000000
+      internalID: -15056097725527025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deflatedDefault_1
+      name: Untitled_Artwork-5_1
       rect:
         serializedVersion: 2
-        x: 148
-        y: 291
+        x: 153
+        y: 355
         width: 38
         height: 45
       alignment: 0
@@ -155,18 +155,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7d184bda52bb0790800000000000000
-      internalID: -7562755045942878849
+      spriteID: d76aa93e7b5281400800000000000000
+      internalID: 295027247320573565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deflatedDefault_2
+      name: Untitled_Artwork-5_2
       rect:
         serializedVersion: 2
-        x: 419
-        y: 238
+        x: 424
+        y: 302
         width: 55
         height: 36
       alignment: 0
@@ -177,19 +177,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f55a67e77617386d0800000000000000
-      internalID: -2989421038326602401
+      spriteID: 28b6abd83dbfcbec0800000000000000
+      internalID: -3549685520240317566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deflatedDefault_3
+      name: Untitled_Artwork-5_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 115
-        width: 101
+        y: 179
+        width: 106
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -199,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9723b894c4d87a020800000000000000
-      internalID: 2353004689115263609
+      spriteID: 913c1f781b2fe1150800000000000000
+      internalID: 5845376210677383961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deflatedDefault_4
+      name: Untitled_Artwork-5_4
       rect:
         serializedVersion: 2
-        x: 459
-        y: 167
+        x: 464
+        y: 231
         width: 10
-        height: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,18 +221,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2528a609b24d68d10800000000000000
-      internalID: 2127621157550719570
+      spriteID: 4ea565d2d173ab190800000000000000
+      internalID: -7945977994087605532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deflatedDefault_5
+      name: Untitled_Artwork-5_5
       rect:
         serializedVersion: 2
-        x: 161
-        y: 13
+        x: 166
+        y: 77
         width: 31
         height: 45
       alignment: 0
@@ -243,18 +243,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92136340cbf23cdf0800000000000000
-      internalID: -161232677084188375
+      spriteID: 74f2613781e9764a0800000000000000
+      internalID: -6600132901040935097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deflatedDefault_6
+      name: Untitled_Artwork-5_6
       rect:
         serializedVersion: 2
-        x: 400
-        y: 40
+        x: 405
+        y: 104
         width: 42
         height: 43
       alignment: 0
@@ -265,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8dc8dd886fe24b250800000000000000
-      internalID: 5959439843311062232
+      spriteID: d8454e07852be6e20800000000000000
+      internalID: 3345807666103735437
       vertices: []
       indices: 
       edges: []
@@ -285,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      deflatedDefault_0: -1297553158580187520
-      deflatedDefault_1: -7562755045942878849
-      deflatedDefault_2: -2989421038326602401
-      deflatedDefault_3: 2353004689115263609
-      deflatedDefault_4: 2127621157550719570
-      deflatedDefault_5: -161232677084188375
-      deflatedDefault_6: 5959439843311062232
+      Untitled_Artwork-5_0: -15056097725527025
+      Untitled_Artwork-5_1: 295027247320573565
+      Untitled_Artwork-5_2: -3549685520240317566
+      Untitled_Artwork-5_3: 5845376210677383961
+      Untitled_Artwork-5_4: -7945977994087605532
+      Untitled_Artwork-5_5: -6600132901040935097
+      Untitled_Artwork-5_6: 3345807666103735437
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
