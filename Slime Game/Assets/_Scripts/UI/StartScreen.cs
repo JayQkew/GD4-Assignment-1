@@ -10,4 +10,6 @@ public class StartScreen : MonoBehaviour
     public void ExitGame() {
         Application.Quit();
     }
+    
+    public void GoToHowToPlay() => SceneManager.LoadScene("HowToPlay");
 }

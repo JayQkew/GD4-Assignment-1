@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Podium.unity
     guid: 7e5ac6a138f389b41967089e1e1c589c
   - enabled: 1
+    path: Assets/Scenes/HowToPlay.unity
+    guid: bdcd547e9805da942adc075ffc849400
+  - enabled: 1
     path: Assets/Scenes/Maps/Map_Center Goal.unity
     guid: 1c93eb81f6f343044826572a3824b268
   - enabled: 1
@@ -36,17 +39,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Maps/Map_Volleyball.unity
     guid: e19c7f89e3e051b4d8cba7c51a1d1e6d
   - enabled: 1
-    path: Assets/Scenes/Maps/Map_New Map 1.unity
-    guid: 231b7bedf3ea8b3489655dae38c9e7b8
+    path: Assets/Scenes/Maps/Map_Bosu Ball.unity
+    guid: 8d00735c727ef2c40ac0bffdbd3ad227
   - enabled: 1
-    path: Assets/Scenes/Maps/Map_New Map 2.unity
-    guid: 4e1607fa6b6125b44aae5c7d02336f61
+    path: Assets/Scenes/Maps/Map_Vortex.unity
+    guid: 094f28d4e72c41d46a3add79626cc108
   - enabled: 1
-    path: Assets/Scenes/Maps/Map_New Map 3.unity
-    guid: f9857ac35878fcb4c8fad07f50c4248b
+    path: Assets/Scenes/Maps/Map_Dyno.unity
+    guid: 4758c07736bf94a4d88f7d63513af615
   - enabled: 1
-    path: Assets/Scenes/Maps/Map_New Map 4.unity
-    guid: c751a16c4ee03de44a30b47048eae1a9
+    path: Assets/Scenes/Maps/Map_Dumbbell.unity
+    guid: d315e6db1a117444488aa7ded08bade3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d5a16493e544c33458c7045d2ba32418, type: 3}
   m_UseUCBPForAssetBundles: 0
