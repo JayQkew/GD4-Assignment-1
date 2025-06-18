@@ -11,6 +11,8 @@ public class PointUI : MonoBehaviour
     [SerializeField] private Transform[] playerPoints = new Transform[2];
     [SerializeField] private Slider[] timerSlider = new Slider[2];
     private Image[,] _points = new Image[2,3];
+    [SerializeField] private Gradient sliderGradient;
+    [SerializeField] private Image[] sliderFill;
 
     private void Awake() {
         if (Instance == null) {
@@ -76,5 +78,10 @@ public class PointUI : MonoBehaviour
     public void UpdateTimer(float curr) {
         timerSlider[0].value = curr;
         timerSlider[1].value = curr;
+        
+        float percentage = curr / timerSlider[0].maxValue;
+        
+        sliderFill[0].color = sliderGradient.Evaluate(percentage);
+        sliderFill[1].color = sliderGradient.Evaluate(percentage);
     }
 }
