@@ -33,6 +33,7 @@ public class Bomb : MonoBehaviour
         if (countDown <= 0) {
             Explode();
             gameObject.SetActive(false);
+            Instantiate(bombExplodeSound);
         }
     }
 
@@ -61,7 +62,6 @@ public class Bomb : MonoBehaviour
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         var b = Instantiate(bombParticles);
         b.transform.position = transform.position;
-        Instantiate(bombExplodeSound);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
