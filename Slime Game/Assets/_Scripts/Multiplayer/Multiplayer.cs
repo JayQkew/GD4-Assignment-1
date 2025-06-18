@@ -20,6 +20,7 @@ public class Multiplayer : MonoBehaviour
     
     [Header("Player")]
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private GameObject[] faces; 
     
     private MultiplayerCollider _multiplayerCollider;
     private void Awake() {
@@ -58,6 +59,8 @@ public class Multiplayer : MonoBehaviour
         playerInput.gameObject.name = $"Player {_playerInputManager.playerCount}";
         playerInput.transform.SetParent(transform);
         playerInput.transform.position = spawnPoints[_playerInputManager.playerCount - 1].position;
+        Instantiate(faces[_playerInputManager.playerCount-1], playerInput.gameObject.transform.GetChild(0).transform, false);
+        playerInput.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().material = materials[_playerInputManager.playerCount - 1];
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {

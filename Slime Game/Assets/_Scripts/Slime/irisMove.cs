@@ -3,11 +3,13 @@ using UnityEngine;
 public class irisMove : MonoBehaviour
 {
     private Vector2 _parent;
+    public Vector3 eyePosition;
     [HideInInspector] public InputHandler inputHandler;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _parent = transform.parent.parent.parent.position;
+        transform.parent.localPosition = eyePosition;
         inputHandler = transform.parent.parent.parent.parent.GetComponent<InputHandler>();
         
     }

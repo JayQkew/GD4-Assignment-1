@@ -14,11 +14,11 @@ public class tentacles : MonoBehaviour
     void Start()
     {
         //Debug.Log(transform.parent.GetComponent<SoftBody>().nodes.Count);
-        // float num= transform.parent.GetComponent<SoftBody>().nodes.Count;
-        // for(int i = 0; i < num; i++)
-        // {
-        //     _nodes.Add(transform.parent.GetComponent<SoftBody>().nodes[i]);
-        // }
+         float num= transform.parent.GetComponent<SoftBody>().nodes.Count;
+         for(int i = 0; i < num; i++)
+         {
+             _nodes.Add(transform.parent.GetComponent<SoftBody>().nodes[i]);
+        }
     }
 
     // Update is called once per frame
