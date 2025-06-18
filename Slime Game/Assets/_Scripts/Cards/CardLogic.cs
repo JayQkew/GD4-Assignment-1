@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,7 +26,7 @@ public class CardLogic : MonoBehaviour,
     }
 
     public void OnSelect(BaseEventData eventData) {
-        animator.SetTrigger("");
+        animator.SetTrigger("Open");
     }
 
     public void OnDeselect(BaseEventData eventData) {
@@ -37,9 +38,15 @@ public class CardLogic : MonoBehaviour,
         Deck deck = GameManager.Instance.draftState.lostPlayerDeck;
         deck.AddCard(card);
         GameManager.Instance.draftState.cards.Remove(card);
-        GameManager.Instance.SwitchState(GameState.Round);
+        StartCoroutine(Choose());
     }
 
     public void OnCancel(BaseEventData eventData) {
+    }
+
+    private IEnumerator Choose() {
+        animator.SetTrigger("Close");
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.SwitchState(GameState.Round);
     }
 }

@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 65.68451}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &140951300626804144
 CanvasRenderer:
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: this is the description of the card
+  m_text: this is the description of the card asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6906f43f865472743839fb2e34b90db0, type: 2}
   m_sharedMaterial: {fileID: 6566232411129507211, guid: 6906f43f865472743839fb2e34b90db0, type: 2}
@@ -194,10 +194,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 24
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 72
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -439,7 +439,7 @@ MonoBehaviour:
     abilities: []
     description: 
     icon: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 316555752770332110}
   header: {fileID: 5594534628165194672}
   description: {fileID: 4513765996551247371}
   image: {fileID: 4542400571279814736}
@@ -566,6 +566,11 @@ PrefabInstance:
       addedObject: {fileID: 6734844637886547086}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dd55ed912ba30847b4bf00225dbb3ba, type: 3}
+--- !u!95 &316555752770332110 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 514289847063146491, guid: 9dd55ed912ba30847b4bf00225dbb3ba, type: 3}
+  m_PrefabInstance: {fileID: 236366566058527285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5999108443949105545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5766476125531311036, guid: 9dd55ed912ba30847b4bf00225dbb3ba, type: 3}
