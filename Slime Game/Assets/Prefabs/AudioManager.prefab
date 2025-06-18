@@ -67,6 +67,8 @@ MonoBehaviour:
   inflateAudioSource: {fileID: 0}
   underwaterExplosionMusic: {fileID: 8300000, guid: fdde30bb97f7bfd4eaf830552d92baee, type: 3}
   underwaterExplosionAudioSource: {fileID: 0}
+  suddenDeathMusic: {fileID: 8300000, guid: 044108ea879925c4ea32c57c3c2d54ed, type: 3}
+  suddenDeathAudioSource: {fileID: 0}
 --- !u!82 &-3220632303723791940
 AudioSource:
   m_ObjectHideFlags: 0

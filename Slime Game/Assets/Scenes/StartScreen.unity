@@ -1992,6 +1992,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1342604984}
+    - target: {fileID: 8902112946813621700, guid: b4aaca176eb73334795b619a5c7ad6cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToHowTo
+      objectReference: {fileID: 0}
     - target: {fileID: 8950996995093270190, guid: b4aaca176eb73334795b619a5c7ad6cc, type: 3}
       propertyPath: m_Name
       value: StartBtn

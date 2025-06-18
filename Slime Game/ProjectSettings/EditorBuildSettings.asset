@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: 225fa476a73a1eb478df7a6c3cd63ab4
   - enabled: 1
+    path: Assets/Scenes/HowToPlay.unity
+    guid: bdcd547e9805da942adc075ffc849400
+  - enabled: 1
     path: Assets/Scenes/MapSelect.unity
     guid: 0ea3bde5ba7678a48820a0481b5fa0ae
   - enabled: 1

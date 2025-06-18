@@ -45,6 +45,10 @@ public class AudioManager : MonoBehaviour
     [Header("Underwater Explosion Music")]
     [SerializeField] private AudioClip underwaterExplosionMusic;
     public AudioSource underwaterExplosionAudioSource;
+    
+    [Header("Sudden Death Music")]
+    [SerializeField] private AudioClip suddenDeathMusic;
+    public AudioSource suddenDeathAudioSource;
 
     private int currentSceneIndex = -1; // Initialize to an invalid index
 
@@ -78,7 +82,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log($"Scene loaded: {scene.name}, Index: {currentSceneIndex}. Checking for music change.");
 
             // Check if the loaded scene's index is one of the lobby indexes
-            if (currentSceneIndex >= 0 && currentSceneIndex <= 2) // Lobby indexes are 0, 1, 2
+            if (currentSceneIndex >= 0 && currentSceneIndex <= 3) // Lobby indexes are 0, 1, 2, 3
             {
                 ChangeLobbyMusic();
                 // Optionally stop other music if it was playing, e.g., backgroundAudioSource.Stop();
@@ -165,6 +169,12 @@ public class AudioManager : MonoBehaviour
     public void InflateMusic()
     {
         if (inflateMusic != null) inflateAudioSource.PlayOneShot(inflateMusic);
+        else Debug.LogWarning("Inflate music clip is not assigned!");
+    }
+    
+    public void SuddenDeathAudio()
+    {
+        if (suddenDeathMusic != null) suddenDeathAudioSource.PlayOneShot(inflateMusic);
         else Debug.LogWarning("Inflate music clip is not assigned!");
     }
 
