@@ -8,8 +8,8 @@ public class irisMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _parent = transform.parent.parent.parent.position;
-        transform.parent.localPosition = eyePosition;
+        _parent = transform.parent.parent.parent.localPosition;
+        //transform.parent.localPosition = eyePosition;
         inputHandler = transform.parent.parent.parent.parent.GetComponent<InputHandler>();
         
     }
