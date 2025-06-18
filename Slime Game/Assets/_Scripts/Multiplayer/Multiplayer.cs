@@ -60,14 +60,7 @@ public class Multiplayer : MonoBehaviour
         playerInput.transform.SetParent(transform);
         playerInput.transform.position = spawnPoints[_playerInputManager.playerCount - 1].position;
         Instantiate(faces[_playerInputManager.playerCount-1], playerInput.gameObject.transform.GetChild(0).transform, false);
-        SetTenticles(playerInput);
-    }
-
-    private void SetTenticles(PlayerInput playerInput) {
-        Transform tenticleParent = playerInput.gameObject.transform.GetChild(0).GetChild(0);
-        for (int i = 0; i < 3; i++) {
-            tenticleParent.GetChild(i).GetComponent<SpriteRenderer>().material = materials[_playerInputManager.playerCount - 1];
-        }
+        playerInput.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().material = materials[_playerInputManager.playerCount - 1];
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
