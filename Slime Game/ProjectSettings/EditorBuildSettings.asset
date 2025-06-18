@@ -35,6 +35,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/Map_Volleyball.unity
     guid: e19c7f89e3e051b4d8cba7c51a1d1e6d
+  - enabled: 1
+    path: Assets/Scenes/Maps/Map_New Map 1.unity
+    guid: 231b7bedf3ea8b3489655dae38c9e7b8
+  - enabled: 1
+    path: Assets/Scenes/Maps/Map_New Map 2.unity
+    guid: 4e1607fa6b6125b44aae5c7d02336f61
+  - enabled: 1
+    path: Assets/Scenes/Maps/Map_New Map 3.unity
+    guid: f9857ac35878fcb4c8fad07f50c4248b
+  - enabled: 1
+    path: Assets/Scenes/Maps/Map_New Map 4.unity
+    guid: c751a16c4ee03de44a30b47048eae1a9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d5a16493e544c33458c7045d2ba32418, type: 3}
   m_UseUCBPForAssetBundles: 0
