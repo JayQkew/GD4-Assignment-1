@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: ef0950db9d5820247b60114571a67b1d
+guid: 65dd00029911c6644b4a8cdce76e1371
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4475102506177345908
-    second: surfaceSpeed_0
+      213: -5776421600631150107
+    second: Untitled_Artwork-3_0
   - first:
-      213: 2171056060473413439
-    second: surfaceSpeed_1
+      213: 2452144241443262777
+    second: Untitled_Artwork-3_1
   - first:
-      213: 6923421529934594657
-    second: surfaceSpeed_2
+      213: -4921989159718240856
+    second: Untitled_Artwork-3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,12 +106,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surfaceSpeed_0
+      name: Untitled_Artwork-3_0
       rect:
         serializedVersion: 2
-        x: 46
-        y: 99
-        width: 400
+        x: 25
+        y: 223
+        width: 401
         height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -121,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 479392ee402ca1e30800000000000000
-      internalID: 4475102506177345908
+      spriteID: 5e9ac75b82706dfa0800000000000000
+      internalID: -5776421600631150107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surfaceSpeed_1
+      name: Untitled_Artwork-3_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 36
-        width: 81
-        height: 63
+        x: 69
+        y: 160
+        width: 82
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,18 +143,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3f0af7fbf3212e10800000000000000
-      internalID: 2171056060473413439
+      spriteID: 931de311234c70220800000000000000
+      internalID: 2452144241443262777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surfaceSpeed_2
+      name: Untitled_Artwork-3_2
       rect:
         serializedVersion: 2
-        x: 134
-        y: 11
+        x: 113
+        y: 135
         width: 499
         height: 258
       alignment: 0
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1620b0a133fe41060800000000000000
-      internalID: 6923421529934594657
+      spriteID: 8adbba2efe491bbb0800000000000000
+      internalID: -4921989159718240856
       vertices: []
       indices: 
       edges: []
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      surfaceSpeed_0: 4475102506177345908
-      surfaceSpeed_1: 2171056060473413439
-      surfaceSpeed_2: 6923421529934594657
+      Untitled_Artwork-3_0: -5776421600631150107
+      Untitled_Artwork-3_1: 2452144241443262777
+      Untitled_Artwork-3_2: -4921989159718240856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
