@@ -47,6 +47,10 @@ public class RoundState : GameBaseState
         SceneManager.sceneLoaded -= OnSceneLoaded;
         PointManager.Instance.onScoreStart.RemoveListener(StartScoreCameraEffects);
         PointManager.Instance.onScoreEnd.RemoveListener(EndScoreCameraEffects);
+        
+        PointManager.Instance.onRoundWonEnd.RemoveListener(StartRoundWon);
+        PointManager.Instance.onRoundWonEnd.RemoveListener(BackgroundAnimation);
+        PointManager.Instance.onRoundWonEnd.RemoveListener(EndRoundWon);
         PointManager.Instance.suddenDeath = false;
     }
 
@@ -78,9 +82,15 @@ public class RoundState : GameBaseState
         PointManager.Instance.onScoreEnd.AddListener(EndScoreCameraEffects);
         
         PointManager.Instance.onRoundWonStart.AddListener(StartRoundWon);
+        PointManager.Instance.onRoundWonStart.AddListener(BackgroundAnimation);
         PointManager.Instance.onRoundWonEnd.AddListener(EndRoundWon);
         
         ball = GameObject.FindGameObjectWithTag("Ball");
+    }
+
+    private void BackgroundAnimation() {
+        GameObject bg = GameObject.Find("BG_OBJECT_CAVERN");
+        bg.GetComponent<Animator>().SetTrigger("Out");
     }
 
     private void SetUpProps() {
@@ -94,17 +104,10 @@ public class RoundState : GameBaseState
     }
 
     private void StartScoreCameraEffects() {
-        // cinemachineCamera.Follow = ball.transform;
-        
-        // Start the transition to score effects
         gm.StartCoroutine(LerpBloomChromatic(true, 0.25f)); // true = to score effects, 1f = duration
     }
 
     private void EndScoreCameraEffects() {
-        // cinemachineCamera.Follow = null;
-        // cinemachineCamera.transform.position = new Vector3(0, 0, -10);
-        
-        // Start the transition back to normal effects
         gm.StartCoroutine(LerpBloomChromatic(false, 0.25f)); // false = to normal effects, 0.5f = duration
     }
 
