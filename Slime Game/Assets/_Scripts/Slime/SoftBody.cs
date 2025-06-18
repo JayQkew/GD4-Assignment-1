@@ -22,7 +22,7 @@ public class SoftBody : MonoBehaviour
     [Range(0.1f, 10)] public float frequency;
     [SerializeField] private float radiusChangeSpeed;
 
-    private List<GameObject> nodes = new List<GameObject>();
+    public List<GameObject> nodes = new List<GameObject>();
     [HideInInspector] public List<Rigidbody2D> nodesRb = new List<Rigidbody2D>();
     [HideInInspector] public List<SoftBodyNode> nodeScripts = new List<SoftBodyNode>();
     private List<SpringJoint2D> _springJoints = new List<SpringJoint2D>();
