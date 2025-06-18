@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(SoftBody))]
 public class Movement : MonoBehaviour
 {
+    private AudioManager audioManager;
     private SoftBody _softBody;
     private InputHandler inputHandler;
     private PlayerStats playerStats;
@@ -22,6 +23,7 @@ public class Movement : MonoBehaviour
         _softBody = GetComponent<SoftBody>();
         inputHandler = transform.parent.GetComponent<InputHandler>();
         playerStats = GetComponent<PlayerStats>();
+        audioManager = AudioManager.Instance;
     }
 
     private void Start() {
@@ -72,6 +74,8 @@ public class Movement : MonoBehaviour
         isInflated = true;
         _softBody.currRadius = SetSlimeRadius();
         _softBody.frequency = playerStats.GetStatValue(StatName.MaxFrequency);
+        audioManager.inflateAudioSource = GetComponentInParent<AudioSource>();
+        audioManager.InflateMusic();
     }
 
     public void Deflate() {
@@ -89,6 +93,8 @@ public class Movement : MonoBehaviour
             foreach (Rigidbody2D rb in _softBody.nodesRb) {
                 rb.linearVelocity = Vector2.zero;
                 rb.AddForce(inputHandler.aimInput * playerStats.GetStatValue(StatName.DashForce), ForceMode2D.Impulse);
+                audioManager.dashSplashAudioSource = GetComponentInParent<AudioSource>();
+                audioManager.DashSplashMusic();
             }
             if (dashConsumeFuel) currFuel -= playerStats.GetStatValue(StatName.DashCost);
         }
@@ -117,6 +123,8 @@ public class Movement : MonoBehaviour
     public void AirRefill(float amount) {
         float maxFuel = playerStats.GetStatValue(StatName.Fuel);
         currFuel += amount;
+        audioManager.eatAudioSource = GetComponentInParent<AudioSource>();
+        audioManager.EatMusic();
         if (currFuel > maxFuel) currFuel = maxFuel;
     }
 }

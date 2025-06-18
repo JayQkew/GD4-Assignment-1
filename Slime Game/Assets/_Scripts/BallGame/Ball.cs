@@ -31,4 +31,13 @@ public class Ball : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         spawnPoint = GameObject.Find("Ball Spawn").transform;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            AudioManager.Instance.ballHitAudioSource = GetComponent<AudioSource>();
+            AudioManager.Instance.BallHitMusic();
+        }
+    }
 }
