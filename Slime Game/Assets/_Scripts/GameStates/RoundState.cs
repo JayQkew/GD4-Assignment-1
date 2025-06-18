@@ -23,6 +23,8 @@ public class RoundState : GameBaseState
     [SerializeField] private Volume volume;
 
     private GameManager gm;
+    private GameObject panel;
+    private GameObject text;
     public override void EnterState(GameManager manager) {
         currRoundTime = maxRoundTime;
         gm = manager;
@@ -35,11 +37,14 @@ public class RoundState : GameBaseState
         PointUI.Instance?.UpdateTimer(currRoundTime);
         if (currRoundTime <= 0) {
             // check if a player is in the lead, otherwise go into sudden death
+            text.SetActive(true);
             Debug.Log("SUDDEN DEATH");
             PointManager pointManager = PointManager.Instance;
             pointManager.suddenDeath = true;
             if (pointManager.points[0] == pointManager.points[1]) return;
             pointManager.RoundWon(pointManager.points[0] > pointManager.points[1] ? 0 : 1);
+        } else if (currRoundTime <= 10) {
+            panel.SetActive(true);
         }
     }
 
@@ -86,6 +91,12 @@ public class RoundState : GameBaseState
         PointManager.Instance.onRoundWonEnd.AddListener(EndRoundWon);
         
         ball = GameObject.FindGameObjectWithTag("Ball");
+        
+        panel = GameObject.Find("SuddenDeathPanel");
+        text = GameObject.Find("SuddenDeathText");
+        
+        text.SetActive(false);
+        panel.SetActive(false);
     }
 
     private void BackgroundAnimation() {
