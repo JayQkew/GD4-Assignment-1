@@ -98,6 +98,10 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7729660593086264744, guid: 717ee45cdf838bd44b9831c83e0464d7, type: 3}
+      propertyPath: canScore
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729660593086264744, guid: 717ee45cdf838bd44b9831c83e0464d7, type: 3}
       propertyPath: scoringTeam
       value: 0
       objectReference: {fileID: 0}
@@ -174,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 3752511871897583019, guid: 717ee45cdf838bd44b9831c83e0464d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729660593086264744, guid: 717ee45cdf838bd44b9831c83e0464d7, type: 3}
+      propertyPath: canScore
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7729660593086264744, guid: 717ee45cdf838bd44b9831c83e0464d7, type: 3}
       propertyPath: scoringTeam
