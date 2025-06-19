@@ -12,6 +12,7 @@ TagManager:
   - WinBanner
   - PropSpawn
   - IconCamera
+  - Ball Spawn
   layers:
   - Default
   - TransparentFX

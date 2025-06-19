@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 6720326231875731273, guid: c951b632ef81576409da86fada6243bc, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 296405221361861907}
     - target: {fileID: 7521550566229021083, guid: c951b632ef81576409da86fada6243bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
