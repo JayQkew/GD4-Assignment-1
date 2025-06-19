@@ -25,6 +25,7 @@ public class RoundState : GameBaseState
     private GameManager gm;
     private GameObject panel;
     private GameObject text;
+    
     public override void EnterState(GameManager manager) {
         currRoundTime = maxRoundTime;
         gm = manager;
@@ -97,6 +98,8 @@ public class RoundState : GameBaseState
         
         text.SetActive(false);
         panel.SetActive(false);
+        
+
     }
 
     private void BackgroundAnimation() {
@@ -115,10 +118,12 @@ public class RoundState : GameBaseState
     }
 
     private void StartScoreCameraEffects() {
+        //cannot score goal
         gm.StartCoroutine(LerpBloomChromatic(true, 0.25f)); // true = to score effects, 1f = duration
     }
 
     private void EndScoreCameraEffects() {
+        //can score goal
         gm.StartCoroutine(LerpBloomChromatic(false, 0.25f)); // false = to normal effects, 0.5f = duration
     }
 

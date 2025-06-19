@@ -75,9 +75,13 @@ public class PointManager : MonoBehaviour
     }
 
     private IEnumerator ScoreCoroutine() {
+        GameObject.Find("Player 1 Goal").GetComponent<Goals>().canScore = false;
+        GameObject.Find("Player 2 Goal").GetComponent<Goals>().canScore = false;
         onScoreStart?.Invoke();
         yield return new WaitForSeconds(effectLength);
         onScoreEnd?.Invoke();
+        GameObject.Find("Player 1 Goal").GetComponent<Goals>().canScore = true;
+        GameObject.Find("Player 2 Goal").GetComponent<Goals>().canScore = true;
     }
 
     private IEnumerator RoundWonCoroutine(int playerScored) {
