@@ -49,6 +49,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b62cb45b3dc8e5846ac4718f6e74105c, type: 3}
   - {fileID: 8300000, guid: 4cf87723ced16c342a1a4b96895b076f, type: 3}
   - {fileID: 8300000, guid: b9134d9e3b3725a4ab568b7e182ce7bb, type: 3}
+  - {fileID: 8300000, guid: ab4274f42240ec14cb063587c4745344, type: 3}
+  - {fileID: 8300000, guid: bba2c0a0efdab1a449da6c466bf40efb, type: 3}
+  - {fileID: 8300000, guid: 0ddd28705e1775b48bf6abbb68c4ae6a, type: 3}
   backgroundAudioSource: {fileID: 0}
   lobbyAudioClips:
   - {fileID: 8300000, guid: b293251d1b32a864e898c934947f7a63, type: 3}
@@ -84,7 +87,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
