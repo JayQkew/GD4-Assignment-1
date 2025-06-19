@@ -45,7 +45,6 @@ public class MapSelectState : GameBaseState
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         mapCardsParent = GameObject.Find("Maps").transform;
-        GameObject.Find("SelectAll").GetComponent<Button>().onClick.AddListener(SelectAllMaps);
         GameObject.Find("Done Button").GetComponent<Button>().onClick.AddListener(() =>
         {
             GameManager.Instance.SwitchState(GameState.Lobby);
